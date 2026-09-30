@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle Name="Weighing Solutions" Version="1.0.0.3" Manufacturer="Endel Digital" UpgradeCode="63C3DE7B-6C39-4C05-8BB1-45BC92296FC1" IconSourceFile="icon.ico"
+          AboutUrl="https://endel.digital/" Compressed="yes" Copyright="Copyright (c) Endel Digital. All rights reserved." DisableModify="yes" DisableRepair="yes"
+          HelpUrl="https://endel.digital/" SplashScreenSourceFile="loading.bmp">
+    <!-- We will be using Custom Installer UI for our bootstrapper exe-->
+		<BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+			<PayloadGroupRef Id="InstallerPayload" />
+		</BootstrapperApplicationRef>
+		<!-- For bootstrapper exe to load, following files are required-->
+		<PayloadGroup Id="InstallerPayload">
+			<!--<Payload Name="redist\dotnetfx45_full_x86_x64.exe" SourceFile="sources/dotnetfx45_full_x86_x64.exe"/>
+      <Payload Name="redist\SQLEXPR_x64_ENU.exe" SourceFile="sources/SQLEXPR_x64_ENU.exe"/>
+      <Payload Name="redist\SQLEXPR_x86_ENU.exe" SourceFile="sources/SQLEXPR_x86_ENU.exe"/>-->
+			<!--<Payload SourceFile="$(var.InstallerUI.TargetDir)\\Configuration.xml"/>-->
+			<Payload SourceFile="$(var.InstallerUI.TargetDir)\\BootstrapperCore.config"/>
+			<Payload SourceFile="$(var.InstallerUI.TargetPath)"/>
+			<Payload SourceFile="$(var.InstallerUI.TargetDir)\\ControlzEx.dll"/>
+			<Payload SourceFile="$(var.InstallerUI.TargetDir)\\MahApps.Metro.dll"/>
+			<Payload SourceFile="$(var.InstallerUI.TargetDir)\\System.Windows.Interactivity.dll"/>
+			<Payload SourceFile="$(var.InstallerUI.TargetDir)\\Microsoft.Deployment.WindowsInstaller.dll" />
+			<Payload SourceFile="$(var.InstallerUI.TargetDir)\\Newtonsoft.Json.dll"/>
+		</PayloadGroup>
+
+	  <Variable Name="InstallDir" bal:Overridable="yes" Value="[ProgramFilesFolder]Endel Digital\WeighBridge Solution\" Type="string" />
+		<!--<Variable Name="SelectedPackagesFeatures" Value="ALL" Type="string"/>-->
+		<!--<Variable Name="InstallNetFx" Value="NONE" bal:Overridable="yes" Type="string" />-->
+		<Variable Name="InstallSQLx64" Value="ALL" bal:Overridable="yes" Type="string" />
+		<Variable Name="InstallSQLx86" Value="ALL" bal:Overridable="yes" Type="string" />
+		<!--<Variable Name="Test" Value="Test"/>-->
+
+		<Chain DisableSystemRestore="yes">
+			<PackageGroupRef Id="StandAloneNetFx45Redist" />
+			<PackageGroupRef Id="SqlServer2019x64" />
+			<!--<PackageGroupRef Id="SqlServer2014x86" />-->
+
+			<!--<RollbackBoundary />-->
+
+			<MsiPackage Id="MainApplication" SourceFile="$(var.SetupMSI.TargetPath)" Vital="yes" Compressed="yes" DisplayInternalUI="no"
+						DisplayName="Weighing Solutions Setup" Description="Installs the Core WeighBridge Management System" EnableFeatureSelection="yes">
+				<MsiProperty Name="INSTALLFOLDER" Value="[InstallDir]"/>
+				<MsiProperty Name="REINSTALLMODE" Value="emus"/>
+				<MsiProperty Name="UNINSTALLER_PATH" Value="[UNINSTALLER_PATH]"/>
+			</MsiPackage>
+			<!--DisplayInternalUI="yes"-->
+			<!--<MsiProperty Name="ADDLOCAL" Value="[SelectedPackagesFeatures]"/>
+        <MsiProperty Name="Test" Value="[Test]"/>-->
+
+		</Chain>
+		<!--<Log PathVariable="H:\CodeChanges\8.WB\Main Project\SetupBootstrapper\bin\Debug\instlog.txt"/>-->
+	</Bundle>
+	<!--TODO:
+  Set variables and use them during installation.
+  Create config screen to set the SQL params and store them in registry.
+  -->
+</Wix>

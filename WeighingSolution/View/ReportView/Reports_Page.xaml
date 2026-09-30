@@ -1,0 +1,98 @@
+﻿<Page x:Class="WeighingSolution.View.Reports_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="800" d:DesignWidth="800"
+	Title="Reports_Page">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel  Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource SlipIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Reports" />
+                         </TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" >
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <StackPanel VerticalAlignment="Top">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <GroupBox Name="gbMasterReport" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120"  VerticalAlignment="Top" >
+                                <GroupBox.Header>
+                                    <TextBlock Text="Master Report" FontWeight="Bold"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <Button Style="{StaticResource btnnew}" x:Name="btnGoToMasterReport"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0"  Click="btnGoToMasterReport_Click"  Background="{DynamicResource AccentColorBrush2}">
+                                        <StackPanel HorizontalAlignment="Stretch">
+                                            <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource MasterReportIcon}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Margin="5,0,0,0" Text="Master Report" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Name="gbAuditReport" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120"  VerticalAlignment="Top" >
+                                <GroupBox.Header>
+                                    <TextBlock Text="Audit Report" FontWeight="Bold"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <Button Style="{StaticResource btnnew}"  Name="btnGoToAuditReport"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0"    Background="{DynamicResource AccentColorBrush2}" Click="btnGoToAuditReport_Click">
+                                        <StackPanel HorizontalAlignment="Stretch">
+                                            <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource AuditReportIcon}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Margin="5,0,0,0" Text="Audit Report" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Name="gbTransactionReport" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120"  VerticalAlignment="Top" >
+                                <GroupBox.Header>
+                                    <TextBlock Text="Transaction Report" FontWeight="Bold"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <Button Style="{StaticResource btnnew}"  Name="btnGoToTransactionReport"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0"  Click="btnGoToTransactionReport_Click"  Background="{DynamicResource AccentColorBrush2}">
+                                        <StackPanel HorizontalAlignment="Stretch">
+                                            <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource CompanyIcon}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Margin="5,0,0,0" Text="Transaction Report" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+    </Grid>
+</Page>

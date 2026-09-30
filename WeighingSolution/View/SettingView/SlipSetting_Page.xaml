@@ -1,0 +1,105 @@
+﻿<Page x:Class="WeighingSolution.View.SlipSetting_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="SlipSetting_Page" FocusManager.FocusedElement="{Binding ElementName=cbSlipEntry}">
+    <Page.Resources>
+        <converter:InEqualityVisibilityConverter x:Key="InEqualityVisibilityConverter" />
+    </Page.Resources>
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel  Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource GlobalSetting}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Global" />
+                         Settings</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <StackPanel VerticalAlignment="Top">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Margin="10,15,0,10">Enable Transaction Date Time</Label>
+                            <CheckBox Name="cbSlipEntry" Grid.Row="0" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" IsChecked="{Binding EntryDateEditable,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                            <Label Grid.Row="1" Grid.Column="0" Margin="10,15,0,10">Disable All Fields From 2nd Pass Onwards</Label>
+                            <CheckBox  Name="cbDisbleallField" Grid.Row="1" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" IsChecked="{Binding DisbleFrom2ndPass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                            <Label Grid.Row="2" Grid.Column="0" Margin="10,15,0,10">Tare Weight Update Difference Percentage</Label>
+                            <csc:FilteredTextbox FilterRegex="^[0-9]+$|^[0-9]*[.]{0,1}[0-9]*$" Name="txtTareWeightDiff"  Grid.Row="2" Grid.Column="1" Margin="0,15,15,10" Padding="5,5,5,5" MaxLength="5" Text="{Binding TareWeightDiff,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                            <Label Grid.Row="3" Grid.Column="0" Margin="10,15,0,10">Date Format</Label>
+                            <ComboBox  Name="cmbDateFormat"   Grid.Row="3" Grid.Column="1" Margin="0,15,15,10" Padding="5,5,5,5" SelectedValue="{Binding DateFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Tag">
+                                <ComboBoxItem Content="dd-MM-yyyy" Tag="dd-MM-yyyy"></ComboBoxItem>
+                                <ComboBoxItem Content="dd-MMM-yyyy" Tag="dd-MMM-yyyy"></ComboBoxItem>
+                                <ComboBoxItem Content="dd/MM/yyyy" Tag="dd/MM/yyyy"></ComboBoxItem>
+                            </ComboBox>
+                            <Label Grid.Row="4" Grid.Column="0" Margin="10,15,0,10">Time Format</Label>
+                            <ComboBox  Name="cmbTimeFormat" IsSynchronizedWithCurrentItem="True"  Grid.Row="4" Grid.Column="1" Margin="0,15,15,10" Padding="5,5,5,5" SelectedValuePath="Tag"   SelectedValue="{Binding TimeFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem Content="hh:mm tt" Tag="hh:mm tt"></ComboBoxItem>
+                                <ComboBoxItem Content="HH:mm" Tag="HH:mm"></ComboBoxItem>
+                            </ComboBox>
+                            <Label Grid.Row="5" Grid.Column="0" Margin="10,15,0,10">Decimal Format</Label>
+                            <ComboBox  Name="cmbDecimaleFormat" IsSynchronizedWithCurrentItem="True"  Grid.Row="5" Grid.Column="1" Margin="0,15,15,10" Padding="5,5,5,5" SelectedValuePath="Tag"   SelectedValue="{Binding DecimalFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem Content="0.####" Tag="0.####"></ComboBoxItem>
+                                <ComboBoxItem Content="0.0" Tag="0.0"></ComboBoxItem>
+                                <ComboBoxItem Content="0.00" Tag="0.00"></ComboBoxItem>
+                                <ComboBoxItem Content="0.000" Tag="0.000"></ComboBoxItem>
+                                <ComboBoxItem Content="0.0000" Tag="0.0000"></ComboBoxItem>
+                            </ComboBox>
+                            <Label Grid.Row="6" Grid.Column="0" Margin="10,15,0,10" Visibility="{Binding Source={x:Static strFormat:Constant.IsBasicversion}, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter={StaticResource TrueValue}}" >Next Ticket No.</Label>
+                            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" Visibility="{Binding Source={x:Static strFormat:Constant.IsBasicversion}, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter={StaticResource TrueValue}}">
+                                <Label Name="lblLastTicketNo"  Margin="0,15,0,10" Padding="5,5,5,5" Width="100"></Label>
+                                <Button Content="Reset Ticket No." Name="btnResetTicketNo" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="0,15,15,10" Click="btnResetTicketNo_Click"></Button>
+                            </StackPanel>
+
+                            <Label Grid.Row="7" Grid.Column="0" Margin="10,15,0,10">Display Receipt After 1 pass</Label>
+                            <CheckBox  Name="cbDisplayReceiptAfter1pass" Grid.Row="7" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" IsChecked="{Binding DisplayReceiptAfter1pass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Visibility="Collapsed" Controls:ButtonHelper.PreserveTextCase="True" IsDefault="True" Grid.Row="0"  Grid.Column="0" Name="SlipSettingSave" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="45,30,0,50" Command="{Binding SaveSettingCommand}"></Button>
+                <Button Content="Cancel (Esc)"  Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="SlipSettingCancel" Grid.Row="0" Grid.Column="1" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50"  Command="{Binding CloseDetailViewCommand}" CommandParameter="/View/SettingView/Setting_Page.Xaml" ></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

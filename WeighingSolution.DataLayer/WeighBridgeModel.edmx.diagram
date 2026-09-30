@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e23614f3e98948ccaf6e601f01600550" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="weighbridgeModel.Account" Width="1.5" PointX="0.75" PointY="14.375" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApplicationSetting" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.BarcodeImage" Width="1.5" PointX="10.5" PointY="24" />
+        <EntityTypeShape EntityType="weighbridgeModel.BarcodeSetting" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.Camera" Width="1.5" PointX="13.5" PointY="7.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.CameraImage" Width="1.5" PointX="15.75" PointY="15.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.CustomField" Width="1.5" PointX="9.5" PointY="8.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.Driver" Width="1.5" PointX="3" PointY="17.125" />
+        <EntityTypeShape EntityType="weighbridgeModel.EmailSetup" Width="1.5" PointX="15.75" PointY="8.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.Feature" Width="1.5" PointX="3.75" PointY="1.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.Gate" Width="1.5" PointX="3" PointY="22.25" />
+        <EntityTypeShape EntityType="weighbridgeModel.Log" Width="1.5" PointX="17.75" PointY="11.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.MasterField" Width="1.5" PointX="10.75" PointY="19.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.PLCConfiguration" Width="1.5" PointX="13.5" PointY="21.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.Product" Width="1.5" PointX="3" PointY="9.125" />
+        <EntityTypeShape EntityType="weighbridgeModel.SMSFieldSetting" Width="1.5" PointX="18" PointY="4" />
+        <EntityTypeShape EntityType="weighbridgeModel.SMSSetup" Width="1.5" PointX="15.75" PointY="2.875" />
+        <EntityTypeShape EntityType="weighbridgeModel.StampCertificate" Width="1.5" PointX="8.25" PointY="2.5" />
+        <EntityTypeShape EntityType="weighbridgeModel.TCPLog" Width="1.5" PointX="17.75" PointY="15.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.Template" Width="1.5" PointX="3.75" PointY="4.875" />
+        <EntityTypeShape EntityType="weighbridgeModel.TemplatePermission" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.Token" Width="1.5" PointX="5.25" PointY="11.5" />
+        <EntityTypeShape EntityType="weighbridgeModel.TransactionData" Width="1.5" PointX="8.25" PointY="11.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.TransactionDetail" Width="1.5" PointX="13.5" PointY="13.125" />
+        <EntityTypeShape EntityType="weighbridgeModel.TransactionTokenLog" Width="1.5" PointX="10.5" PointY="15.375" />
+        <EntityTypeShape EntityType="weighbridgeModel.UhfMaster" Width="1.5" PointX="13.5" PointY="3.875" />
+        <EntityTypeShape EntityType="weighbridgeModel.Unit" Width="1.5" PointX="9" PointY="6" />
+        <EntityTypeShape EntityType="weighbridgeModel.UserMaster" Width="1.5" PointX="6" PointY="3.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.Vehicle" Width="1.5" PointX="3" PointY="13" />
+        <EntityTypeShape EntityType="weighbridgeModel.WeightBridge" Width="1.5" PointX="11.25" PointY="3" />
+        <AssociationConnector Association="weighbridgeModel.FK_Driver_Account" />
+        <AssociationConnector Association="weighbridgeModel.FK_Token_Account" />
+        <AssociationConnector Association="weighbridgeModel.FK_Token_Transporter" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionData_Account" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionData_Account1" />
+        <AssociationConnector Association="weighbridgeModel.FK_Vehicle_Account" />
+        <AssociationConnector Association="weighbridgeModel.FK_BarcodeImage_TransactionData" />
+        <AssociationConnector Association="weighbridgeModel.FK_Camera_WeightBridge" />
+        <AssociationConnector Association="weighbridgeModel.FK_CameraImage_Camera" />
+        <AssociationConnector Association="weighbridgeModel.FK_CameraImage_TransactionDetail" />
+        <AssociationConnector Association="weighbridgeModel.FK_Token_Driver" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionData_Driver" />
+        <AssociationConnector Association="weighbridgeModel.FK_TemplatePermission_Feature" />
+        <AssociationConnector Association="weighbridgeModel.FK_Token_Gate" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionDetail_Gate" />
+        <AssociationConnector Association="weighbridgeModel.FK_PLCConfiguration_WeightBridge" />
+        <AssociationConnector Association="weighbridgeModel.FK_Token_Product" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionDetail_Product" />
+        <AssociationConnector Association="weighbridgeModel.FK_SMSFieldSetting_SMSSetup" />
+        <AssociationConnector Association="weighbridgeModel.FK_StampCertificate_UserMaster" />
+        <AssociationConnector Association="weighbridgeModel.FK_TemplatePermission_Template" />
+        <AssociationConnector Association="weighbridgeModel.FK_Usermaster_Template" />
+        <AssociationConnector Association="weighbridgeModel.FK_Token_Vehicle" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionTokenLog_Token" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionData_UserMaster" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionData_Vehicle" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionDetail_TransactionData" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionTokenLog_TransactionData" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionDetail_UserMaster" />
+        <AssociationConnector Association="weighbridgeModel.FK_TransactionDetail_WeightBridge" />
+        <AssociationConnector Association="weighbridgeModel.FK_UhfMaster_WeightBridge" />
+        <AssociationConnector Association="weighbridgeModel.FK_WeightBridge_Unit" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiAuthField" Width="1.5" PointX="18.625" PointY="34.25" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiBodyFieldRow" Width="1.5" PointX="18.625" PointY="30.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiHeaderRow" Width="1.5" PointX="18.625" PointY="19.625" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiIntegrationLog" Width="1.5" PointX="18.625" PointY="23" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiIntegrationMaster" Width="1.5" PointX="16.375" PointY="24.5" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiIntegrationRetryQueue" Width="1.5" PointX="20.875" PointY="25.5" />
+        <EntityTypeShape EntityType="weighbridgeModel.APILog" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="weighbridgeModel.ApiParamRow" Width="1.5" PointX="18.625" PointY="27.25" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiAuthField_Master" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiBodyFieldRow_Master" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiHeaderRow_Master" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiIntegrationLog_Master" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiIntegrationRetryQueue_Log" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiIntegrationRetryQueue_Master" />
+        <AssociationConnector Association="weighbridgeModel.FK_ApiParamRow_Master" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,50 @@
+﻿<Controls:MetroContentControl x:Class="InstallerUI.View.UnInstallProgressScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="650">
+        <Controls:MetroContentControl.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource AccentedSquareButtonStyle}" x:Key="mouseoverstyle">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentColorBrush4}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ResourceDictionary>
+        </Controls:MetroContentControl.Resources>
+        <DockPanel Background="{DynamicResource WhiteBrush}">
+        <StackPanel HorizontalAlignment="Stretch"  Canvas.ZIndex="3">
+            <Border Canvas.ZIndex="3" DockPanel.Dock="Top" Background="#d0ecf8"  Margin="20,10,20,10" Padding="10">
+                <StackPanel>
+                    <TextBlock FontSize="18" FontWeight="Bold" Foreground="#20a0db" >Uninstall Program</TextBlock>
+                </StackPanel>
+            </Border>
+            <StackPanel Margin="25,0,0,0">
+                <StackPanel Canvas.ZIndex="3" Margin="0,20,0,0">
+                    <TextBlock Margin="0,5,0,0"> Uninstalling program...</TextBlock>
+                    <Controls:MetroProgressBar Margin="0,5,0,0" HorizontalAlignment="Left" Width="270" Height="18" Foreground="#21a4d8" BorderBrush="#21a4d8" BorderThickness="1" Minimum="0" Maximum="100" Value="{Binding Progress}"/>
+                    <Controls:ProgressRing HorizontalAlignment="Left" Margin="0,15,0,0" Foreground="{DynamicResource AccentColorBrush}" IsActive="{Binding IsProcessing}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Controls:ButtonHelper.PreserveTextCase="True" Command="{Binding CancelCommand}" Content="Cancel" HorizontalAlignment="Left"  Width="100" Height="30" Margin="10,20,0,0" Style="{DynamicResource  mouseoverstyle}" Foreground="Black" Background="{DynamicResource AccentColorBrush4}" BorderBrush="{DynamicResource AccentColorBrush4}" ></Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel  DockPanel.Dock="Bottom"  Width="330" Margin="0,-143,0,0" HorizontalAlignment="Right">
+                    <Image Source="/InstallerUI;component/Images/uninstallhalf.jpg"></Image>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Controls:MetroContentControl>

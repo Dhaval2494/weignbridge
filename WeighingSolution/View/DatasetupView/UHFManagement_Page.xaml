@@ -1,0 +1,133 @@
+﻿<Page x:Class="WeighingSolution.View.UHFManagement_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="UHFManagement_Page"
+      FocusManager.FocusedElement="{Binding ElementName=txtIpAddress}">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Image Width="22" Height="22" Source="/Images/UHFReader.png" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="UHF" />
+                         Management</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Margin="0,15,0,10" Orientation="Horizontal">
+                            <Label >Ip Address</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtIpAddress" CharacterCasing="Upper" 
+                                 Grid.Row="0" Grid.Column="1"  Margin="0,15,0,10" Padding="5,5,5,5"
+                                 Text="{Binding Model.IpAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+
+                        <StackPanel Grid.Row="1" Margin="0,15,0,10" Orientation="Horizontal">
+                            <Label >Port</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtPort" CharacterCasing="Upper" 
+                                 Grid.Row="1" Grid.Column="1"  Margin="0,15,0,10" Padding="5,5,5,5"
+                                 Text="{Binding Model.Port,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+
+                        <StackPanel Grid.Row="2" Margin="0,15,0,10" Orientation="Horizontal">
+                            <Label >Connected Weighbridge</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <ComboBox Name="cmbWeightBridge" Grid.Row="2" Margin="0,15,0,10" Grid.Column="1" Padding="5,5,5,5"
+                                      ItemsSource="{Binding WeightBridges}" DisplayMemberPath="ScaleName" SelectedValuePath="WeightBridgeID">
+                            <ComboBox.SelectedValue>
+                                <Binding Path="Model.WeightbridgeID" Converter="{StaticResource NullReplaceConverter}">
+                                    <Binding.ConverterParameter>
+                                        <sys:Int32>0</sys:Int32>
+                                    </Binding.ConverterParameter>
+                                </Binding>
+                            </ComboBox.SelectedValue>
+                        </ComboBox>
+
+                        <StackPanel Grid.Row="3" Margin="0,15,0,10" Orientation="Horizontal">
+                            <Label >UHF Type</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <ComboBox Name="cmbUHFType" Grid.Row="3" Margin="0,15,0,10" Grid.Column="1" Padding="5,5,5,5" 
+          SelectedValue="{Binding Model.UHFType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Tag">
+                            <ComboBoxItem x:Name="iSTR" Content="STR" Tag="STR"></ComboBoxItem>
+                            <ComboBoxItem x:Name="iHAX" Content="HAX" Tag="HAX" ></ComboBoxItem>
+                        </ComboBox>
+
+                        <StackPanel Grid.Row="4" Margin="0,15,0,10" Orientation="Horizontal">
+                            <Label >Weighbridge Side</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <ComboBox Name="cmbWeightBridgeSide" Grid.Row="4" Margin="0,15,0,10" Grid.Column="1" Padding="5,5,5,5" 
+                                  SelectedValue="{Binding Model.WeightbridgeSide,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Tag">
+                            <ComboBoxItem x:Name="iLeft" Content="Left" Tag="Left"></ComboBoxItem>
+                            <ComboBoxItem x:Name="iRight" Content="Right" Tag="Right" ></ComboBoxItem>
+                            <ComboBoxItem x:Name="iOther" Content="Other" Tag="Other" ></ComboBoxItem>
+                        </ComboBox>
+
+                        <StackPanel Grid.Row="5" Margin="0,15,0,10" Orientation="Horizontal">
+                            <Label >String Prifix</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtPrifix" CharacterCasing="Upper" 
+         Grid.Row="5" Grid.Column="1"  Margin="0,15,0,10" Padding="5,5,5,5"
+         Text="{Binding Model.StringPrifix,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+
+                        <StackPanel Grid.Row="6" Grid.Column="0" Margin="10,15,0,10" Orientation="Horizontal">
+                            <Label Name="lblIsBypass">Is Bypass</Label>
+                            <Label Foreground="red">*</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" Margin="10,15,0,10">
+                            <CheckBox Name="cbIsBypass" Margin="0,0,150,0" IsChecked="{Binding Model.ISBypass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                        </StackPanel>
+
+
+                    </Grid>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Controls:ButtonHelper.PreserveTextCase="True" Name="UHFSave" IsDefault="True" Grid.Row="0" Grid.Column="0"    Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="45,30,0,50" Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="UHFManagementCancel"  Grid.Row="0" Grid.Column="1" Height="30"     Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50" Command="{Binding CloseDetailViewCommand}"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

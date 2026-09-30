@@ -1,0 +1,190 @@
+﻿<Page x:Class="WeighingSolution.View.CameraManagement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents" xmlns:weighingsolution="clr-namespace:WeighingSolution"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="800"
+	Title="CameraManagement">
+    <Page.Resources>
+        <ResourceDictionary>            
+            <converter:NullReplaceConverter x:Key="NullReplaceConverter" />
+            <converter:EqualityVisibilityConverter x:Key="EqualityVisibilityConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <DockPanel  Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource CustomIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Camera" />
+                         Management</TextBlock>
+                </DockPanel>
+                <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto"   VerticalAlignment="Top" >
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0" >
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*"  />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                
+                                <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal">
+                                    <Label >Camera Name</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <TextBox Name="txtCameraName" Text="{Binding Model.CameraName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="0" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" />
+                                
+                                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal">
+                                    <Label >Camera Type</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <ComboBox Name="cmbCameraType"   Grid.Row="1" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" Height="35" SelectedValue="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}"  SelectedValuePath="Tag" IsSynchronizedWithCurrentItem="True" >
+                                    <ComboBoxItem  Content="--Select CameraType--" Tag=""></ComboBoxItem>
+                                    <ComboBoxItem Content="HikVision" Tag="HikVision" IsSelected="True"></ComboBoxItem>
+                                    <ComboBoxItem Content="RTSP/MJPEG" Tag="RTSPMJPEG"></ComboBoxItem>
+                                </ComboBox>
+                                
+                                <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='HikVision'}">
+                                    <Label >IP Address</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <TextBox Name="txtIPAddress" Text="{Binding Model.IPAddress,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"  Margin="0,15,0,10" Padding="5,5,5,5" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='HikVision'}"/>
+                                
+                                <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='HikVision'}">
+                                    <Label >Port</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <csc:FilteredTextbox Name="txtPort" FilterRegex="^[0-9]+$" Text="{Binding Model.Port,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"  Margin="0,15,0,10" Padding="5,5,5,5" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='HikVision'}"/>
+                                
+                                <StackPanel Name="stkURL" Orientation="Horizontal"  Grid.Row="4" Grid.Column="0" Margin="0,15,0,10" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='RTSPMJPEG'}" >
+                                    <Label>Video URL</Label>
+                                    <Label Foreground="Red">*</Label>
+                                </StackPanel>
+                                <TextBox Name="txtURL" Grid.Row="4" Grid.Column="1" Margin="0,15,0,10"  Padding="5,5,5,5"  Text="{Binding Model.VideosourceURL,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='RTSPMJPEG'}"/>
+
+                                <StackPanel Name="stkCaptureURL" Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Margin="0,15,0,10" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='RTSPMJPEG'}">
+                                    <Label>Capture URL</Label>
+                                    <Label Foreground="Red">*</Label>
+                                </StackPanel>
+                                <TextBox Name="txtCaptureURL" Grid.Row="5" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" Text="{Binding Model.VideosourceMainURL,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Model.CameraType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='RTSPMJPEG'}" />
+
+                                <StackPanel Orientation="Horizontal"  Grid.Row="6" Grid.Column="0" Margin="0,15,0,10">
+                                    <Label>UserName</Label>
+                                    <!--<Label Foreground="Red">*</Label>-->
+                                </StackPanel>
+                                <TextBox Name="txtUserName" Text="{Binding Model.UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Margin="0,15,0,10" Grid.Column="1" Padding="5,5,5,5"/>
+                                <StackPanel Orientation="Horizontal"  Grid.Row="7" Grid.Column="0" Margin="0,15,0,10">
+                                    <Label>Password</Label>
+                                    <!--<Label Foreground="Red">*</Label>-->
+                                </StackPanel>
+                                <PasswordBox Name ="pwbPassword" csc:PasswordHelper.Attach="True" Grid.Row="7" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" csc:PasswordHelper.Password="{Binding Model.CameraPassword,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                
+                                <Label Grid.Row="8" Grid.Column="0" Margin="0,15,0,10">Weigh Bridge</Label>
+                                <ComboBox Name="cmbWeighBridge" Grid.Row="8" Margin="0,15,0,10" Grid.Column="1" Padding="5,5,5,5" Height="35" ItemsSource="{Binding WeightBridges}" DisplayMemberPath="ScaleName" SelectedValuePath="WeightBridgeID">
+                                    <ComboBox.SelectedValue>
+                                        <Binding Path="Model.WeightBridgeID" Converter="{StaticResource NullReplaceConverter}">
+                                            <Binding.ConverterParameter>
+                                                <sys:Int32>0</sys:Int32>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </ComboBox.SelectedValue>
+                                </ComboBox>
+
+                                <StackPanel Grid.Row="9" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal">
+                                    <Label>Camera Side</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <ComboBox Name="cmbCameraSide" Grid.Row="9" Grid.Column="1" Margin="0,15,0,10" Padding="5,5,5,5" Height="35" SelectedValue="{Binding Model.WBSide,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" SelectedValuePath="Tag" IsSynchronizedWithCurrentItem="True">
+                                    <ComboBoxItem Content="LEFT" Tag="LEFT" IsSelected="True"></ComboBoxItem>
+                                    <ComboBoxItem Content="RIGHT" Tag="RIGHT"></ComboBoxItem>
+                                </ComboBox>
+
+                                <StackPanel Grid.Row="10" Grid.Column="0" Margin="10,15,0,10" Orientation="Horizontal">
+                                    <Label Name="lblIsAnpr">Is Anpr</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="1" Margin="10,15,0,10">
+                                    <CheckBox Name="cbIsAnpr" Margin="0,0,150,0" IsChecked="{Binding Model.IsAnpr,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="11" Grid.Column="0" Margin="10,15,0,10" Orientation="Horizontal">
+                                    <Label Name="lblIsBypass">Is Bypass</Label>
+                                    <Label Foreground="red">*</Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="11" Grid.Column="1" Margin="10,15,0,10">
+                                    <CheckBox Name="cbIsBypass" Margin="0,0,150,0" IsChecked="{Binding Model.IsBypass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                                </StackPanel>
+
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel  Grid.Column="1" Grid.RowSpan="5" Margin="0,10,10,10" Width="270" Background="{DynamicResource AccentColorBrush2}">
+                            <!--<Image Height="100" Name="image5" Stretch="Fill" Width="100" Source="/Images/camera.png" Margin="80,30,80,0" Opacity="0.5" />-->
+                            <weighingsolution:CamViewer x:Name="ipcam" Port="{Binding Model.Port}" VideoFormat="{Binding Model.CameraType}" UserName="{Binding Model.UserName}" Password="{Binding Model.CameraPassword}" IpAddress="{Binding Model.IPAddress}" VideoSourceURL="{Binding Model.VideosourceURL}" VideoSourceMainURL="{Binding Model.VideosourceMainURL}" StreamFailed="HandlePlayerEvent" StreamStarted="HandlePlayerEvent" Margin="10,10,10,0" Width="200" Height="190" Padding="5,5,5,5" StreamStopped="HandlePlayerEvent" />
+                           
+
+                            <Button Content="Play Camera" Name="btnPlay" Controls:ButtonHelper.PreserveTextCase="True"  Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Width="200" Margin="0,10,10,0" Click="HandlePlayButtonClick"></Button>
+                            <Button Content="Stop Camera" Name="btnStop" Controls:ButtonHelper.PreserveTextCase="True"  Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Width="200" Margin="0,10,10,0" Click="HandleStopButtonClick" IsEnabled="False" ></Button>
+                            <Button Content="Capture Image" Name="btnCaptureImage" Controls:ButtonHelper.PreserveTextCase="True"  Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Width="200" Margin="0,10,10,0" Click="HandleImageButtonClick" IsEnabled="False" ></Button>
+                            <TextBlock Name="txtStatus" HorizontalAlignment="Center" Padding="0,10,0,5">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="White"></Setter>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Controls:ButtonHelper.PreserveTextCase="True" Name="CameraManagementSave" IsDefault="True" Grid.Row="0" Grid.Column="0" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="45,30,0,50"  Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="CameraManagementCancel" Grid.Row="0" Grid.Column="1" Height="30" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,25,10,50" Command="{Binding CloseDetailViewCommand}"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

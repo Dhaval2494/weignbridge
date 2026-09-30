@@ -1,0 +1,120 @@
+﻿<Page x:Class="WeighingSolution.View.StampCertificateList_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:usc="clr-namespace:WeighingSolution.UserControls"
+      xmlns:userControls="clr-namespace:WeighingSolution.UserControls"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="StampCertificateList_Page">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100" >
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource StampCertificate}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25" VerticalAlignment="Center">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Certificate" />
+                         Setting</TextBlock>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Margin="0,8,20,5">
+                        <TextBox Name="txtsearch" Width="300" Margin="0,0,0,0"  BorderBrush="{DynamicResource AccentColorBrush}" Padding="5,5,5,5" ToolTip="Search" Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}" >
+                                    <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="True"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="Controls:TextBoxHelper.HasText" Value="false" >
+                                            <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="False" />
+                                            <Setter Property="Controls:TextBoxHelper.Watermark"  Value="Search Record" />
+                                        </Trigger>
+                                        <Trigger Property="Controls:TextBoxHelper.HasText"   Value="True">
+                                            <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="True" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <Button Name="btnSearch" IsDefault="True" HorizontalAlignment="Left" Style="{DynamicResource mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="34" Width="34"  Margin="0,0,20,0" Command="{Binding FilterData}">
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconFontAwesome Kind="search" Margin="0,2,0,0" Height="14" Width="14" />
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Name="blcAddCertificate" Margin="0,0,20,0" FontWeight="Bold" HorizontalAlignment="Right" >
+                            <Button Name="btnAddCertificate" Click="BtnAddCertificate_Click" Controls:ButtonHelper.PreserveTextCase="True" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Padding="20,0,20,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconFontAwesome Kind="PlusCircle"  Margin="0,1,2,0"  Height="14" Width="14" />
+                                    <TextBlock>ADD CERTIFICATE</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto"   VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <DataGrid Name="DatagridStampCertificate" AutoGenerateColumns="False" ItemsSource="{Binding ViewList.View}"  Margin="0,4,0,0"  CanUserAddRows="False" PreviewKeyDown="DatagridStampCertificate_PreviewKeyDown" >
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}"/>
+                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
+                                <Setter Property="BorderThickness" Value="0,2,0,2"/>
+                                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns >
+                            <DataGridTextColumn>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Padding" Value="6,6,6,6"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Stamp Certificate Name" Width="2*"  IsReadOnly="True" Binding="{Binding Path=StampName}" />
+                            <DataGridTextColumn Header="Issuing Authority" Width="1.5*"  IsReadOnly="True" Binding="{Binding Path=IssuedAuth}" />
+                            <DataGridTextColumn Header="Issue Date" Width="1.5*"  IsReadOnly="True" Binding="{Binding Path=IssueDate}" />
+                            <DataGridTextColumn Header="Expiry Date" Width="1.5*"  IsReadOnly="True" Binding="{Binding Path=ExpiryDate}" />
+                            <DataGridTemplateColumn Header="View" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" ToolTip="Delete"  >
+                                            <Hyperlink  CommandParameter="{Binding}" Name="HyperLinkDeleteEmailSchedule" TextDecorations="none" Foreground="Black" FontWeight="Bold"
+                                                        Command="{Binding DataContext.DeleteScheduleCommand, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" >
+                                                  <Image Height="20" Width="20" Source="/Images/close.png"></Image>
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel HorizontalAlignment="Center" Visibility="{Binding HasData,Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                        <TextBlock Name="txtmsg" FontSize="20" Opacity="0.5" Margin="5,5,5,5" >No Record Exist</TextBlock>
+                    </StackPanel>
+                    <usc:PaginationElements x:Name="ucPager" Visibility="{Binding HasData,Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Go To Settings (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="btnBack" Grid.Row="0" Grid.Column="0" Height="30" Margin="45,30,10,50" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Command="{Binding BackToSetting}"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

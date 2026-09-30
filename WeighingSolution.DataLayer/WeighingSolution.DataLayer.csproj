@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeighingSolution.DataLayer</RootNamespace>
+    <AssemblyName>WeighingSolution.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=3.0.4.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.3.0.4\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.SimpleChildWindow, Version=1.5.0.16, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.SimpleChildWindow.1.5.0\lib\net45\MahApps.Metro.SimpleChildWindow.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlConnector">
+      <HintPath>..\WeighingSolution\bin\Release\MySqlConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiAuthField.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiAuthFieldMetadata.cs" />
+    <Compile Include="ApiBodyFieldRow.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiBodyFieldRowMetadata.cs" />
+    <Compile Include="ApiHeaderRow.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiHeaderRowMetadata.cs" />
+    <Compile Include="ApiIntegrationLog.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiIntegrationLogMetadata.cs" />
+    <Compile Include="ApiIntegrationMaster.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiIntegrationMasterMetadata.cs" />
+    <Compile Include="ApiIntegrationRetryQueue.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiIntegrationRetryQueueMetadata.cs" />
+    <Compile Include="APILog.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApiParamRow.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APILogMetadata.cs" />
+    <Compile Include="ApiParamRowMetadata.cs" />
+    <Compile Include="ApplicationSetting.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeImage.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeSetting.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Camera.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CameraConstant.cs" />
+    <Compile Include="CameraImage.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelExtender\UhfMaster.cs" />
+    <Compile Include="ModelMetadata\CameraImageMetadata.cs" />
+    <Compile Include="ModelMetadata\CameraMetadata.cs" />
+    <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="Constant.cs" />
+    <Compile Include="CustomClass.cs" />
+    <Compile Include="CustomField.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseFunctions.cs" />
+    <Compile Include="DataRepository.cs" />
+    <Compile Include="Driver.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailSetup.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Feature.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gate.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\DataReader.cs" />
+    <Compile Include="Hardware\Enumerations.cs" />
+    <Compile Include="Log.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterField.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelExtender\Account.cs" />
+    <Compile Include="ModelExtender\Camera.cs" />
+    <Compile Include="ModelExtender\CameraImage.cs" />
+    <Compile Include="ModelExtender\CustomField.cs" />
+    <Compile Include="ModelExtender\Driver.cs" />
+    <Compile Include="ModelExtender\Extensions.cs" />
+    <Compile Include="ModelExtender\Feature.cs" />
+    <Compile Include="ModelExtender\CustomValue.cs" />
+    <Compile Include="ModelExtender\Gate.cs" />
+    <Compile Include="ModelExtender\Template.cs" />
+    <Compile Include="ModelExtender\TransactionDetail.cs" />
+    <Compile Include="ModelExtender\UserMaster.cs" />
+    <Compile Include="ModelExtender\Product.cs" />
+    <Compile Include="ModelExtender\TemplatePermission.cs" />
+    <Compile Include="ModelExtender\TransactionData.cs" />
+    <Compile Include="ModelExtender\WeightBridge.cs" />
+    <Compile Include="ModelExtender\Vehicle.cs" />
+    <Compile Include="ModelMetadata\AccountMetadata.cs" />
+    <Compile Include="ModelMetadata\ApplicationSettingMetadata.cs" />
+    <Compile Include="ModelMetadata\BarcodeImageMetadata.cs" />
+    <Compile Include="ModelMetadata\BarcodeSettingMetadata.cs" />
+    <Compile Include="ModelMetadata\CustomFieldMetadata.cs" />
+    <Compile Include="ModelMetadata\CustomValueMetadata.cs" />
+    <Compile Include="ModelMetadata\DriverMetadata.cs" />
+    <Compile Include="ModelMetadata\EmailSetupMetadata.cs" />
+    <Compile Include="ModelMetadata\FeatureMetadata.cs" />
+    <Compile Include="ModelMetadata\GateMetadata.cs" />
+    <Compile Include="ModelMetadata\LogMetadata.cs" />
+    <Compile Include="ModelMetadata\MasterFieldMetadata.cs" />
+    <Compile Include="ModelMetadata\PluginManagementMetadata.cs" />
+    <Compile Include="ModelMetadata\ProductMetadata.cs" />
+    <Compile Include="ModelMetadata\SMSFieldSettingMetadata.cs" />
+    <Compile Include="ModelMetadata\SMSSetupMetadata.cs" />
+    <Compile Include="ModelMetadata\StampCertificateMetadata.cs" />
+    <Compile Include="ModelMetadata\TemplateMetadata.cs" />
+    <Compile Include="ModelMetadata\TemplatePermissionMetadata.cs" />
+    <Compile Include="ModelMetadata\TransactionDataMetadata.cs" />
+    <Compile Include="ModelMetadata\TransactionDetailMetadata.cs" />
+    <Compile Include="ModelMetadata\UnitMetadata.cs" />
+    <Compile Include="ModelMetadata\UserMasterMetadata.cs" />
+    <Compile Include="ModelMetadata\VehicleMetadata.cs" />
+    <Compile Include="ModelMetadata\WeightBridgeMetadata.cs" />
+    <Compile Include="NotifyDataErrorInfoBase.cs" />
+    <Compile Include="PLCConfiguration.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMetadata\PLCConfigurationMetadata.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SMSFieldSetting.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SMSSetup.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StampCertificate.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCPLog.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMetadata\TCPLogMetadata.cs" />
+    <Compile Include="Template.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TemplatePermission.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Token.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMetadata\TokenMetadata.cs" />
+    <Compile Include="TransactionData.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionDetail.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionTokenLog.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMetadata\TransactionTokenLogMetadata.cs" />
+    <Compile Include="UhfMaster.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMetadata\UhfMasterMetadata.cs" />
+    <Compile Include="Unit.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMaster.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicle.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeighBridgeModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeighBridgeModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeighBridgeModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeighBridgeModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeighBridgeModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="WeighBridgeModelEx.cs" />
+    <Compile Include="WeightBridge.cs">
+      <DependentUpon>WeighBridgeModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="WeighBridgeModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WeighBridgeModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="WeighBridgeModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeighBridgeModel.edmx</DependentUpon>
+      <LastGenOutput>WeighBridgeModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="WeighBridgeModel.edmx.diagram">
+      <DependentUpon>WeighBridgeModel.edmx</DependentUpon>
+    </None>
+    <None Include="WeighBridgeModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeighBridgeModel.edmx</DependentUpon>
+      <LastGenOutput>WeighBridgeModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Schema.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Add_salt.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\ApplicationSettingData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\BarcodeImage.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\SMSSetup.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\EmailSetup.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\InstallSync.sql" />
+    <Content Include="Scripts\SMSFieldSetting.sql" />
+    <None Include="Scripts\CameraSetup.sql" />
+    <Content Include="Scripts\Unmanned.sql" />
+    <Content Include="Scripts\Update_Data.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

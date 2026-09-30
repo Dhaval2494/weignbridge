@@ -1,0 +1,298 @@
+﻿<Page x:Class="WeighingSolution.View.TokenManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      xmlns:shared="clr-namespace:WeighingSolution.SharedComponents;assembly=WeighingSolution.SharedComponents"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:mAppsControls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:xCeedDD="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" xmlns:xCeedDD1="clr-namespace:WeighingSolution.UserControls" Style="{DynamicResource MetroPage}"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+	Title="TokenManagementPage"   FocusManager.FocusedElement="{Binding ElementName=txtTokenName}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="Dictionary1.xaml"/>-->
+                <shared:DesignTimeResourceDictionary DesignTimeSource="pack://application:,,,/WeighingSolution.SharedComponents;component/Styles/MetroStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converter:NullReplaceConverter x:Key="NullReplaceConverter" />
+            <converter:EqualityVisibilityConverter x:Key="EqualityVisibilityConverter" />
+            <converter:EqualityConverter x:Key="EqualityConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">                    
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold" FontSize="25" Text="Token" />
+                         Management</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}" />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,5,0,20" Orientation="Horizontal">
+                            <Label>Token Name</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtTokenName" Grid.Row="0" Grid.Column="1" Margin="0,5,10,20" Padding="5,5,5,5" Text="{Binding Model.TokenName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        <StackPanel Grid.Row="0" Grid.Column="2" Margin="10,5,0,20" Orientation="Horizontal">
+                            <Label>Token Value</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtTokenValue" Grid.Row="0" Grid.Column="3" Margin="0,5,10,20" Padding="5,5,5,5" Text="{Binding Model.TokenValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        <StackPanel Grid.Row="0" Grid.Column="4" Margin="10,5,0,20" Orientation="Horizontal">
+                            <Label>Weighment Type</Label>
+                        </StackPanel>
+                        <ComboBox Name="cmbWeighmentType" Grid.Row="0" Grid.Column="5" Margin="0,5,10,20" Padding="5,5,5,5" ItemsSource="{Binding lstWeighmentType}" SelectedValue="{Binding Model.PreferredWeighmentType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" SelectedValuePath="Tag">
+                            <ComboBoxItem Content="--Select WeighmentType--" Tag=""></ComboBoxItem>
+                            <ComboBoxItem Content="Gross" Tag="Gross"></ComboBoxItem>
+                            <ComboBoxItem Content="Tare" Tag="Tare"></ComboBoxItem>
+                        </ComboBox>
+                        <StackPanel Grid.Row="0" Grid.Column="6" Margin="10,5,0,20" Orientation="Horizontal">
+                            <Label>Token Type</Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <ComboBox Name="cmbTokenType" Grid.Row="0" Grid.Column="7" Margin="0,5,10,20" Padding="5,5,5,5" SelectedValue="{Binding Model.TokenType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" SelectedValuePath="Tag">
+                            <ComboBoxItem Content="-- Select TokenType --" Tag=""></ComboBoxItem>
+                            <ComboBoxItem Content="Permanent" Tag="Permanent"></ComboBoxItem>
+                            <ComboBoxItem Content="Temporary" Tag="Temporary"></ComboBoxItem>
+                        </ComboBox>
+
+                        <Label x:Name="LBLUHFDATA" Visibility="Visible" Grid.Row="1" Grid.Column="0" Content="UHF Data" Margin="0,15,0,10" />
+                        <TextBox x:Name="UhfData" Visibility="Visible" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,15,0,10" />
+                        <Label x:Name="Empty_RFID_Tag" Visibility="Collapsed" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,15,0,10" />
+
+                        <Button Content="Copy" Controls:ButtonHelper.PreserveTextCase="True" Name="BTNCopy" Grid.Column="4" Grid.Row="1" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="5,15,5,10" Click="BTNCopy_Click"></Button>
+                    </Grid>
+                    <GroupBox Name="gbPrefferedDetail" Header="Preferred Detail" Visibility="{Binding Model.TokenType, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Permanent'}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal">
+                                <Label>Token Expire Date</Label>
+                                <Label Foreground="Red">*</Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                                <RadioButton Name="rbDaily" GroupName="rbexpireStatus" IsChecked="{Binding Model.TokenInterval, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Daily'}">Daily</RadioButton>
+                                <RadioButton Name="rbWeekly" GroupName="rbexpireStatus" Margin="15,0,0,0" IsChecked="{Binding Model.TokenInterval, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Weekly'}">Weekly</RadioButton>
+                                <RadioButton Name="rbMonthly" GroupName="rbexpireStatus" Margin="15,0,0,0" IsChecked="{Binding Model.TokenInterval, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Monthly'}">Monthly</RadioButton>
+                                <RadioButton Name="rbCustom" GroupName="rbexpireStatus" Margin="15,0,0,0" IsChecked="{Binding Model.TokenInterval, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Custom'}">Custom</RadioButton>
+                            </StackPanel>
+                            <mAppsControls:DateTimePicker Name="txtTokenExpireDate" Grid.Row="0" Grid.Column="3" SelectedDate="{Binding Model.TokenExpireDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="0,15,10,10" Padding="5,5,5,5" Background="{DynamicResource WhiteBrush}" Foreground="{DynamicResource BlackBrush}" IsEnabled="{Binding Model.TokenInterval, Converter={StaticResource EqualityConverter}, ConverterParameter='Custom'}"></mAppsControls:DateTimePicker>
+
+                            <Label Grid.Row="0" Grid.Column="4" Margin="0,15,0,10">Transaction Mode</Label>
+                            <ComboBox Name="cmbTranMode" Grid.Row="0" Grid.Column="5" Margin="0,15,10,10" Padding="5,5,5,5" ItemsSource="{Binding lstTransactionMode}" SelectedValue="{Binding Model.PreferredTransactionMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" SelectedValuePath="Tag">
+                                <ComboBoxItem Content="--Select Transaction Mode--" Tag=""></ComboBoxItem>
+                                <ComboBoxItem Content="Single" Tag="Single"></ComboBoxItem>
+                                <ComboBoxItem Content="Double" Tag="Double"></ComboBoxItem>
+                                <ComboBoxItem Content="Multi" Tag="Multi"></ComboBoxItem>
+                            </ComboBox>
+                            <Label Grid.Row="0" Grid.Column="6" Margin="5,15,0,15">Transaction Type</Label>
+                            <ComboBox Name="cmbTranType" Grid.Row="0" Grid.Column="7" Margin="0,15,10,15" Padding="5,5,5,5" ItemsSource="{Binding lstTransactionType}" SelectedValue="{Binding Model.PreferredTransactionType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" SelectedValuePath="Tag">
+                                <ComboBoxItem Content="--Select TransactionType--" Tag=""></ComboBoxItem>
+                                <ComboBoxItem Content="Incoming" Tag="Incoming"></ComboBoxItem>
+                                <ComboBoxItem Content="Outgoing" Tag="Outgoing"></ComboBoxItem>
+                                <ComboBoxItem Content="Both" Tag="Both"></ComboBoxItem>
+                            </ComboBox>
+
+                            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,10" Orientation="Horizontal">
+                                <Label>Vehicle</Label>
+                                <Label Foreground="Red">*</Label>
+                            </StackPanel>
+
+                            <xCeedDD1:AutoCompleteBoxEx x:Name="cmbVehicalNo" Grid.Row="1" Grid.Column="1" Margin="0,15,10,10" Padding="10" VerticalAlignment="Bottom" TabIndex="2" MinimumPrefixLength="1" FilterMode="ContainsOrdinal" ItemsSource="{Binding Autofillvehicles}" Text="{Binding VehicleNumberText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Focusable="True" SelectionChanged="cmbVehicalNo_SelectionChanged" TextChanged="cmbVehicalNo_TextChanged" LostFocus="cmbVehicalNo_LostFocus" KeyDown="cmbVehicalNo_KeyDown" />
+
+                            <StackPanel Grid.Row="1" Grid.Column="2" Margin="0,15,0,10" Orientation="Horizontal">
+                                <Label>Account</Label>
+                            </StackPanel>
+                            <xCeedDD1:AutoCompleteBoxEx x:Name="cmbAccount" Grid.Row="1" Grid.Column="3" Margin="0,15,10,10" Padding="10"  VerticalAlignment="Center" TabIndex="4" IsEnabled="{Binding ControlsEnabled}" Text="{Binding AccountNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding AutofillAccounts}" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" MinimumPrefixLength="1" SelectionChanged="cmbAccount_SelectionChanged" TextChanged="cmbAccount_TextChanged" LostFocus="cmbAccount_LostFocus" />
+
+
+                            <Label Grid.Row="1" Grid.Column="4" Margin="0,15,0,10">Transporter</Label>
+                            <xCeedDD1:AutoCompleteBoxEx x:Name="cmbTransaporter" Grid.Row="1" Grid.Column="5" Margin="0,15,10,10" Padding="10" VerticalAlignment="Center" TabIndex="3" IsEnabled="{Binding ControlsEnabled}" Text="{Binding TransaporterNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding AutofillTransporters}" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" MinimumPrefixLength="1"  SelectionChanged="cmbTransaporter_SelectionChanged" TextChanged="cmbTransaporter_TextChanged" LostFocus="cmbTransaporter_LostFocus" />
+
+                            <Label Grid.Row="1" Grid.Column="6" Margin="0,15,0,10">Gate</Label>
+                            <xCeedDD1:AutoCompleteBoxEx x:Name="cmbGate" Grid.Row="1" Grid.Column="7" Margin="0,15,10,10" Padding="10"  VerticalAlignment="Center" TabIndex="7" MinimumPrefixLength="1" Text="{Binding GateNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding AutofillGates}" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}"  SelectionChanged="cmbGate_SelectionChanged" TextChanged="cmbGate_TextChanged" LostFocus="cmbGate_LostFocus" />
+
+
+                            <Label Grid.Row="2" Grid.Column="0" Margin="0,15,0,10">Product</Label>
+
+                            <xCeedDD1:AutoCompleteBoxEx x:Name="cmbProduct" Grid.Row="2" Grid.Column="1" Margin="0,15,10,10" Padding="10" VerticalAlignment="Center" TabIndex="6" Text="{Binding ProductNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding AutofillProducts}" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" MinimumPrefixLength="1" SelectionChanged="cmbProduct_SelectionChanged" TextChanged="cmbProduct_TextChanged" LostFocus="cmbProduct_LostFocus" />
+
+                            <Label Grid.Row="2" Grid.Column="2" Margin="5,15,0,10">Driver</Label>
+                            <xCeedDD1:AutoCompleteBoxEx x:Name="cmbDriver" Grid.Row="2" Grid.Column="3" Margin="0,15,10,10" Padding="10" VerticalAlignment="Center" TabIndex="5" IsEnabled="{Binding ControlsEnabled}" Text="{Binding DriverNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding AutofillDrivers}" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" MinimumPrefixLength="1" SelectionChanged="cmbDriver_SelectionChanged" TextChanged="cmbDriver_TextChanged" LostFocus="cmbDriver_LostFocus" />
+
+
+                            <Label Grid.Row="2" Grid.Column="4" Margin="0,15,0,15">Charges</Label>
+                            <csc:FilteredTextbox Name="txtcharges" Grid.Row="2" Grid.Column="5" Margin="0,10,10,15" Padding="5,5,5,5" FilterRegex="^[0-9]+$|^[0-9]*[.]{0,1}[0-9]*$" Text="{Binding Model.Charges,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue=''}" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Name="gbPrefferedDetail1" Header="Preferred Custome Field Detail" Visibility="{Binding Model.TokenType, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Permanent'}">
+                        <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                            <StackPanel Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label Name="lblField1" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" Margin="5,5,0,5"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField1" Visibility="Collapsed" Grid.Row="0" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields1}" />
+
+                                    <Label Name="lblField2" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="0" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField2" Visibility="Collapsed" Grid.Row="0" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields2}" />
+
+                                    <Label Name="lblField3" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="0" Grid.Column="4"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField3" Visibility="Collapsed" Grid.Row="0" Grid.Column="5" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields3}" />
+
+                                    <Label Name="lblField4" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="1" Grid.Column="0"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField4" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields4}" />
+
+                                    <Label Name="lblField5" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="1" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField5" Visibility="Collapsed" Grid.Row="1" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields5}" />
+
+                                    <Label Name="lblField6" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="1" Grid.Column="4"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField6" Visibility="Collapsed" Grid.Row="1" Grid.Column="5" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue6, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields6}" />
+
+                                    <Label Name="lblField7" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="2" Grid.Column="0"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField7" Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue7, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields7}" />
+
+                                    <Label Name="lblField8" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="2" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField8" Visibility="Collapsed" Grid.Row="2" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue8, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields8}" />
+
+                                    <Label Name="lblField9" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="2" Grid.Column="4"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField9" Visibility="Collapsed" Grid.Row="2" Grid.Column="5" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue9, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields9}" />
+
+                                    <Label Name="lblField10" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="3" Grid.Column="0"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField10" Visibility="Collapsed" Grid.Row="3" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue10, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields10}" />
+
+                                    <Label Name="lblField11" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="3" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField11" Visibility="Collapsed" Grid.Row="3" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue11, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields11}" />
+
+                                    <Label Name="lblField12" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="3" Grid.Column="4"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField12" Visibility="Collapsed" Grid.Row="3" Grid.Column="5" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue12, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields12}" />
+
+                                    <Label Name="lblField13" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="4" Grid.Column="0"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField13" Visibility="Collapsed" Grid.Row="4" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue13, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields13}" />
+
+                                    <Label Name="lblField14" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="4" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField14" Visibility="Collapsed" Grid.Row="4" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue14, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields14}" />
+
+                                    <Label Name="lblField15" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="4" Grid.Column="4"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField15" Visibility="Collapsed" Grid.Row="4" Grid.Column="5" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields15}" />
+
+                                    <Label Name="lblField16" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="5" Grid.Column="0"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField16" Visibility="Collapsed" Grid.Row="5" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue16, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields16}" />
+
+                                    <Label Name="lblField17" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="5" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField17" Visibility="Collapsed" Grid.Row="5" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue17, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields17}" />
+
+                                    <Label Name="lblField18" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="5" Grid.Column="4"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField18" Visibility="Collapsed" Grid.Row="5" Grid.Column="5" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue18, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields18}" />
+
+                                    <Label Name="lblField19" Visibility="Collapsed" Margin="5,5,0,5" Grid.Row="6" Grid.Column="0"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField19" Visibility="Collapsed" Grid.Row="6" Grid.Column="1" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue19, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields19}" />
+
+                                    <Label Name="lblField20" Visibility="Collapsed" Margin="5,5,0,15" Grid.Row="6" Grid.Column="2"></Label>
+                                    <xCeedDD:AutoCompleteBox Name="txtField20" Visibility="Collapsed" Grid.Row="6" Grid.Column="3" Padding="4" Margin="0,5,5,5" VerticalAlignment="Center" MinimumPrefixLength="2" Foreground="{DynamicResource BlackBrush}" Background="{DynamicResource WhiteBrush}" Text="{Binding Model.CustomValue20, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" ItemsSource="{Binding CustomFields20}" />
+
+                                </Grid>
+
+                            </StackPanel>
+                        </csc:ScrollViewerEx>
+
+                    </GroupBox>
+
+
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save and Allocate" Controls:ButtonHelper.PreserveTextCase="True" Name="TokenManagementallocateSave" MinWidth="150" Grid.Column="0" BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="25,30,0,50" Command="{Binding AllocateSaveCommand}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource  mouseoverstyle}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Model.TokenType}" Value="Permanent" />
+                                        <Condition Binding="{Binding Model.TokenStatus}" Value="Free" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Save (Enter)" Controls:ButtonHelper.PreserveTextCase="True" IsDefault="True" Name="TokenManagementSave" Grid.Column="1" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="25,30,0,50" Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="TokenManagementCancel" Grid.Column="2" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50" Command="{Binding CloseDetailViewCommand}"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

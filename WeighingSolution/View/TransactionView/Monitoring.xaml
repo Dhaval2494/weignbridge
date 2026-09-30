@@ -1,0 +1,79 @@
+﻿<Page x:Class="WeighingSolution.View.Monitoring"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="ProductManagement_Pagexaml"
+       FocusManager.FocusedElement="{Binding ElementName=txtProductName}">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel>
+
+            <!-- Top Panel with Controls -->
+            <Border DockPanel.Dock="Top" Padding="20" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Left Side Controls -->
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <Button Content="Left Light Green" Name="lefgreen" Background="Green" Foreground="White" Margin="5" Width="150" Height="35" Click="lefgreen_Click"/>
+                        <Button Content="Left Light Red" Name="leftred" Margin="5" Background="red" Foreground="White" Width="150" Height="35" Click="leftred_Click"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                        <Button Content="Right Light Green" Name="rightgreen" Background="Green" Foreground="White" Margin="5" Width="150" Height="35" Click="rightgreen_Click"/>
+                        <Button Content="Right Light Red" Name="rightred" Background="red" Foreground="White" Margin="5" Width="150" Height="35" Click="rightred_Click"/>
+                    </StackPanel>
+
+
+                    <!-- Right Side Controls -->
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                        <Button Content="Left Boom Open" Name="Leftboomopen" Background="Green" Foreground="White" Margin="5" Width="150" Height="35" Click="Leftboomopen_Click" />
+                        <Button Content="Left Boom Close" Name="lefttboomclose" Background="red" Foreground="White" Margin="5" Width="150" Height="35" Click="lefttboomclose_Click"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                        <Button Content="Right Boom Open" Name="rightboomopen" Background="Green" Foreground="White" Margin="5" Width="150" Height="35" Click="rightboomopen_Click"/>
+                        <Button Content="Right Boom Close" Name="rightboomclose" Background="red" Foreground="White" Margin="5" Width="150" Height="35" Click="rightboomclose_Click"/>
+                       
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Add your main content below here -->
+            <Grid Background="White">
+                <!-- Your main application content can go here -->
+            </Grid>
+
+        </DockPanel>
+
+
+
+
+
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="ProductManagementCancel" Grid.Row="0" Grid.Column="0" Height="30"     Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50"  Click="PmonitorCancel_Click"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

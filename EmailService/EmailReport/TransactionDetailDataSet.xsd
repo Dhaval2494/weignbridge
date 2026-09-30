@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TransactionDetailDataSet" targetNamespace="http://tempuri.org/TransactionDetailDataSet.xsd" xmlns:mstns="http://tempuri.org/TransactionDetailDataSet.xsd" xmlns="http://tempuri.org/TransactionDetailDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Endel_weighbridgeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Endel_weighbridgeConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.EmailService.Properties.Settings.GlobalReference.Default.Endel_weighbridgeConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Endel_weighbridgeConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+                      SELECT        TD.ReceiptTicketID, TD.TicketID, A.CompanyName AS AccountName, TR.CompanyName AS TransaporterName, TD.TransactionMode, TD.Status AS TransactionStatus,
+                      TD.Charges, TD.TransactionType, D.FirstName + ' ' + D.LastName AS DriverName, V.VehicleNumber,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field1'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field1Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_7
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_7
+                      WHERE        (FieldName = 'field2'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field2Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_6
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_6
+                      WHERE        (FieldName = 'field3'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field3Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_5
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_5
+                      WHERE        (FieldName = 'field4'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field4Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_4
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_4
+                      WHERE        (FieldName = 'field5'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field5Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_3
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_3
+                      WHERE        (FieldName = 'field6'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field6Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_2
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_2
+                      WHERE        (FieldName = 'field7'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field7Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue AS CustomValue_1
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField AS CustomField_1
+                      WHERE        (FieldName = 'field8'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field8Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field9'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field9Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field10'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field10Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field11'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field11Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field12'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field12Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field13'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field13Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field14'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field14Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field15'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field15Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field16'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field16Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field17'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field17Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field18'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field18Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field19'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field19Value,
+                      (SELECT        CustomValue
+                      FROM            CustomValue
+                      WHERE        (CustomFieldID IN
+                      (SELECT        CustomFieldID
+                      FROM            CustomField
+                      WHERE        (FieldName = 'field20'))) AND (ReceiptTicketID = TD.ReceiptTicketID)) AS Field20Value,
+
+                      TXD.SequenceNo, ISNULL(TXD.TareWeight, 0)
+                      AS TareWeight, TXD.TareTime, TXD.IsTareManual, ISNULL(TXD.GrossWeight, 0) AS GrossWeight, TXD.GrossTime, TXD.IsGrossManual, TXD.NetWeight,
+                      TXD.WeighmentType, TXD.WeightUnit, P.ProductName, G.GateName, UM.UserName, WB.ScaleName
+                      FROM            TransactionData AS TD LEFT OUTER JOIN
+                      Account AS A ON A.AccountID = TD.AccountID LEFT OUTER JOIN
+                      Account AS TR ON TR.AccountID = TD.TransporterID LEFT OUTER JOIN
+                      Vehicle AS V ON V.VehicleID = TD.VehicleID LEFT OUTER JOIN
+                      Driver AS D ON D.DriverID = TD.DriverID INNER JOIN
+                      TransactionDetail AS TXD ON TXD.ReceiptTicketID = TD.ReceiptTicketID INNER JOIN
+                      WeightBridge AS WB ON WB.WeightBridgeID = TXD.WeightBridgeID LEFT OUTER JOIN
+                      UserMaster AS UM ON UM.UserID = TXD.UserID LEFT OUTER JOIN
+                      Product AS P ON P.ProductID = TXD.ProductID LEFT OUTER JOIN
+                      Gate AS G ON G.GateID = TXD.GateID
+                      WHERE        (TXD.GrossWeight IS NOT NULL AND TXD.GrossWeight &lt;&gt; 0 AND TXD.TareWeight IS NOT NULL AND TXD.TareWeight &lt;&gt; 0 OR
+                         TD.Status = 'Active' AND (TD.TransactionMode = 'Double' OR
+                         TD.TransactionMode = 'Multi' AND
+                             (SELECT        SUM(SequenceNo) AS Expr1
+                               FROM            TransactionDetail AS TXD1
+                               WHERE        (ReceiptTicketID = TD.ReceiptTicketID)) = 0)) AND (TXD.CaptureTime BETWEEN @Sdate AND @Edate) AND (@TranMode = N'' OR
+                         TD.TransactionMode = @TranMode) AND (@TranStatus = N'' OR
+                         TD.Status = @TranStatus) AND (@StartTicket = N'' OR
+                         TD.TicketID &gt;= @StartTicket) AND (@EndTicket = N'' OR
+                         TD.TicketID &lt;= @EndTicket) AND (@Acnt = 0 OR
+                         TD.AccountID = @Acnt) AND (@Product = 0 OR
+                         TXD.ProductID = @Product) AND (@Vehicle = 0 OR
+                         TD.VehicleID = @Vehicle) AND (@field1 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field1 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field2 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field2 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field3 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field3 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field4 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field4 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field5 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field5 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field6 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field6 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field7 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field7 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID))) AND (@field8 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field8 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field9= N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field9 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field10 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field10 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field11 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field11 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field12 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field12 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field13 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field13 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field14 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field14 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field15 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field15 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field16 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field16 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field17 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field17 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field18 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field18 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field19 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field19 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))AND (@field20 = N'' OR
+                         TD.ReceiptTicketID =
+                             (SELECT        ReceiptTicketID
+                               FROM            CustomValue AS CV
+                               WHERE        (CustomValue LIKE '%' + @field20 + '%') AND (ReceiptTicketID = TD.ReceiptTicketID)))
+ORDER BY TD.TicketID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Sdate" ColumnName="CaptureTime" DataSourceName="Endel_weighbridge.dbo.TransactionDetail" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Sdate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="CaptureTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Edate" ColumnName="CaptureTime" DataSourceName="Endel_weighbridge.dbo.TransactionDetail" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Edate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="CaptureTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="TranMode" ColumnName="TransactionMode" DataSourceName="Endel_weighbridge.dbo.TransactionData" DataTypeServer="nvarchar(10)" DbType="String" Direction="Input" ParameterName="@TranMode" Precision="0" ProviderType="NVarChar" Scale="0" Size="10" SourceColumn="TransactionMode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="TranStatus" ColumnName="Status" DataSourceName="Endel_weighbridge.dbo.TransactionData" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@TranStatus" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="TransactionStatus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="StartTicket" ColumnName="TicketID" DataSourceName="Endel_weighbridge.dbo.TransactionData" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@StartTicket" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TicketID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="EndTicket" ColumnName="TicketID" DataSourceName="Endel_weighbridge.dbo.TransactionData" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@EndTicket" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TicketID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Acnt" ColumnName="AccountID" DataSourceName="Endel_weighbridge.dbo.TransactionData" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Acnt" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="AccountID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Product" ColumnName="ProductID" DataSourceName="Endel_weighbridge.dbo.TransactionDetail" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Product" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ProductID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Vehicle" ColumnName="VehicleID" DataSourceName="Endel_weighbridge.dbo.TransactionData" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Vehicle" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="VehicleID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field1" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field1" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field2" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field2" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field3" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field3" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field4" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field4" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field5" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field5" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field6" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field6" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field7" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field7" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field8" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field8" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field9" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field9" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field10" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field10" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field11" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field11" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field12" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field12" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field13" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field13" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field14" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field14" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field15" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field15" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field16" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field16" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field17" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field17" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field18" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field18" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field19" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field19" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="field20" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@field20" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ReceiptTicketID" DataSetColumn="ReceiptTicketID" />
+              <Mapping SourceColumn="TicketID" DataSetColumn="TicketID" />
+              <Mapping SourceColumn="AccountName" DataSetColumn="AccountName" />
+              <Mapping SourceColumn="TransaporterName" DataSetColumn="TransaporterName" />
+              <Mapping SourceColumn="TransactionMode" DataSetColumn="TransactionMode" />
+              <Mapping SourceColumn="TransactionStatus" DataSetColumn="TransactionStatus" />
+              <Mapping SourceColumn="Charges" DataSetColumn="Charges" />
+              <Mapping SourceColumn="DriverName" DataSetColumn="DriverName" />
+              <Mapping SourceColumn="VehicleNumber" DataSetColumn="VehicleNumber" />
+              <Mapping SourceColumn="Field1Value" DataSetColumn="Field1Value" />
+              <Mapping SourceColumn="Field2Value" DataSetColumn="Field2Value" />
+              <Mapping SourceColumn="Field3Value" DataSetColumn="Field3Value" />
+              <Mapping SourceColumn="Field4Value" DataSetColumn="Field4Value" />
+              <Mapping SourceColumn="Field5Value" DataSetColumn="Field5Value" />
+              <Mapping SourceColumn="Field6Value" DataSetColumn="Field6Value" />
+              <Mapping SourceColumn="Field7Value" DataSetColumn="Field7Value" />
+              <Mapping SourceColumn="Field8Value" DataSetColumn="Field8Value" />
+              <Mapping SourceColumn="SequenceNo" DataSetColumn="SequenceNo" />
+              <Mapping SourceColumn="TareWeight" DataSetColumn="TareWeight" />
+              <Mapping SourceColumn="TareTime" DataSetColumn="TareTime" />
+              <Mapping SourceColumn="IsTareManual" DataSetColumn="IsTareManual" />
+              <Mapping SourceColumn="GrossWeight" DataSetColumn="GrossWeight" />
+              <Mapping SourceColumn="GrossTime" DataSetColumn="GrossTime" />
+              <Mapping SourceColumn="IsGrossManual" DataSetColumn="IsGrossManual" />
+              <Mapping SourceColumn="NetWeight" DataSetColumn="NetWeight" />
+              <Mapping SourceColumn="TransactionType" DataSetColumn="TransactionType" />
+              <Mapping SourceColumn="WeightUnit" DataSetColumn="WeightUnit" />
+              <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
+              <Mapping SourceColumn="GateName" DataSetColumn="GateName" />
+              <Mapping SourceColumn="UserName" DataSetColumn="UserName" />
+              <Mapping SourceColumn="ScaleName" DataSetColumn="ScaleName" />
+              <Mapping SourceColumn="Field9Value" DataSetColumn="Field9Value" />
+              <Mapping SourceColumn="Field10Value" DataSetColumn="Field10Value" />
+              <Mapping SourceColumn="Field11Value" DataSetColumn="Field11Value" />
+              <Mapping SourceColumn="Field12Value" DataSetColumn="Field12Value" />
+              <Mapping SourceColumn="Field13Value" DataSetColumn="Field13Value" />
+              <Mapping SourceColumn="Field14Value" DataSetColumn="Field14Value" />
+              <Mapping SourceColumn="Field15Value" DataSetColumn="Field15Value" />
+              <Mapping SourceColumn="Field16Value" DataSetColumn="Field16Value" />
+              <Mapping SourceColumn="Field17Value" DataSetColumn="Field17Value" />
+              <Mapping SourceColumn="Field18Value" DataSetColumn="Field18Value" />
+              <Mapping SourceColumn="Field19Value" DataSetColumn="Field19Value" />
+              <Mapping SourceColumn="Field20Value" DataSetColumn="Field20Value" />
+              <Mapping SourceColumn="WeighmentType" DataSetColumn="WeighmentType" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TransactionDetailDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TransactionDetailDataSet" msprop:Generator_UserDSName="TransactionDetailDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReceiptTicketID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnReceiptTicketID" msprop:Generator_ColumnPropNameInRow="ReceiptTicketID" msprop:Generator_ColumnPropNameInTable="ReceiptTicketIDColumn" msprop:Generator_UserColumnName="ReceiptTicketID" type="xs:string" />
+              <xs:element name="TicketID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTicketID" msprop:Generator_ColumnPropNameInRow="TicketID" msprop:Generator_ColumnPropNameInTable="TicketIDColumn" msprop:Generator_UserColumnName="TicketID" type="xs:int" />
+              <xs:element name="AccountName" msprop:Generator_ColumnVarNameInTable="columnAccountName" msprop:Generator_ColumnPropNameInRow="AccountName" msprop:Generator_ColumnPropNameInTable="AccountNameColumn" msprop:Generator_UserColumnName="AccountName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TransaporterName" msprop:Generator_ColumnVarNameInTable="columnTransaporterName" msprop:Generator_ColumnPropNameInRow="TransaporterName" msprop:Generator_ColumnPropNameInTable="TransaporterNameColumn" msprop:Generator_UserColumnName="TransaporterName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TransactionMode" msprop:Generator_ColumnVarNameInTable="columnTransactionMode" msprop:Generator_ColumnPropNameInRow="TransactionMode" msprop:Generator_ColumnPropNameInTable="TransactionModeColumn" msprop:Generator_UserColumnName="TransactionMode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TransactionStatus" msprop:Generator_ColumnVarNameInTable="columnTransactionStatus" msprop:Generator_ColumnPropNameInRow="TransactionStatus" msprop:Generator_ColumnPropNameInTable="TransactionStatusColumn" msprop:Generator_UserColumnName="TransactionStatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Charges" msprop:Generator_ColumnVarNameInTable="columnCharges" msprop:Generator_ColumnPropNameInRow="Charges" msprop:Generator_ColumnPropNameInTable="ChargesColumn" msprop:Generator_UserColumnName="Charges" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DriverName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDriverName" msprop:Generator_ColumnPropNameInRow="DriverName" msprop:Generator_ColumnPropNameInTable="DriverNameColumn" msprop:Generator_UserColumnName="DriverName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="501" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VehicleNumber" msprop:Generator_ColumnVarNameInTable="columnVehicleNumber" msprop:Generator_ColumnPropNameInRow="VehicleNumber" msprop:Generator_ColumnPropNameInTable="VehicleNumberColumn" msprop:Generator_UserColumnName="VehicleNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field1Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField1Value" msprop:Generator_ColumnPropNameInRow="Field1Value" msprop:Generator_ColumnPropNameInTable="Field1ValueColumn" msprop:Generator_UserColumnName="Field1Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field2Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField2Value" msprop:Generator_ColumnPropNameInRow="Field2Value" msprop:Generator_ColumnPropNameInTable="Field2ValueColumn" msprop:Generator_UserColumnName="Field2Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field3Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField3Value" msprop:Generator_ColumnPropNameInRow="Field3Value" msprop:Generator_ColumnPropNameInTable="Field3ValueColumn" msprop:Generator_UserColumnName="Field3Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field4Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField4Value" msprop:Generator_ColumnPropNameInRow="Field4Value" msprop:Generator_ColumnPropNameInTable="Field4ValueColumn" msprop:Generator_UserColumnName="Field4Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field5Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField5Value" msprop:Generator_ColumnPropNameInRow="Field5Value" msprop:Generator_ColumnPropNameInTable="Field5ValueColumn" msprop:Generator_UserColumnName="Field5Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field6Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField6Value" msprop:Generator_ColumnPropNameInRow="Field6Value" msprop:Generator_ColumnPropNameInTable="Field6ValueColumn" msprop:Generator_UserColumnName="Field6Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field7Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField7Value" msprop:Generator_ColumnPropNameInRow="Field7Value" msprop:Generator_ColumnPropNameInTable="Field7ValueColumn" msprop:Generator_UserColumnName="Field7Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field8Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField8Value" msprop:Generator_ColumnPropNameInRow="Field8Value" msprop:Generator_ColumnPropNameInTable="Field8ValueColumn" msprop:Generator_UserColumnName="Field8Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SequenceNo" msprop:Generator_ColumnVarNameInTable="columnSequenceNo" msprop:Generator_ColumnPropNameInRow="SequenceNo" msprop:Generator_ColumnPropNameInTable="SequenceNoColumn" msprop:Generator_UserColumnName="SequenceNo" type="xs:unsignedByte" />
+              <xs:element name="TareWeight" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTareWeight" msprop:Generator_ColumnPropNameInRow="TareWeight" msprop:Generator_ColumnPropNameInTable="TareWeightColumn" msprop:Generator_UserColumnName="TareWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TareTime" msprop:Generator_ColumnVarNameInTable="columnTareTime" msprop:Generator_ColumnPropNameInRow="TareTime" msprop:Generator_ColumnPropNameInTable="TareTimeColumn" msprop:Generator_UserColumnName="TareTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IsTareManual" msprop:Generator_ColumnVarNameInTable="columnIsTareManual" msprop:Generator_ColumnPropNameInRow="IsTareManual" msprop:Generator_ColumnPropNameInTable="IsTareManualColumn" msprop:Generator_UserColumnName="IsTareManual" type="xs:boolean" />
+              <xs:element name="GrossWeight" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGrossWeight" msprop:Generator_ColumnPropNameInRow="GrossWeight" msprop:Generator_ColumnPropNameInTable="GrossWeightColumn" msprop:Generator_UserColumnName="GrossWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GrossTime" msprop:Generator_ColumnVarNameInTable="columnGrossTime" msprop:Generator_ColumnPropNameInRow="GrossTime" msprop:Generator_ColumnPropNameInTable="GrossTimeColumn" msprop:Generator_UserColumnName="GrossTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IsGrossManual" msprop:Generator_ColumnVarNameInTable="columnIsGrossManual" msprop:Generator_ColumnPropNameInRow="IsGrossManual" msprop:Generator_ColumnPropNameInTable="IsGrossManualColumn" msprop:Generator_UserColumnName="IsGrossManual" type="xs:boolean" />
+              <xs:element name="NetWeight" msprop:Generator_ColumnVarNameInTable="columnNetWeight" msprop:Generator_ColumnPropNameInRow="NetWeight" msprop:Generator_ColumnPropNameInTable="NetWeightColumn" msprop:Generator_UserColumnName="NetWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TransactionType" msprop:Generator_ColumnVarNameInTable="columnTransactionType" msprop:Generator_ColumnPropNameInRow="TransactionType" msprop:Generator_ColumnPropNameInTable="TransactionTypeColumn" msprop:Generator_UserColumnName="TransactionType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WeightUnit" msprop:Generator_ColumnVarNameInTable="columnWeightUnit" msprop:Generator_ColumnPropNameInRow="WeightUnit" msprop:Generator_ColumnPropNameInTable="WeightUnitColumn" msprop:Generator_UserColumnName="WeightUnit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GateName" msprop:Generator_ColumnVarNameInTable="columnGateName" msprop:Generator_ColumnPropNameInRow="GateName" msprop:Generator_ColumnPropNameInTable="GateNameColumn" msprop:Generator_UserColumnName="GateName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ScaleName" msprop:Generator_ColumnVarNameInTable="columnScaleName" msprop:Generator_ColumnPropNameInRow="ScaleName" msprop:Generator_ColumnPropNameInTable="ScaleNameColumn" msprop:Generator_UserColumnName="ScaleName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field9Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField9Value" msprop:Generator_ColumnPropNameInRow="Field9Value" msprop:Generator_ColumnPropNameInTable="Field9ValueColumn" msprop:Generator_UserColumnName="Field9Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field10Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField10Value" msprop:Generator_ColumnPropNameInRow="Field10Value" msprop:Generator_ColumnPropNameInTable="Field10ValueColumn" msprop:Generator_UserColumnName="Field10Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field11Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField11Value" msprop:Generator_ColumnPropNameInRow="Field11Value" msprop:Generator_ColumnPropNameInTable="Field11ValueColumn" msprop:Generator_UserColumnName="Field11Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field12Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField12Value" msprop:Generator_ColumnPropNameInRow="Field12Value" msprop:Generator_ColumnPropNameInTable="Field12ValueColumn" msprop:Generator_UserColumnName="Field12Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field13Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField13Value" msprop:Generator_ColumnPropNameInRow="Field13Value" msprop:Generator_ColumnPropNameInTable="Field13ValueColumn" msprop:Generator_UserColumnName="Field13Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field14Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField14Value" msprop:Generator_ColumnPropNameInRow="Field14Value" msprop:Generator_ColumnPropNameInTable="Field14ValueColumn" msprop:Generator_UserColumnName="Field14Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field15Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField15Value" msprop:Generator_ColumnPropNameInRow="Field15Value" msprop:Generator_ColumnPropNameInTable="Field15ValueColumn" msprop:Generator_UserColumnName="Field15Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field16Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField16Value" msprop:Generator_ColumnPropNameInRow="Field16Value" msprop:Generator_ColumnPropNameInTable="Field16ValueColumn" msprop:Generator_UserColumnName="Field16Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field17Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField17Value" msprop:Generator_ColumnPropNameInRow="Field17Value" msprop:Generator_ColumnPropNameInTable="Field17ValueColumn" msprop:Generator_UserColumnName="Field17Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field18Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField18Value" msprop:Generator_ColumnPropNameInRow="Field18Value" msprop:Generator_ColumnPropNameInTable="Field18ValueColumn" msprop:Generator_UserColumnName="Field18Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field19Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField19Value" msprop:Generator_ColumnPropNameInRow="Field19Value" msprop:Generator_ColumnPropNameInTable="Field19ValueColumn" msprop:Generator_UserColumnName="Field19Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Field20Value" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnField20Value" msprop:Generator_ColumnPropNameInRow="Field20Value" msprop:Generator_ColumnPropNameInTable="Field20ValueColumn" msprop:Generator_UserColumnName="Field20Value" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WeighmentType" msprop:Generator_ColumnVarNameInTable="columnWeighmentType" msprop:Generator_ColumnPropNameInRow="WeighmentType" msprop:Generator_ColumnPropNameInTable="WeighmentTypeColumn" msprop:Generator_UserColumnName="WeighmentType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:ReceiptTicketID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

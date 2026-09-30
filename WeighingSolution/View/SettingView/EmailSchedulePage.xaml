@@ -1,0 +1,297 @@
+﻿<Page x:Class="WeighingSolution.View.EmailSchedulePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:WeighingSolution.View"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:shared="clr-namespace:WeighingSolution.SharedComponents;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EmailSchedulePage">
+    <Page.Resources>
+        <converter:InEqualityVisibilityConverter x:Key="InEqualityVisibilityConverter" />
+        <converter:EqualityConverter x:Key="EqualityConverter" />
+        <converter:EqualityVisibilityConverter x:Key="EqualityVisibilityConverter" />
+    </Page.Resources>
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100" >
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}"  Margin="0,3,3,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource EmailIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25" VerticalAlignment="Center">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Email" />
+                         Setting</TextBlock>
+                </DockPanel>
+                <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto"   VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel  Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="10,15,0,10">
+                            <Label >Schedule Name</Label>
+                            <Label Foreground="red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtScheduleName" MaxLength="250"  Grid.Row="0" Grid.Column="1" Margin="0,15,10,10"  Text="{Binding Model.ScheduleName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="0" Grid.Column="2">
+                            <Label >Email To</Label>
+                            <Label Foreground="red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtEmailTo" MaxLength="1250"  Grid.Row="0" Grid.Column="3" Margin="0,15,10,10"   Text="{Binding Model.EmailTo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="1" Grid.Column="0">
+                            <Label >Schedule Description</Label>
+                        </StackPanel>
+                        <TextBox Name="txtScheduleDesc" MaxLength="250"  Grid.Row="1" Grid.Column="1" Margin="0,15,10,10" Text="{Binding Model.ScheduleDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="1" Grid.Column="2">
+                            <Label >Email Subject</Label>
+                            <Label Foreground="red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtEmailSubject" MaxLength="250"  Grid.Row="1" Grid.Column="3" Margin="0,15,10,10" Text="{Binding Model.EmailSubject,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="2" Grid.Column="0" >
+                            <Label >Email Body</Label>
+                        </StackPanel>
+                        <TextBox Name="txtEmailBody" MaxLength="250"  Height="45"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,15,10,10" Text="{Binding Model.EmailBody,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="3" Grid.Column="0">
+                            <Label >Email Type</Label>
+                        </StackPanel>
+                        <ComboBox Name="cmbConnectionType" Grid.Row="3" Grid.Column="1" Margin="0,15,10,10" SelectedValue="{Binding Model.EmailType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Tag">
+                            <ComboBoxItem x:Name="iEveryTransaction" Content="Every Transaction" Tag="Every Transaction"></ComboBoxItem>
+                            <ComboBoxItem x:Name="iCustomOnTransaction" Content="Custom On Transaction" Tag="Custom On Transaction" ></ComboBoxItem>
+                            <ComboBoxItem x:Name="iTransactionSummary" Content="Transaction Summary" Tag="Transaction Summary" ></ComboBoxItem>
+                            <ComboBoxItem x:Name="iTransactionDetail" Content="Transaction Detail" Tag="Transaction Detail" ></ComboBoxItem>
+                        </ComboBox>
+                        <CheckBox Name="cbIsAttachmentFile" HorizontalAlignment="Left" Grid.Row="3"  Grid.Column="2"  Content="Attachment File" Margin="10,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Visibility="{Binding Model.EmailType, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Every Transaction|Custom On Transaction'}"></CheckBox>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="3" Grid.Column="2" Visibility="{Binding Model.EmailType, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter='Every Transaction|Custom On Transaction'}">
+                            <Label Name="lblSchedule"  Content="Schedule Time" ></Label>
+                            <Label Foreground="red">*</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,15,0,10" Grid.Row="3" Grid.Column="3" Visibility="{Binding Model.EmailType, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter='Every Transaction|Custom On Transaction'}">
+                            <RadioButton Name="rbDaily" Content="Daily" Margin="0,5,10,5" IsChecked="{Binding Model.ScheduleType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Daily'}"  ></RadioButton>
+                            <RadioButton Name="rbWeek" Content="Weekly" Margin="30,5,10,5" IsChecked="{Binding Model.ScheduleType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Week'}"></RadioButton>
+                            <RadioButton Name="rbMonth" Content="Monthly" Margin="30,5,10,5" IsChecked="{Binding Model.ScheduleType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Month'}"></RadioButton>
+                            <RadioButton Name="rbYear" Content="Yearly" Margin="30,5,10,5" IsChecked="{Binding Model.ScheduleType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Year'}"></RadioButton>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="3"  Visibility="{Binding Model.EmailType, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter='Every Transaction|Custom On Transaction'}">
+                            <StackPanel Name="stkYear" Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding Model.ScheduleType, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Week'}">
+                                    <Label Name="lblDay" Content="Day:"></Label>
+                                    <ComboBox Name="cmbDay" Margin="10,0,0,0" ItemsSource="{Binding lstday}" SelectedValue="{Binding ST.Day,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding Model.ScheduleType, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Year'}">
+                                    <Label Name="lblMonth" Content="Month:"></Label>
+                                    <ComboBox Name="cmbMonth" Margin="10,0,0,0" ItemsSource="{Binding lstmonth}" SelectedValue="{Binding ST.Month,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Style >
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Model.ScheduleType}" Value="Month">
+                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Model.ScheduleType}" Value="Year">
+                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <Label Name="lblDate" Margin="20,0,0,0" Content="Date:"></Label>
+                                    <ComboBox Name="cmbDate" Margin="10,0,0,0" ItemsSource="{Binding lstdate}" SelectedValue="{Binding ST.Date,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Name="lblHour" Margin="20,0,0,0" Content="Hour:"></Label>
+                                    <ComboBox Name="cmbhour" Margin="10,0,0,0" ItemsSource="{Binding lsthour}" SelectedValue="{Binding ST.Hour,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></ComboBox>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <GroupBox Name="ET_gbDataSelection" Margin="10,10,10,0" Visibility="{Binding Model.EmailType, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Every Transaction|Custom On Transaction'}">
+                        <GroupBox.Header>
+                            <Label Foreground="White" Padding="10,0,0,0" FontWeight="Bold">Data Selection</Label>
+                        </GroupBox.Header>
+                        <UniformGrid Margin="15,5,15,0" Rows="1">
+                            <Grid Name="gridDataSelection">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="30 px"></RowDefinition>
+                                    <RowDefinition  Height="30 px"></RowDefinition>
+                                    <RowDefinition  Height="30 px"></RowDefinition>
+                                    <RowDefinition  Height="30 px"></RowDefinition>
+                                    <RowDefinition  Height="30 px"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <CheckBox Name="cbTicketNo" HorizontalAlignment="Left" Grid.Row="0"  Grid.Column="0"  Content="Ticket No" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>
+                                <CheckBox Name="cbVehicleNo" HorizontalAlignment="Left" Grid.Row="0"  Grid.Column="2" Content="Vehicle No" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" ></CheckBox>
+                                <CheckBox Name="cbAccountName" HorizontalAlignment="Left" Grid.Row="1"  Grid.Column="0" Content="Account Name" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" ></CheckBox>
+                                <!--<CheckBox Name="cbTokenValue" HorizontalAlignment="Left" Grid.Row="3"  Grid.Column="0" Content="Token Value" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>-->
+                                <CheckBox Name="cbCharges" HorizontalAlignment="Left"  Grid.Row="1"  Grid.Column="2"  Content="Charges" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>
+                                <CheckBox Name="cbGrossWeight" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="0" Content="Gross Weight" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>
+                                <CheckBox Name="cbGrossTime" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="2" Content="Gross Time"  Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>
+                                <CheckBox Name="cbTareWeight" HorizontalAlignment="Left" Grid.Row="3"  Grid.Column="0" Content="Tare Weight" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" ></CheckBox>
+                                <CheckBox Name="cbTareTime" HorizontalAlignment="Left" Grid.Row="3"  Grid.Column="2" Content="Tare Time"  Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>
+                                <CheckBox Name="cbNetWeight" HorizontalAlignment="Left" Grid.Row="4"  Grid.Column="0" Content="Net Weight" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" ></CheckBox>
+                                <CheckBox Name="cbTransactionType" HorizontalAlignment="Left" Grid.Row="4"  Grid.Column="2" Content="Transaction Type" Margin="5,0,0,0"   Command="{Binding CBCheckedUnchecked}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" ></CheckBox>
+                            </Grid>
+                            <ItemsControl IsTabStop="False" ItemsSource="{Binding customField}" Grid.Column="1" >
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style>
+                                        <Setter Property="FrameworkElement.Margin" Value="5"/>
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="2">
+                                        </UniformGrid>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal"  >
+                                            <CheckBox Name="cbField" IsChecked="{Binding Isselected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Content="{Binding DisplayName, StringFormat='\{0\} '}"   Command="{Binding DataContext.CBCheckedUnchecked, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"></CheckBox>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </UniformGrid>
+                    </GroupBox>
+                    <GroupBox Name="SC_gbDataSelection" Margin="10,10,10,0" Visibility="{Binding Model.EmailType, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter='Every Transaction|Custom On Transaction'}">
+                        <GroupBox.Header>
+                            <Label Foreground="White" Padding="10,0,0,0" FontWeight="Bold">Data Selection</Label>
+                        </GroupBox.Header>
+                        <UniformGrid Margin="15,5,200,0" Rows="1" Columns="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Name="SC_lblAccountName" Margin="15,10,15,10" Grid.Row="0" Grid.Column="0" Content="Account"></Label>
+                                <ComboBox Name="cmbAccount"  ItemsSource="{Binding Accounts}" Margin="15,10,15,10" Padding="2,2,2,2"  Grid.Row="0" Grid.Column="1" IsEditable="True"  Controls:TextBoxHelper.ClearTextButton="True"
+                                                          VerticalAlignment="Center" SelectedValuePath="AccountID"    DisplayMemberPath="CompanyName" >
+                                    <ComboBox.SelectedValue>
+                                        <Binding Path="EmailModel.AccountID" Converter="{StaticResource NullReplaceConverter}">
+                                            <Binding.ConverterParameter>
+                                                <sys:Int32>0</sys:Int32>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </ComboBox.SelectedValue>
+                                </ComboBox>
+                                <Label Name="SC_lblVehicleName" Margin="15,10,15,10" Grid.Row="1" Grid.Column="0" Content="Vehicle"></Label>
+                                <ComboBox Name="cmbVehicle"  Margin="15,10,15,10" Padding="2,2,2,2"  Grid.Row="1" Grid.Column="1" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding Vehicles}" Controls:TextBoxHelper.ClearTextButton="True"
+                                                          VerticalAlignment="Center" SelectedValuePath="VehicleID" DisplayMemberPath="VehicleNumber" >
+                                    <ComboBox.SelectedValue>
+                                        <Binding Path="EmailModel.VehicleID" Converter="{StaticResource NullReplaceConverter}">
+                                            <Binding.ConverterParameter>
+                                                <sys:Int32>0</sys:Int32>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </ComboBox.SelectedValue>
+                                </ComboBox>
+                                <Label Name="SC_lblProductName" Margin="15,10,15,10" Grid.Row="2" Grid.Column="0" Content="Product"></Label>
+                                <ComboBox Name="CmbProduct" Margin="15,10,15,10" Padding="2,2,2,2"  Grid.Row="2" Grid.Column="1" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding Products}" Controls:TextBoxHelper.ClearTextButton="True"
+                                                          VerticalAlignment="Center" SelectedValuePath="ProductID" DisplayMemberPath="ProductName">
+                                    <ComboBox.SelectedValue>
+                                        <Binding Path="EmailModel.ProductID" Converter="{StaticResource NullReplaceConverter}">
+                                            <Binding.ConverterParameter>
+                                                <sys:Int32>0</sys:Int32>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </ComboBox.SelectedValue>
+                                </ComboBox>
+                                <Label Name="SC_lblWeighbridgeName" Margin="15,10,15,10" Grid.Row="0" Grid.Column="2" Content="Weighbridge"></Label>
+                                <ComboBox Name="CmbWeighbtidge" Margin="15,10,15,10" Padding="2,2,2,2"  Grid.Row="0" Grid.Column="3" IsTextSearchEnabled="True" IsEditable="True" ItemsSource="{Binding WeightBridges}" Controls:TextBoxHelper.ClearTextButton="True"
+                                                          VerticalAlignment="Center" SelectedValuePath="WeightBridgeID" DisplayMemberPath="ScaleName">
+                                    <ComboBox.SelectedValue>
+                                        <Binding Path="EmailModel.WeightBridgeID" Converter="{StaticResource NullReplaceConverter}">
+                                            <Binding.ConverterParameter>
+                                                <sys:Int32>0</sys:Int32>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </ComboBox.SelectedValue>
+                                </ComboBox>
+                                <Label Name="SC_lblTranMode" Margin="15,10,15,10" Grid.Row="3" Grid.Column="0" Content="Transaction Mode"></Label>
+                                <ComboBox Name="CmbTranMode" ItemsSource="{Binding lstTransMode}" Margin="15,10,15,10" Padding="2,2,2,2"  Grid.Row="3" Grid.Column="1" IsEditable="True" SelectedValue="{Binding EmailModel.TransactionMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" Controls:TextBoxHelper.ClearTextButton="True"></ComboBox>
+                                <Label Name="SC_lblTranStatus" Margin="15,10,15,10" Grid.Row="4" Grid.Column="0" Content="Transaction Status"></Label>
+                                <ComboBox Name="CmbTranStatus" ItemsSource="{Binding lstTransStatus}" Margin="15,10,15,10" Padding="2,2,2,2"   Grid.Row="4" Grid.Column="1" IsEditable="True" SelectedValue="{Binding EmailModel.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" Controls:TextBoxHelper.ClearTextButton="True"></ComboBox>
+                                <Label Name="SC_lblTranType" Margin="15,10,15,10" Grid.Row="5" Grid.Column="0" Content="Transaction Type"></Label>
+                                <ComboBox Name="CmbTranType" ItemsSource="{Binding lstTranType}" Margin="15,10,15,10" Padding="2,2,2,2" Grid.Row="5" Grid.Column="1" IsEditable="True" SelectedValue="{Binding EmailModel.TransactionType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" Controls:TextBoxHelper.ClearTextButton="True"></ComboBox>
+                            </Grid>
+                            <ItemsControl IsTabStop="False" ItemsSource="{Binding customField,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="1"></UniformGrid>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock  Margin="15,8,15,10"  Grid.Column="0" Text="{Binding DisplayName, StringFormat='\{0\}: '}"  />
+                                            <ComboBox Margin="15,8,15,10" Padding="2,2,2,2" ItemsSource="{Binding FieldValues}"   Grid.Column="1" IsEditable="True" Controls:TextBoxHelper.ClearTextButton="True"
+                                                                                Background="{DynamicResource WhiteBrush}" Foreground="{DynamicResource BlackBrush}" SelectedValue="{Binding SelectedfieldValues, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullReplaceConverter}, ConverterParameter=''}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </UniformGrid>
+                    </GroupBox>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Controls:ButtonHelper.PreserveTextCase="True" Name="CameraManagementSave" IsDefault="True" Grid.Row="0" Grid.Column="0" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="45,30,0,50"  Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="CameraManagementCancel" Grid.Row="0" Grid.Column="1" Height="30" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50" Command="{Binding CloseDetailViewCommand}"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

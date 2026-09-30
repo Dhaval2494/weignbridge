@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Directory Id="dir813D1F0C17C6517DA1B9A933450C5B91" Name="Release">
+                <Component Id="cmp721F295ADB071509F15C45EF80E7610C" Guid="5578570B-1ED8-4BA3-BF61-BB1431E802C2">
+                    <File Id="filF2DAC8FDA6B8976BD4E35763709FA256" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ControlzEx.dll" />
+                </Component>
+                <Component Id="cmp504942F10C90EC13D79BF308C01CC6F5" Guid="62EF8CD6-3F5A-49A8-8CD5-46B31661794F">
+                    <File Id="fil2459EE0C564A3823DC08BAF6F0C8B5B8" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ControlzEx.pdb" />
+                </Component>
+                <Component Id="cmp3E8C57E6B8A9839C6F1C1A6147CD1E1C" Guid="BF06049E-2B0E-48F7-AAE8-B565722B6993">
+                    <File Id="filBB86B3168FFDDE497979F2676EAE7E53" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\EntityFramework.dll" />
+                </Component>
+                <Component Id="cmp1340E2DAD147C3C1AF49BC1E3196373F" Guid="97D844AD-6CF4-4720-8ABD-20605D8F296D">
+                    <File Id="filCE555C1E884C33E46385845F323428DF" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\EntityFramework.SqlServer.dll" />
+                </Component>
+                <Component Id="cmp2A7542A96A4B73E339FB32416BA72881" Guid="BB7AC125-DEE9-4AA4-BF72-AE962634DDFD">
+                    <File Id="fil2FB26FA7452168AED96DF557EB129DF7" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\EntityFramework.SqlServer.xml" />
+                </Component>
+                <Component Id="cmp0E2A4550E0AC2B8E8621624ED9851D09" Guid="675BD7B7-F7D5-4DA8-92B6-311E3759936F">
+                    <File Id="filF6C02B517CCA87EA4C5C208251FE436E" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\EntityFramework.xml" />
+                </Component>
+                <Component Id="cmpD0BE2A04DF4EAF89EE8FD7A6E690E729" Guid="2FBE8591-928A-4232-9FD2-3B04BA91C80B">
+                    <File Id="filF621C79EF776DD4025B6B96875A5D52E" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ICSharpCode.AvalonEdit.dll" />
+                </Component>
+                <Component Id="cmp676276DFE1EE3080F982E8A4B9D21D48" Guid="149BFEC0-28A2-4270-AD8F-1C476CD7C883">
+                    <File Id="fil78F31956E8D1D5D5F5B22DD1B5BE432A" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ICSharpCode.AvalonEdit.xml" />
+                </Component>
+                <Component Id="cmp3955559512C0B742A4CE7A3C84450EA5" Guid="78688774-B75C-4177-851C-A654024B29EC">
+                    <File Id="fil2C9A59D8A3A6E085732EB9CFC83981BE" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\log4net.dll" />
+                </Component>
+                <Component Id="cmp0802D10413AFE04B867A02EE0BEDCF7B" Guid="4226C12A-0B7B-471A-8AA5-335C6843FAC7">
+                    <File Id="fil3BEB950D81F531C61B04B09FAA142066" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\log4net.xml" />
+                </Component>
+                <Component Id="cmpE438BDD74892D2614CAC3402BB49B4A1" Guid="586EAFC6-AAFC-4CE5-B869-C2F3F566DDAC">
+                    <File Id="filA1731B64D2B84DCAD6FB2B6D09A8E586" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.dll" />
+                </Component>
+                <Component Id="cmp4EA36D2339F6AFECCA4D99EED767C672" Guid="92F7EED9-7C40-44AA-B4E4-9F24FF188622">
+                    <File Id="filFF3F5660FA3C7EB6F69C2D01A013F2DC" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.IconPacks.dll" />
+                </Component>
+                <Component Id="cmpD52AADC5CB3A58FE1145389460ED4656" Guid="D7FEC965-A987-412E-8D16-A5823CCF1CEB">
+                    <File Id="fil37D1C3A47568257CD10278A44B3E69C4" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.IconPacks.pdb" />
+                </Component>
+                <Component Id="cmp9C928109CAB9CE8B0B29D9C7671D5208" Guid="81604B1A-9DC5-4147-9D7D-7FA70A89157E">
+                    <File Id="filB4552879B7F632673C134C27A9BFDAFB" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.IconPacks.xml" />
+                </Component>
+                <Component Id="cmp2E00240BCEACC43DE225F7F9569ACB8C" Guid="39D3D5DC-A17C-40B6-A253-D6FC42655E95">
+                    <File Id="fil05242E828DE473935F2CF2D2113B66DA" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.pdb" />
+                </Component>
+                <Component Id="cmp629B12EFD149B5FD5BA447E6754DC892" Guid="0AA149D9-B367-4B85-878B-5FC071DB5F49">
+                    <File Id="fil5C9FC226A333795508867A2091BCC03A" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.SimpleChildWindow.dll" />
+                </Component>
+                <Component Id="cmp80B8FB0C3551AEB599A262D4946B6E4F" Guid="24AD292D-DEFA-4D26-8910-E234EFFE7391">
+                    <File Id="fil419EA4D32E69961D21F5BBE6979A0588" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.SimpleChildWindow.pdb" />
+                </Component>
+                <Component Id="cmpA4192D9973B4E36BF2AE409D38EFE348" Guid="1BA9CA34-3A80-46FF-9252-BC008A4F3848">
+                    <File Id="fil9884F8B7E2C13A4E2877196D4A826C2C" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.SimpleChildWindow.xml" />
+                </Component>
+                <Component Id="cmp1EB8DD56EFC658D48DC0D8E9ACD2A630" Guid="10B404CA-52CF-4DA7-97BF-692EB8DF5BFB">
+                    <File Id="filE3C6F4092F45030E234F3378D01AB9A7" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\MahApps.Metro.xml" />
+                </Component>
+                <Component Id="cmp722DCCAB109D8A1AFD64A4E3B7B82897" Guid="DF80EB4C-E109-4E75-B3B8-C1B09ECFE155">
+                    <File Id="fil2AB8D2B30C90158D2649BECBE9343307" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Microsoft.ReportViewer.Common.dll" />
+                </Component>
+                <Component Id="cmp00EED157E2153174737859203C3FB3D3" Guid="035DBEA7-29AB-4A7E-8A05-4443A3253444">
+                    <File Id="fil807171FF6EC0E8EDCB02CDD227ADF381" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Microsoft.ReportViewer.DataVisualization.dll" />
+                </Component>
+                <Component Id="cmp6CDB3B5F1669BD2390B97DBAD7E58D75" Guid="38294A3C-0299-4DD0-8D7C-EFCA55028A24">
+                    <File Id="fil904D0505DD6528C44F0001BFFDFD1BEB" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+                </Component>
+                <Component Id="cmp25A0297F47E1069944F997683F217654" Guid="FB7A0940-257B-4ECB-B95C-D7FD5F988014">
+                    <File Id="fil4A46B628CE6DD76BC0F061818C313AF5" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Microsoft.ReportViewer.WinForms.dll" />
+                </Component>
+                <Component Id="cmp688A92A9198E9C2F23F9FE59E6D68518" Guid="DC1FC798-A795-4090-B633-822E5DB50B08">
+                    <File Id="fil2F377E8CED2C13872E39753C13D2505C" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Microsoft.ReportViewer.WinForms.xml" />
+                </Component>
+                <Component Id="cmp75DE8AC5811B535F01203AEAC4A16AB0" Guid="D053E3CD-C9CD-4989-920C-1DCB7605F343">
+                    <File Id="fil90445724DC4FD5C84F55BD1F36A84498" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Microsoft.SqlServer.Types.dll" />
+                </Component>
+                <Component Id="cmpC4597AC05FBD0E884829B0B1A88EF7F5" Guid="0F7D3900-10C4-44BF-860F-9D2F74E413C9">
+                    <File Id="filDFCEDAF6C14629AF501DDC9DD5C37598" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Newtonsoft.Json.dll" />
+                </Component>
+                <Component Id="cmp2087F5B409FB060624790B29255C2F72" Guid="EAA24E25-C3A7-406B-8003-42890273A246">
+                    <File Id="filEE50885DAD84BF32ACE955DB7E99BF74" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Newtonsoft.Json.xml" />
+                </Component>
+                <Component Id="cmpC74E0D09E1F39B2DD53B821C06DD776B" Guid="8950FB36-C160-4EFD-A284-BB17D20B741E">
+                    <File Id="filAAD412A2A22B7C3755E700C5E92C836B" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\PluginInterfaces.dll" />
+                </Component>
+                <Component Id="cmp6EDA699D24E2EA9A430666823AAD01E8" Guid="D76F4801-20F6-456E-8D00-6DC869177129">
+                    <File Id="fil4AA2F0203E423577985F4848610F77AE" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\PluginInterfaces.pdb" />
+                </Component>
+                <Component Id="cmp8F355A06F12D5A9969FF0465A2AF1A1C" Guid="2941B298-42FB-48C2-B08A-1C98A60B7B07">
+                    <Class Id="{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}" Context="InprocServer32" Description="Portable.Licensing.Validation.LicenseExpiredValidationFailure" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Portable.Licensing.Validation.LicenseExpiredValidationFailure" Description="Portable.Licensing.Validation.LicenseExpiredValidationFailure" />
+                    </Class>
+                    <Class Id="{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}" Context="InprocServer32" Description="Portable.Licensing.Security.Cryptography.KeyGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Portable.Licensing.Security.Cryptography.KeyGenerator" Description="Portable.Licensing.Security.Cryptography.KeyGenerator" />
+                    </Class>
+                    <Class Id="{764E0EC9-7E2A-3F11-801B-A8A9934636FB}" Context="InprocServer32" Description="Portable.Licensing.Validation.InvalidSignatureValidationFailure" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Portable.Licensing.Validation.InvalidSignatureValidationFailure" Description="Portable.Licensing.Validation.InvalidSignatureValidationFailure" />
+                    </Class>
+                    <Class Id="{FA3FD433-CDEC-3434-804F-49F743E14569}" Context="InprocServer32" Description="Portable.Licensing.Validation.GeneralValidationFailure" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Portable.Licensing.Validation.GeneralValidationFailure" Description="Portable.Licensing.Validation.GeneralValidationFailure" />
+                    </Class>
+                    <File Id="fil37A41EB29CD2CA0E60DD4767C94CD414" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Portable.Licensing.dll" />
+                    <ProgId Id="Record" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32\1.0.0.0" Name="Class" Value="Portable.Licensing.Validation.LicenseExpiredValidationFailure" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32\1.0.0.0" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32\1.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32\1.0.0.0" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32" Name="Class" Value="Portable.Licensing.Validation.LicenseExpiredValidationFailure" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{16E49D8F-F35B-3DF2-AFCB-D77691F6C2CF}\InprocServer32" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32\1.0.0.0" Name="Class" Value="Portable.Licensing.Security.Cryptography.KeyGenerator" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32\1.0.0.0" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32\1.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32\1.0.0.0" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32" Name="Class" Value="Portable.Licensing.Security.Cryptography.KeyGenerator" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{2B697F7E-9244-316C-95A5-C38B9F6A7FF1}\InprocServer32" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32\1.0.0.0" Name="Class" Value="Portable.Licensing.Validation.InvalidSignatureValidationFailure" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32\1.0.0.0" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32\1.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32\1.0.0.0" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32" Name="Class" Value="Portable.Licensing.Validation.InvalidSignatureValidationFailure" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{764E0EC9-7E2A-3F11-801B-A8A9934636FB}\InprocServer32" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32\1.0.0.0" Name="Class" Value="Portable.Licensing.Validation.GeneralValidationFailure" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32\1.0.0.0" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32\1.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32\1.0.0.0" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32" Name="Class" Value="Portable.Licensing.Validation.GeneralValidationFailure" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{FA3FD433-CDEC-3434-804F-49F743E14569}\InprocServer32" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{98B095BF-47C9-3D76-82DF-F89E3A1434B9}\1.0.0.0" Name="Class" Value="Portable.Licensing.LicenseType" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{98B095BF-47C9-3D76-82DF-F89E3A1434B9}\1.0.0.0" Name="Assembly" Value="Portable.Licensing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{98B095BF-47C9-3D76-82DF-F89E3A1434B9}\1.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{98B095BF-47C9-3D76-82DF-F89E3A1434B9}\1.0.0.0" Name="CodeBase" Value="file:///[#fil37A41EB29CD2CA0E60DD4767C94CD414]" Type="string" Action="write" />
+                </Component>
+                <Component Id="cmp7CBA0F9D0E7293AAD258ACAC3267B17A" Guid="C8C29BF9-CEFC-4823-82CE-DE96EA0FC5E4">
+                    <File Id="filF848885AEBDFDE9C8046AB62D45C26D1" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Portable.Licensing.xml" />
+                </Component>
+                <Component Id="cmp03D2A82F36A9F49F232410ABB297C521" Guid="47DAE975-C47F-4480-81CE-A0AD0F9D1820">
+                    <Class Id="{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}" Context="InprocServer32" Description="Prism.Commands.CompositeCommand" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Prism.Commands.CompositeCommand" Description="Prism.Commands.CompositeCommand" />
+                    </Class>
+                    <Class Id="{308BC054-F9FF-391B-9574-1B92E616B41D}" Context="InprocServer32" Description="Prism.Logging.DebugLogger" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Prism.Logging.DebugLogger" Description="Prism.Logging.DebugLogger" />
+                    </Class>
+                    <Class Id="{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}" Context="InprocServer32" Description="Prism.Events.EventAggregator" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Prism.Events.EventAggregator" Description="Prism.Events.EventAggregator" />
+                    </Class>
+                    <Class Id="{C52F0F51-1C47-361B-85F0-9D107DD89DF8}" Context="InprocServer32" Description="Prism.Events.PubSubEvent" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Prism.Events.PubSubEvent" Description="Prism.Events.PubSubEvent" />
+                    </Class>
+                    <Class Id="{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}" Context="InprocServer32" Description="Prism.Logging.EmptyLogger" ThreadingModel="both" ForeignServer="mscoree.dll">
+                        <ProgId Id="Prism.Logging.EmptyLogger" Description="Prism.Logging.EmptyLogger" />
+                    </Class>
+                    <File Id="fil13F69445FDC8FFD3EC4B8FCA817A3CC5" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Prism.dll" />
+                    <ProgId Id="Record" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32\7.0.0.396" Name="Class" Value="Prism.Commands.CompositeCommand" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32" Name="Class" Value="Prism.Commands.CompositeCommand" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{0AC4BAD4-6774-31F7-B6D9-C848D975D9A1}\InprocServer32" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32\7.0.0.396" Name="Class" Value="Prism.Logging.DebugLogger" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32" Name="Class" Value="Prism.Logging.DebugLogger" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{308BC054-F9FF-391B-9574-1B92E616B41D}\InprocServer32" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32\7.0.0.396" Name="Class" Value="Prism.Events.EventAggregator" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32" Name="Class" Value="Prism.Events.EventAggregator" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{3C101E9B-2BE9-3935-81C3-A9A7ECE5FCF4}\InprocServer32" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32\7.0.0.396" Name="Class" Value="Prism.Events.PubSubEvent" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32" Name="Class" Value="Prism.Events.PubSubEvent" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C52F0F51-1C47-361B-85F0-9D107DD89DF8}\InprocServer32" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32\7.0.0.396" Name="Class" Value="Prism.Logging.EmptyLogger" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32" Name="Class" Value="Prism.Logging.EmptyLogger" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="CLSID\{C7B47ABB-D4F4-3EF2-A7AD-640210A247ED}\InprocServer32" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{0FE901B4-6B26-36D5-81DF-9F0F758D84E9}\7.0.0.396" Name="Class" Value="Prism.Logging.Priority" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{0FE901B4-6B26-36D5-81DF-9F0F758D84E9}\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{0FE901B4-6B26-36D5-81DF-9F0F758D84E9}\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{0FE901B4-6B26-36D5-81DF-9F0F758D84E9}\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{3AF2B527-D444-3268-B2F0-ED2AF1358962}\7.0.0.396" Name="Class" Value="Prism.Logging.Category" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{3AF2B527-D444-3268-B2F0-ED2AF1358962}\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{3AF2B527-D444-3268-B2F0-ED2AF1358962}\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{3AF2B527-D444-3268-B2F0-ED2AF1358962}\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{D89407D0-E3E2-3C81-8706-87CA4800A3E3}\7.0.0.396" Name="Class" Value="Prism.Events.ThreadOption" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{D89407D0-E3E2-3C81-8706-87CA4800A3E3}\7.0.0.396" Name="Assembly" Value="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{D89407D0-E3E2-3C81-8706-87CA4800A3E3}\7.0.0.396" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+                    <RegistryValue Root="HKCR" Key="Record\{D89407D0-E3E2-3C81-8706-87CA4800A3E3}\7.0.0.396" Name="CodeBase" Value="file:///[#fil13F69445FDC8FFD3EC4B8FCA817A3CC5]" Type="string" Action="write" />
+                </Component>
+                <Component Id="cmp49751FAE264057FA057AA63DD22FBA0B" Guid="7A05EC91-99E2-4453-9E1F-672AE34F499F">
+                    <File Id="fil4E53E1C009A234FE77F5C903A71CCE38" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Prism.xml" />
+                </Component>
+                <Component Id="cmp0FB14538CDF2029B7925331E9F5E3814" Guid="FDA44709-1CD3-4EFB-8275-B816CAFC223A">
+                    <File Id="fil539536F48EA6D62B42DF1871EB392C9E" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\System.Windows.Controls.Input.Toolkit.dll" />
+                </Component>
+                <Component Id="cmp9015A1B233A20E14C0B6E2212E35744E" Guid="E9D2EFCD-4119-4B22-AEE3-266A16A41CFC">
+                    <File Id="filE8D106733D0B8167C650258D3331FF73" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\System.Windows.Controls.Layout.Toolkit.dll" />
+                </Component>
+                <Component Id="cmpBA5FAF295A424135CBC775CF030E1106" Guid="BD6E7529-DAF7-46A2-910E-7C15E684F10C">
+                    <File Id="filA6205EDDDE5D3B96D03EFA4C4582B64C" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\System.Windows.Interactivity.dll" />
+                </Component>
+                <Component Id="cmpFF9E4A0E4680C7F5E7891EC3296EE87E" Guid="CC6970CB-C810-4B31-BD6C-822AFABD4BDB">
+                    <File Id="fil09B1E214B4257071F24BF0AB0488B34D" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ToastNotifications.dll" />
+                </Component>
+                <Component Id="cmp79666CFC5ED732EDF516B53597516D56" Guid="B71FCBC3-A264-4151-9CEE-6E1047DB049D">
+                    <File Id="fil08A1A85D0CBCAF91C49307580AFCE5D5" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ToastNotifications.Messages.dll" />
+                </Component>
+                <Component Id="cmpAB329CBDB3A32CB9EB3D6EB384C48F74" Guid="DB69EEE2-D167-4FD8-9EB3-C8AAB117C649">
+                    <File Id="filBD07169FD11CB9855D902866CE99B874" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.DataLayer.dll" />
+                </Component>
+                <Component Id="cmp13A762CF83AFB8936D848A27D9E936FA" Guid="43AB4D3B-D11B-4F83-BEA3-1A08CBE79203">
+                    <File Id="fil6A84F034E5855E140E07F75E0BCDFF2A" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.DataLayer.pdb" />
+                </Component>
+                <Component Id="cmp508CE6886BFC047AE842E30DDC2F06AA" Guid="49765426-CB81-4232-ACDA-D1047076A43C">
+                    <File Id="fil9720E3C629FE8A2690FF3A84ACC6A116" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.exe" />
+                </Component>
+                <Component Id="cmpD20C690A7AB6936F048D2346942BC4C3" Guid="BA978552-9CDC-45A8-A883-16F0DA205C58">
+                    <File Id="filB7CB2A84A774F346115DAAA4A21909D5" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.exe.config" />
+                </Component>
+                <Component Id="cmp0E76A3CC3AF82588836C6BCAC4E02AFB" Guid="58919040-36A8-430D-B280-4F5C9B9126BD">
+                    <File Id="filCFE0C6F52A8536FAA63D7AD5F2AA161F" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.pdb" />
+                </Component>
+                <Component Id="cmp072011A332F370B848ADC37A0B6C6EB1" Guid="E4C7B088-C53A-464E-8287-CE93D750CB34">
+                    <File Id="filD325E3DE4DE03D8465EBB9AA46BE54F6" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.SharedComponents.dll" />
+                </Component>
+                <Component Id="cmpCEFD3A9635ED1DCA0A0D794B8FA52DB1" Guid="D0C9E07F-76BE-473D-A5C8-5A3DA9E02F0F">
+                    <File Id="fil5B20A6001617836AD6C878BE950A07C5" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.SharedComponents.pdb" />
+                </Component>
+                <Component Id="cmp1931988310964F3738C03FAA8B75A274" Guid="0F244467-6B2F-4087-A4CE-85EF1E97E0A1">
+                    <File Id="fil27E6669F6571EF4B71E3B6E76BAC0029" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.vshost.exe" />
+                </Component>
+                <Component Id="cmpCE465F96CEEAFAADA1812C40323DCE8D" Guid="5084405A-3936-4B29-A9C8-7D707BC3C7B1">
+                    <File Id="filDA5FF34606BEF2B218F855BA7F863722" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.vshost.exe.config" />
+                </Component>
+                <Component Id="cmpC8C5D2C084CB89A5EF73798BFD27A9D4" Guid="01F465E5-15F2-4AE2-8BE9-F8EE79132AD8">
+                    <File Id="fil178BD3360C811B2C6C5D9D2226490487" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WeighingSolution.vshost.exe.manifest" />
+                </Component>
+                <Component Id="cmp93CB7314AFA48C0234B6D1A9807FA757" Guid="3FF34896-6891-4E6F-A1C9-3B76890A4263">
+                    <File Id="fil965434508C52275825E81A91F8514E62" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\WPFToolkit.dll" />
+                </Component>
+                <Component Id="cmpAA022E9068D53081E30DEFFE0B342FB6" Guid="B6A89955-AD45-4455-BC09-A4401B491738">
+                    <File Id="filA02EEDF6C7F6073BDAC34DE2B3455BF2" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Xceed.Wpf.AvalonDock.dll" />
+                </Component>
+                <Component Id="cmp005B1F24EB7729F324D94C357548C59B" Guid="2A7B5077-8DF8-4AF1-877E-F16E6EBC40FD">
+                    <File Id="fil231150779F37BA1BED7302F766910773" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+                </Component>
+                <Component Id="cmpE140ED7134C5FC189E2C393836E1296F" Guid="6C26D88C-3F29-47AF-8948-829E9498705B">
+                    <File Id="filC2FEB4661210C1C69A479CB854AE8DDC" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+                </Component>
+                <Component Id="cmp6673C075046516608209F412B802F8E3" Guid="3F17DC04-D1FA-4EB5-B343-ADF214C69E41">
+                    <File Id="filCD2860C91C55943102375B7DCD3568A6" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+                </Component>
+                <Component Id="cmp070114A596B4DE79CDA9302DF8538A57" Guid="F62DEA40-FDFD-4E0F-B02C-DCD480A89272">
+                    <File Id="fil81970794982CA85F69EB0AF14DAD676A" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Xceed.Wpf.DataGrid.dll" />
+                </Component>
+                <Component Id="cmp051997D18C219E534B02E845DC18439A" Guid="70B3F6C5-0BD3-4F03-A7AC-B7A2218C45A3">
+                    <File Id="fil7B6DFCDEB64549639F09ADA86E0B0376" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Xceed.Wpf.Toolkit.dll" />
+                </Component>
+                <Directory Id="dir60CECE75770099C8E9E5556A0A6A9A3E" Name="de">
+                    <Component Id="cmpDF1DEE0CC0338E52B636587D37F203A6" Guid="FD8296B4-7691-43B4-80AD-B4C880A6F4F1">
+                        <File Id="filA356CF639C1FC0A99F9FB5853CFDAD0F" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\de\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir6D74B8943FDD171F25CEA84F0349D5F8" Name="es">
+                    <Component Id="cmp3DB7716A87A3FD8234482A8024C3FEDB" Guid="0C2C59C0-ABF9-4612-B5A2-CFFA65F0C0D6">
+                        <File Id="filCC897758DC0867153E29A66A15A5A4C3" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\es\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dirF7189E6940DDCAFC508262D5BFD3ACF2" Name="Fonts">
+                    <Component Id="cmp9A5DD644BE7C3C365E66633640F57278" Guid="DB6D85F5-DF5F-44E1-ABC3-C1BC8D39A270">
+                        <File Id="filDEE715325CEA33C17CB7A4329C01FC4A" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Fonts\DIGITAL7.TTF" />
+                    </Component>
+                </Directory>
+                <Directory Id="dirD94DAF367DCE237B1D92A1141C28E046" Name="fr">
+                    <Component Id="cmp3BC94FFFCBD2DD296AC73CBA235DAFDD" Guid="AC8EC705-3B82-4BC8-AB53-F04330F00D6F">
+                        <File Id="fil1AB9BB299BCECD9C5EE43E89B3D14670" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\fr\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir52B474FEDD6300257306325C9803121F" Name="hu">
+                    <Component Id="cmp2DBEA98AD5DC3772154C262F06F0FE1A" Guid="3B4AF6B1-4587-4FD1-BD99-27280412A281">
+                        <File Id="filEAF63044B711EE266BBCED2F40EFAE4D" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\hu\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir0CB025D285E47FAA13BA8C3AD572E51F" Name="it">
+                    <Component Id="cmpF942A491E2D1A1DA6B93FA8E0A46ED6A" Guid="FAAE6449-252A-4559-BAB7-96BF74497ABF">
+                        <File Id="filD872337EB60FA93F9193F8B7DDDF6768" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\it\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir32C4F8617454DB735E2A68826C63F365" Name="pt-BR">
+                    <Component Id="cmp564080A2D45CA30BE44EA32DA8A17ECD" Guid="1203AFE4-4F6D-4930-A498-03E48169E5E2">
+                        <File Id="fil4B255BC3191BE05E5BCB9AAC2C41A3C5" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\pt-BR\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir53626AC8470CB33BD98133CFB3EC1935" Name="Report">
+                    <Directory Id="dirD62B2473E111839CAA4E0BD26222059D" Name="Audit Report">
+                        <Component Id="cmp3A2C5329CCF7FA78156C2C6FA905C453" Guid="65440126-16CA-468B-8E98-00603A996F7A">
+                            <File Id="fil450DF27FDF509B85DBE38EE7C6937FAF" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Audit Report\AuditReport.rdlc" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="dir73FDC5792BFF3AB56D45B9C428DEC64B" Name="Master Report">
+                        <Component Id="cmpCE267D43285792A6E17193EE29CEDA19" Guid="1AF07039-3126-4859-A3DB-02CB76BBEF31">
+                            <File Id="fil585938B0BB69C2AC9DBFFA5E6DBB7EF3" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\AccountReport.rdlc" />
+                        </Component>
+                        <Component Id="cmp71EA1DD0FF1D8189CEAD3F6659C526A5" Guid="7FFF7D79-B172-47D0-AD29-96F85A8F3E3D">
+                            <File Id="fil870B796412EAB5747AC993A9CDD545C6" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\CustomFieldsReport.rdlc" />
+                        </Component>
+                        <Component Id="cmpA3C262AB1162BFFB7C4F05B6BD324C98" Guid="442A17E2-844B-40B4-8D7E-DC0620350C7E">
+                            <File Id="fil4569A694F0F4E28DFB35946F558ED7F3" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\DriverReport.rdlc" />
+                        </Component>
+                        <Component Id="cmp094361894680642D93FD3E4EEE7BDB64" Guid="2AF36E87-96A2-4327-86C2-AE2672440A79">
+                            <File Id="fil965EBDFB82FF177E95A3E4AA26B394DD" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\GateReport.rdlc" />
+                        </Component>
+                        <Component Id="cmpF2755BDFCC580BCAD5B1C05CEAA2754E" Guid="5D23B2C3-97F7-4C66-BC80-A5B1BFE20F9B">
+                            <File Id="filB612CA5A2202EFABC08FC7A304A8FEDD" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\ProductReport.rdlc" />
+                        </Component>
+                        <Component Id="cmpEBC4E0A439B9DB7B619CCE58EDE96997" Guid="BA0839D5-67E9-4501-9806-55C9A2F88C31">
+                            <File Id="filCB47D5FC1A77E4E7BCB8BC3A408BD46B" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\TokenReport.rdlc" />
+                        </Component>
+                        <Component Id="cmpAFA88C68C52DC9D8D3216A5B22E3F190" Guid="3AB9787F-57B7-45D6-AFB4-4AC5C67FB716">
+                            <File Id="fil3456B981D603152154D714854991D5DD" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\UnitReport.rdlc" />
+                        </Component>
+                        <Component Id="cmpBB750768ADDDE4BA52FAF206BFEAA192" Guid="E5B42FAC-D414-4234-87A0-632A04B83B90">
+                            <File Id="fil1720A8D1F8C1658C029A1A0F4BA1BA4B" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\UserReport.rdlc" />
+                        </Component>
+                        <Component Id="cmp42DF7E06E54380EF95DC9549A0E4AE37" Guid="B0EC7AB0-9243-4FF9-A078-A472447753A7">
+                            <File Id="filEA9E1CB794D6CE0E668A2015F589F7E6" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Master Report\VehicleReport.rdlc" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="dirC1DB929863836FAB3ECC2EE5DFAEB6E8" Name="Receipt">
+                        <Component Id="cmp76C9F9E1D483DCD10E2A095789DBE31D" Guid="E671CF11-ED95-48ED-88A9-B88C72BADE69">
+                            <File Id="fil12B79921A8BD3A115F245F28F9BA5B8D" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\childReport.rdlc" />
+                        </Component>
+                        <Component Id="cmpEDEFB52157D8E6F42F4F797593CCC2D2" Guid="41A62955-DF76-4A8F-BF12-E070845A60E5">
+                            <File Id="fil8A5C74FAAFBDE3A9D2A0A0F792791741" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\childReport_courier.rdlc" />
+                        </Component>
+                        <Component Id="cmp2AEE987FB180B9B7E3E14A0AF190A513" Guid="15E4F7E1-6221-4615-A58B-15FE7CEDC751">
+                            <File Id="filCA844DC097E1FFD470649C69B37BA88C" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\MultiPass_Receipt.rdlc" />
+                        </Component>
+                        <Component Id="cmpCE7E47BACBADD45CA08D29581A12F95C" Guid="119E8927-EA25-4F49-8B73-0C7FB1C10FD3">
+                            <File Id="fil9FF35D1D34ABC3C16C8AE35DB07C0DE1" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\MultiPass_Receipt_courier.rdlc" />
+                        </Component>
+                        <Component Id="cmpA75C9BECFD2D6B0C0AB01B74C5423D3D" Guid="32752250-8C4C-4B40-8EBC-1ECBCC0A7408">
+                            <File Id="filE86D3112997A5A03B9FE46592B1BF171" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\ReportingCloud.Designer.exe" />
+                        </Component>
+                        <Component Id="cmpB64DD6D4C08F0A789B8F0C6ABD13DD88" Guid="C81255CB-3F6E-4E51-8709-8E1BC85D40E1">
+                            <File Id="fil50C67266D4209CE1912AC96CBE7F922C" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\ReportingCloud.Engine.dll" />
+                        </Component>
+                        <Component Id="cmp34C4B44A52EEB4B40C9E13B026669978" Guid="0B6BB551-317D-4077-B97D-D5C29A6697C8">
+                            <File Id="fil3989EE9F843C8AD3EE7F95050F6025FB" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\ReportingCloud.Viewer.exe" />
+                        </Component>
+                        <Component Id="cmpAF5762B91A098EBC4E74EAFF370743B2" Guid="0B7F7C68-AD86-4EA8-99D2-A08B8CCA4B36">
+                            <File Id="fil20633F0998E90616158E3E7A1E01F2B0" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\SingleDoublePass_Receipt.rdlc" />
+                        </Component>
+                        <Component Id="cmpA6A2BE995114EF59CB76623406F939F4" Guid="D6CF9966-D49F-40BD-B2BE-59DD5D46D151">
+                            <File Id="filDA17F19A1D79087FCC7754E45D989415" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Receipt\SingleDoublePass_Receipt_courier.rdlc" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="dirAC65C5BA465EDDCB26405310CC581DD9" Name="Transaction Report">
+                        <Component Id="cmp1B05A1210966AC4EAE2ECD2A1EE0AAA8" Guid="93C8D6B7-CF97-4439-9607-1A6D9DDBFD72">
+                            <File Id="fil2261A6FAAB5736A86A4498EFD106655C" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Transaction Report\TransactionReport.rdlc" />
+                        </Component>
+                        <Component Id="cmp659E214D4A0ABB852E06C5E8FD42A01C" Guid="D169C05C-2A3C-41FF-BBF9-FC7B0AAB5C50">
+                            <File Id="fil5272414B5BACDFED87877EF884B446E0" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\Report\Transaction Report\TransactionSummary.rdlc" />
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="dirFB1217BB1556417DD598682D3904DC03" Name="ro">
+                    <Component Id="cmp26B9C77F9E630BE078B3C8563A90E4A3" Guid="F5FAED86-C7E8-415B-AAF4-512913AB62D9">
+                        <File Id="fil485EADDE72200DFE85C59E2989369213" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ro\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dirB699718BAA061356C4A8C4E8B0A99784" Name="ru">
+                    <Component Id="cmp7341E71D079BB9A2A0806EBE1CA0018F" Guid="6DCB899C-EAD4-4746-A5A5-97AF4AF2B738">
+                        <File Id="fil22C2D9DDCA5DFE91FBA60B91A5F32BE8" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\ru\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir8C0348FC02F38EFFC058FB4DC4D5C275" Name="SqlServerTypes">
+                    <Directory Id="dir6969C43B414DA2660CD9550955A2D687" Name="x64">
+                        <Component Id="cmp63C109447357067AD369AD21870B5F73" Guid="4A3C9368-6D8B-4791-9A1C-D137DE370A7E">
+                            <File Id="filB8A6D8382FD8BC7FF871DD4584D8804B" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\SqlServerTypes\x64\msvcr100.dll" />
+                        </Component>
+                        <Component Id="cmpE1EDC8F843A4E1E0EFE50B2027775C83" Guid="591CD6BE-1D95-4A30-A9A9-63F2CBED5F57">
+                            <File Id="fil96F33B0E6FB7419F0AF56D742CDEE64D" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\SqlServerTypes\x64\SqlServerSpatial120.dll" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="dir876261D16EA3275324C0EAB72FBDF66E" Name="x86">
+                        <Component Id="cmp7CE801ECC2692ACD85A1A63BD7955C69" Guid="67F24738-347D-4CFA-877B-0A87F73686FE">
+                            <File Id="fil692E695C8429960BF3CD75927AD8D3F2" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\SqlServerTypes\x86\msvcr100.dll" />
+                        </Component>
+                        <Component Id="cmpE81270459005CE41BA43400B427FD72F" Guid="EDADCCC2-8F2E-476D-A228-088CB44E2B0F">
+                            <File Id="fil44FDB9CE75860CE8B484B98C38837A01" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\SqlServerTypes\x86\SqlServerSpatial120.dll" />
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="dir26F7B02B258F47A79543E1066DB21759" Name="sv">
+                    <Component Id="cmp3D2C9414A2141CAE6F4EBEF6E1F0CC91" Guid="AF242F6B-3973-42D8-A05F-53A4E8121169">
+                        <File Id="fil82DCDE8CF60DF3103109CD6A2289B653" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\sv\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir27032B3399EA9FC2D39323D310802CB2" Name="zh-Hans">
+                    <Component Id="cmpA605A7005A3CFF75B6FF8B0FF2C6562B" Guid="A4A76EF7-CA87-4D63-9CC4-0D5CCF3C166F">
+                        <File Id="filE58CD7A84115CAFFD42B1E9B737C00F9" KeyPath="yes" Source="$(var.WeighingSolution_TargetDir)\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="CoreComponents">
+            <ComponentRef Id="cmp721F295ADB071509F15C45EF80E7610C" />
+            <ComponentRef Id="cmp504942F10C90EC13D79BF308C01CC6F5" />
+            <ComponentRef Id="cmp3E8C57E6B8A9839C6F1C1A6147CD1E1C" />
+            <ComponentRef Id="cmp1340E2DAD147C3C1AF49BC1E3196373F" />
+            <ComponentRef Id="cmp2A7542A96A4B73E339FB32416BA72881" />
+            <ComponentRef Id="cmp0E2A4550E0AC2B8E8621624ED9851D09" />
+            <ComponentRef Id="cmpD0BE2A04DF4EAF89EE8FD7A6E690E729" />
+            <ComponentRef Id="cmp676276DFE1EE3080F982E8A4B9D21D48" />
+            <ComponentRef Id="cmp3955559512C0B742A4CE7A3C84450EA5" />
+            <ComponentRef Id="cmp0802D10413AFE04B867A02EE0BEDCF7B" />
+            <ComponentRef Id="cmpE438BDD74892D2614CAC3402BB49B4A1" />
+            <ComponentRef Id="cmp4EA36D2339F6AFECCA4D99EED767C672" />
+            <ComponentRef Id="cmpD52AADC5CB3A58FE1145389460ED4656" />
+            <ComponentRef Id="cmp9C928109CAB9CE8B0B29D9C7671D5208" />
+            <ComponentRef Id="cmp2E00240BCEACC43DE225F7F9569ACB8C" />
+            <ComponentRef Id="cmp629B12EFD149B5FD5BA447E6754DC892" />
+            <ComponentRef Id="cmp80B8FB0C3551AEB599A262D4946B6E4F" />
+            <ComponentRef Id="cmpA4192D9973B4E36BF2AE409D38EFE348" />
+            <ComponentRef Id="cmp1EB8DD56EFC658D48DC0D8E9ACD2A630" />
+            <ComponentRef Id="cmp722DCCAB109D8A1AFD64A4E3B7B82897" />
+            <ComponentRef Id="cmp00EED157E2153174737859203C3FB3D3" />
+            <ComponentRef Id="cmp6CDB3B5F1669BD2390B97DBAD7E58D75" />
+            <ComponentRef Id="cmp25A0297F47E1069944F997683F217654" />
+            <ComponentRef Id="cmp688A92A9198E9C2F23F9FE59E6D68518" />
+            <ComponentRef Id="cmp75DE8AC5811B535F01203AEAC4A16AB0" />
+            <ComponentRef Id="cmpC4597AC05FBD0E884829B0B1A88EF7F5" />
+            <ComponentRef Id="cmp2087F5B409FB060624790B29255C2F72" />
+            <ComponentRef Id="cmpC74E0D09E1F39B2DD53B821C06DD776B" />
+            <ComponentRef Id="cmp6EDA699D24E2EA9A430666823AAD01E8" />
+            <ComponentRef Id="cmp8F355A06F12D5A9969FF0465A2AF1A1C" />
+            <ComponentRef Id="cmp7CBA0F9D0E7293AAD258ACAC3267B17A" />
+            <ComponentRef Id="cmp03D2A82F36A9F49F232410ABB297C521" />
+            <ComponentRef Id="cmp49751FAE264057FA057AA63DD22FBA0B" />
+            <ComponentRef Id="cmp0FB14538CDF2029B7925331E9F5E3814" />
+            <ComponentRef Id="cmp9015A1B233A20E14C0B6E2212E35744E" />
+            <ComponentRef Id="cmpBA5FAF295A424135CBC775CF030E1106" />
+            <ComponentRef Id="cmpFF9E4A0E4680C7F5E7891EC3296EE87E" />
+            <ComponentRef Id="cmp79666CFC5ED732EDF516B53597516D56" />
+            <ComponentRef Id="cmpAB329CBDB3A32CB9EB3D6EB384C48F74" />
+            <ComponentRef Id="cmp13A762CF83AFB8936D848A27D9E936FA" />
+            <ComponentRef Id="cmp508CE6886BFC047AE842E30DDC2F06AA" />
+            <ComponentRef Id="cmpD20C690A7AB6936F048D2346942BC4C3" />
+            <ComponentRef Id="cmp0E76A3CC3AF82588836C6BCAC4E02AFB" />
+            <ComponentRef Id="cmp072011A332F370B848ADC37A0B6C6EB1" />
+            <ComponentRef Id="cmpCEFD3A9635ED1DCA0A0D794B8FA52DB1" />
+            <ComponentRef Id="cmp1931988310964F3738C03FAA8B75A274" />
+            <ComponentRef Id="cmpCE465F96CEEAFAADA1812C40323DCE8D" />
+            <ComponentRef Id="cmpC8C5D2C084CB89A5EF73798BFD27A9D4" />
+            <ComponentRef Id="cmp93CB7314AFA48C0234B6D1A9807FA757" />
+            <ComponentRef Id="cmpAA022E9068D53081E30DEFFE0B342FB6" />
+            <ComponentRef Id="cmp005B1F24EB7729F324D94C357548C59B" />
+            <ComponentRef Id="cmpE140ED7134C5FC189E2C393836E1296F" />
+            <ComponentRef Id="cmp6673C075046516608209F412B802F8E3" />
+            <ComponentRef Id="cmp070114A596B4DE79CDA9302DF8538A57" />
+            <ComponentRef Id="cmp051997D18C219E534B02E845DC18439A" />
+            <ComponentRef Id="cmpDF1DEE0CC0338E52B636587D37F203A6" />
+            <ComponentRef Id="cmp3DB7716A87A3FD8234482A8024C3FEDB" />
+            <ComponentRef Id="cmp9A5DD644BE7C3C365E66633640F57278" />
+            <ComponentRef Id="cmp3BC94FFFCBD2DD296AC73CBA235DAFDD" />
+            <ComponentRef Id="cmp2DBEA98AD5DC3772154C262F06F0FE1A" />
+            <ComponentRef Id="cmpF942A491E2D1A1DA6B93FA8E0A46ED6A" />
+            <ComponentRef Id="cmp564080A2D45CA30BE44EA32DA8A17ECD" />
+            <ComponentRef Id="cmp3A2C5329CCF7FA78156C2C6FA905C453" />
+            <ComponentRef Id="cmpCE267D43285792A6E17193EE29CEDA19" />
+            <ComponentRef Id="cmp71EA1DD0FF1D8189CEAD3F6659C526A5" />
+            <ComponentRef Id="cmpA3C262AB1162BFFB7C4F05B6BD324C98" />
+            <ComponentRef Id="cmp094361894680642D93FD3E4EEE7BDB64" />
+            <ComponentRef Id="cmpF2755BDFCC580BCAD5B1C05CEAA2754E" />
+            <ComponentRef Id="cmpEBC4E0A439B9DB7B619CCE58EDE96997" />
+            <ComponentRef Id="cmpAFA88C68C52DC9D8D3216A5B22E3F190" />
+            <ComponentRef Id="cmpBB750768ADDDE4BA52FAF206BFEAA192" />
+            <ComponentRef Id="cmp42DF7E06E54380EF95DC9549A0E4AE37" />
+            <ComponentRef Id="cmp76C9F9E1D483DCD10E2A095789DBE31D" />
+            <ComponentRef Id="cmpEDEFB52157D8E6F42F4F797593CCC2D2" />
+            <ComponentRef Id="cmp2AEE987FB180B9B7E3E14A0AF190A513" />
+            <ComponentRef Id="cmpCE7E47BACBADD45CA08D29581A12F95C" />
+            <ComponentRef Id="cmpA75C9BECFD2D6B0C0AB01B74C5423D3D" />
+            <ComponentRef Id="cmpB64DD6D4C08F0A789B8F0C6ABD13DD88" />
+            <ComponentRef Id="cmp34C4B44A52EEB4B40C9E13B026669978" />
+            <ComponentRef Id="cmpAF5762B91A098EBC4E74EAFF370743B2" />
+            <ComponentRef Id="cmpA6A2BE995114EF59CB76623406F939F4" />
+            <ComponentRef Id="cmp1B05A1210966AC4EAE2ECD2A1EE0AAA8" />
+            <ComponentRef Id="cmp659E214D4A0ABB852E06C5E8FD42A01C" />
+            <ComponentRef Id="cmp26B9C77F9E630BE078B3C8563A90E4A3" />
+            <ComponentRef Id="cmp7341E71D079BB9A2A0806EBE1CA0018F" />
+            <ComponentRef Id="cmp63C109447357067AD369AD21870B5F73" />
+            <ComponentRef Id="cmpE1EDC8F843A4E1E0EFE50B2027775C83" />
+            <ComponentRef Id="cmp7CE801ECC2692ACD85A1A63BD7955C69" />
+            <ComponentRef Id="cmpE81270459005CE41BA43400B427FD72F" />
+            <ComponentRef Id="cmp3D2C9414A2141CAE6F4EBEF6E1F0CC91" />
+            <ComponentRef Id="cmpA605A7005A3CFF75B6FF8B0FF2C6562B" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

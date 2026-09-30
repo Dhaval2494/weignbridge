@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "Name": "SingleDoublePass_Receipt.rdlc",
+    "Label": "Default Format - Laser ",
+    "IsMulti": 0,
+    "Image": "1_Laser.png"
+  },
+  {
+    "id": 2,
+    "Name": "SingleDoublePass_Receipt2.rdlc",
+    "Label": "2 Receipts On A4 Single Page - Laser",
+    "IsMulti": 0,
+    "Image": "2_Laser.png"
+  },
+  {
+    "id": 3,
+    "Name": "SingleDoublePass_Receipt3.rdlc",
+    "Label": "3 Receipts On A4 Single Page - Laser",
+    "IsMulti": 0,
+    "Image": "3_Laser.png"
+  },
+  {
+    "id": 4,
+    "Name": "SingleDoublePass_Receipt_Custom.rdlc",
+    "Label": "Custom Format - Laser",
+    "IsMulti": 0,
+    "Image": ""
+  },
+  //{
+  //  "id": 5,
+  //  "Name": "SingleDoublePass_Receipt8.rdlc",
+  //  "Label": "Laser receipt with 8 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  //{
+  //  "id": 6,
+  //  "Name": "SingleDoublePass_Receipt10.rdlc",
+  //  "Label": "Laser receipt with 10 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  //{
+  //  "id": 7,
+  //  "Name": "SingleDoublePass_Receipt12.rdlc",
+  //  "Label": "Laser receipt with 12 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  //{
+  //  "id": 8,
+  //  "Name": "SingleDoublePass_Receipt14.rdlc",
+  //  "Label": "Laser receipt with 14 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  {
+    "id": 9,
+    "Name": "SingleDoublePass_Receipt_courier.rdlc",
+    "Label": "Default Format - DotMatrix ",
+    "IsMulti": 0,
+    "Image": "1_DotMatrix.png"
+  },
+  {
+    "id": 10,
+    "Name": "SingleDoublePass_Receipt_Courier2.rdlc",
+    "Label": "2 Receipts On A4 Single Page - DotMatrix",
+    "IsMulti": 0,
+    "Image": "2_DotMatrix.png"
+  },
+  {
+    "id": 11,
+    "Name": "SingleDoublePass_Receipt_Courier3.rdlc",
+    "Label": "3 Receipts On A4 Single Page - DotMatrix",
+    "IsMulti": 0,
+    "Image": "3_DotMatrix.png"
+  },
+  {
+    "id": 12,
+    "Name": "SingleDoublePass_Receipt_Courier_Custom.rdlc",
+    "Label": "Custom Format - DotMatrix",
+    "IsMulti": 0,
+    "Image": ""
+  },
+  //{
+  //  "id": 13,
+  //  "Name": "SingleDoublePass_Receipt_Courier8.rdlc",
+  //  "Label": "DotMatrix receipt with 8 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  //{
+  //  "id": 14,
+  //  "Name": "SingleDoublePass_Receipt_Courier10.rdlc",
+  //  "Label": "DotMatrix receipt with 10 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  //{
+  //  "id": 15,
+  //  "Name": "SingleDoublePass_Receipt_Courier12.rdlc",
+  //  "Label": "DotMatrix receipt with 12 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  //{
+  //  "id": 16,
+  //  "Name": "SingleDoublePass_Receipt_Courier14.rdlc",
+  //  "Label": "DotMatrix receipt with 14 customFields",
+  //  "IsMulti": 0,
+  //  "Image": ""
+  //},
+  {
+    "id": 17,
+    "Name": "MultiPass_Receipt.rdlc",
+    "Label": "Default Format - Multi Laser",
+    "IsMulti": 1,
+    "Image": "1_MultiLaser.png"
+  },
+  {
+    "id": 18,
+    "Name": "MultiPass_Receipt_courier.rdlc",
+    "Label": "Default Format - Multi DotMatrix",
+    "IsMulti": 1,
+    "Image": "1_MultiDot.png"
+  }
+]

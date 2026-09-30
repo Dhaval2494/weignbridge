@@ -1,0 +1,209 @@
+﻿<Page x:Class="WeighingSolution.View.TemplateManagement_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="800" d:DesignWidth="900"
+	Title="TemplateManagement_Page" FocusManager.FocusedElement="{Binding ElementName=txtTemplateName}">
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100" >
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <!--<Image Source="/Images/account.png" Width="25" Height="25" Margin="0,3,0,0" ></Image>-->
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource TemplateIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25" VerticalAlignment="Center">
+                          <Run FontWeight="Bold"  FontSize="25" Text="User Role" />
+                         Management</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto"   VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <Grid VerticalAlignment="Top" Margin="5,5,0,0" Name="grdMain">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                            <Label Name="lblTemplateName"  Content="User Role Name"></Label>
+                            <Label Foreground="Red">*</Label>
+                        </StackPanel>
+                        <TextBox Name="txtTemplateName" Grid.Row="0" Grid.Column="1" Margin="0,0,30,0" Text="{Binding Model.TemplateName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <Label Name="lblActive" Grid.Row="0" Grid.Column="2" Content="Active" ></Label>
+                        <CheckBox Name="cbActive" Grid.Row="0" Grid.Column="3" Margin="-20,0,0,0" IsChecked="{Binding Model.Active, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></CheckBox>
+                    </Grid>
+                    <GroupBox Header="Permission Set" Margin="0,25,0,0" BorderThickness="0">
+                        <GroupBox.Resources>
+                            <CollectionViewSource x:Key="cvsTemplatePermissions" Source="{Binding Model.TemplatePermissions}">
+                                <CollectionViewSource.SortDescriptions>
+                                    <scm:SortDescription PropertyName="Feature.SortOrder" Direction="Ascending"/>
+                                </CollectionViewSource.SortDescriptions>
+                            </CollectionViewSource>
+                        </GroupBox.Resources>
+
+                        <DataGrid  ItemsSource="{Binding Source={StaticResource cvsTemplatePermissions}}" AutoGenerateColumns="False" CanUserAddRows="False" 
+                                   Margin="-5,0,-4,0" ScrollViewer.CanContentScroll="True"  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                    <Setter Property="Background" Value="{DynamicResource AccentColorBrush}"/>
+                                    <Setter Property="Height" Value="35"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
+                                    <Setter Property="BorderThickness" Value="0,2,0,2"/>
+                                    <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                                    <Setter Property="Padding" Value="15,0,0,0"></Setter>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns >
+                                <DataGridTemplateColumn Header="Feature Name"  Width="*"  IsReadOnly="True" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Feature.FeatureName}" Padding="30,0,0,0">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <Trigger Property="Text" Value="TransactionManagement">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-20,0,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="DataSetup">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-20,0,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="Reports">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-20,0,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="Settings">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-20,0,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="MasterReport">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-10,0,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="AuditReport">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-10,0,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="TransactionReport">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Margin" Value="-10,0,0,0"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Read"  Width="*"   IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Name="cbRead" Visibility="{Binding Feature.ReadVisible,Converter={StaticResource BooleanToVisibilityConverter}}"  Margin="20,0,0,0"
+                                              IsChecked="{Binding Path=Read, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding}"
+                                              Command="{Binding DataContext.ReadCheckChangedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header=" Create"  Width="*"   IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Name="cbCreate" Visibility="{Binding Feature.CreateVisible,Converter={StaticResource BooleanToVisibilityConverter}}" Margin="20,0,0,0"
+                                              IsChecked="{Binding Path=Create, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Command="{Binding DataContext.CheckboxCheckedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}">
+                                                <CheckBox.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                                        <Binding />
+                                                        <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}" />
+                                                    </MultiBinding>
+                                                </CheckBox.CommandParameter>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Update"  Width="*"   IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Name="cbUpdate" Visibility="{Binding Feature.UpdateVisible,Converter={StaticResource BooleanToVisibilityConverter}}" Margin="20,0,0,0"
+                                              IsChecked="{Binding Path=Update, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Command="{Binding DataContext.CheckboxCheckedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}">
+                                                <CheckBox.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                                        <Binding />
+                                                        <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}" />
+                                                    </MultiBinding>
+                                                </CheckBox.CommandParameter>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Delete"  Width="*"   IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Name="cbDelete" Visibility="{Binding Feature.DeleteVisible,Converter={StaticResource BooleanToVisibilityConverter}}" Margin="20,0,0,0"
+                                              IsChecked="{Binding Path=Delete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Command="{Binding DataContext.CheckboxCheckedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}">
+                                                <CheckBox.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                                        <Binding />
+                                                        <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}" />
+                                                    </MultiBinding>
+                                                </CheckBox.CommandParameter>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Execute" Width="*" IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Name="cbExecute" Visibility="{Binding Feature.ExecuteVisible,Converter={StaticResource BooleanToVisibilityConverter}}" Margin="20,0,0,0"
+                                              IsChecked="{Binding Path=Execute, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              Command="{Binding DataContext.CheckboxCheckedCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}">
+                                                <CheckBox.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                                        <Binding />
+                                                        <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}" />
+                                                    </MultiBinding>
+                                                </CheckBox.CommandParameter>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Controls:ButtonHelper.PreserveTextCase="True" IsDefault="True" Name="SaveTemplateManegement" Grid.Row="0" Grid.Column="0" Height="30"   Style="{DynamicResource  mouseoverstyle}"   BorderBrush="{DynamicResource AccentColorBrush}" Margin="45,30,10,50" Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="TemplateManagementCancel" Grid.Row="0" Grid.Column="1" Height="30"  Style="{DynamicResource  mouseoverstyle}"   BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50" Command="{Binding CloseDetailViewCommand}"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

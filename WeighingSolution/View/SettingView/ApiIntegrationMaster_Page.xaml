@@ -1,0 +1,712 @@
+﻿<Page x:Class="WeighingSolution.View.ApiIntegrationMaster_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:WeighingSolution.View"
+      xmlns:conv="clr-namespace:WeighingSolution.Converters"
+      mc:Ignorable="d"
+      Title="API Integration Master"
+      d:DesignHeight="720" d:DesignWidth="1200">
+
+    <Page.Resources>
+        <conv:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
+
+        <Style x:Key="DragSourceListBoxItem" TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Modern TabControl -->
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="#F5F7FA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <!-- Modern TabItem -->
+        <Style TargetType="TabItem">
+
+            <Setter Property="Foreground" Value="#64748B"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="25,20"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="TabItem">
+
+                        <Grid>
+
+                            <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="8"
+                                    Width="auto"
+                            Padding="12,2">
+
+                                <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            ContentSource="Header"/>
+
+                            </Border>
+
+                            <!-- Bottom Indicator -->
+                            <Border x:Name="Indicator"
+                            Height="3"
+                            Width="40"
+                            Background="#2563EB"
+                            CornerRadius="2"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center"
+                            Visibility="Collapsed"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Hover -->
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+
+                                <Setter TargetName="Border"
+                                Property="Background"
+                                Value="#EEF5FF"/>
+
+                                <Setter Property="Foreground"
+                                Value="#2563EB"/>
+
+                            </Trigger>
+
+                            <!-- Selected -->
+                            <Trigger Property="IsSelected"
+                             Value="True">
+
+                                <Setter TargetName="Border"
+                                Property="Background"
+                                Value="White"/>
+
+                                <Setter Property="Foreground"
+                                Value="#2563EB"/>
+
+                                <Setter Property="FontWeight"
+                                Value="Bold"/>
+
+                                <Setter TargetName="Indicator"
+                                Property="Visibility"
+                                Value="Visible"/>
+
+                            </Trigger>
+
+                            <!-- Disabled -->
+                            <Trigger Property="IsEnabled"
+                             Value="False">
+
+                                <Setter Property="Opacity"
+                                Value="0.5"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <conv:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
+        <conv:RawBodyVisibilityConverter x:Key="RawBodyVisibilityConverter"/>
+        <conv:FieldsBodyVisibilityConverter x:Key="FieldsBodyVisibilityConverter"/>
+
+        <Style x:Key="SectionHeader" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,10,0,6"/>
+        </Style>
+        <Style x:Key="FieldLabel" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <Style x:Key="KvGrid" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="RowHeight" Value="32"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        </Style>
+
+        <!-- Postman-style "Send" button -->
+        <Style x:Key="SendButton" TargetType="Button">
+            <Setter Property="Background" Value="#FF6C37"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="22,7"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <!-- Status dot, reused in the response panel header -->
+        <Style x:Key="StatusDot" TargetType="Ellipse">
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="Fill" Value="Gray"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding TestIsSuccess}" Value="True">
+                    <Setter Property="Fill" Value="#2ECC71"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding TestIsSuccess}" Value="False">
+                    <Setter Property="Fill" Value="#E74C3C"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <!-- ListBoxItem Style -->
+        <Style TargetType="ListBoxItem">
+
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="6"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="ListBoxItem">
+
+                        <Border x:Name="Card"
+                            Background="White"
+                            CornerRadius="10"
+                            BorderBrush="#E5E7EB"
+                            BorderThickness="1"
+                            Padding="12"
+                            SnapsToDevicePixels="True">
+
+                            <ContentPresenter/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Hover -->
+                            <Trigger Property="IsMouseOver"
+                                 Value="True">
+
+                                <Setter TargetName="Card"
+                                    Property="Background"
+                                    Value="#F8FAFF"/>
+
+                                <Setter TargetName="Card"
+                                    Property="BorderBrush"
+                                    Value="#3B82F6"/>
+
+                            </Trigger>
+
+                            <!-- Selected -->
+                            <Trigger Property="IsSelected"
+                                 Value="True">
+
+                                <Setter TargetName="Card"
+                                    Property="Background"
+                                    Value="#EFF6FF"/>
+
+                                <Setter TargetName="Card"
+                                    Property="BorderBrush"
+                                    Value="{DynamicResource AccentColorBrush}"/>
+
+                                <Setter TargetName="Card"
+                                    Property="BorderThickness"
+                                    Value="2"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ===================== LEFT: Integration list ===================== -->
+        <DockPanel Grid.Column="0" Background="#F5F6F8" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <TextBlock Text="API Integrations" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                <Button  Margin="20,0,0,0" Padding="10,4" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}"
+                        Command="{Binding NewCommand}">
+                    <TextBlock>
+     <Run Text="+ New" FontWeight="Normal"/>
+    
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+
+            <ListBox ItemsSource="{Binding Integrations}"
+                     SelectedItem="{Binding SelectedIntegration, Mode=TwoWay}"
+                     Margin="5" BorderThickness="0" Background="Transparent">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="2" Margin="0,2" Background="White" CornerRadius="4">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="8" Height="8" Margin="0,0,6,0" VerticalAlignment="Center">
+                                        <Ellipse.Style>
+                                            <Style TargetType="Ellipse">
+                                                <Setter Property="Fill" Value="Gray"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                        <Setter Property="Fill" Value="#2ECC71"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Ellipse.Style>
+                                    </Ellipse>
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="Black" />
+                                </StackPanel>
+                                <TextBlock Text="{Binding HttpMethod}" Foreground="Gray" FontSize="11" Margin="14,2,0,0"/>
+                                <TextBlock Text="{Binding ClientCode}" Foreground="Gray" FontSize="11" Margin="14,0,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+
+        <!-- ===================== RIGHT: Editor ===================== -->
+        <Grid Grid.Column="1" Margin="15" Visibility="{Binding SelectedIntegration, Converter={StaticResource NullToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- name / active / save / delete -->
+                <RowDefinition Height="Auto"/>
+                <!-- method + url + send -->
+                <RowDefinition Height="*"/>
+                <!-- tab content, takes remaining space -->
+                <RowDefinition Height="Auto"/>
+                <!-- drag splitter -->
+                <RowDefinition Height="220"/>
+                <!-- response panel, resizable via splitter -->
+            </Grid.RowDefinitions>
+
+            <!-- Name + Active + Save/Delete -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding SelectedIntegration.Name, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="18" FontWeight="Bold" Width="350" BorderThickness="0,0,0,1"/>
+                    <CheckBox Content="Active" IsChecked="{Binding SelectedIntegration.IsActive}" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="Delete" Padding="12,5" Margin="0,0,8,0" Background="Red" Foreground="White" Command="{Binding DeleteCommand}"/>
+                    <Button Content="Save" Padding="16,5" Background="#2ECC71" Foreground="White" Command="{Binding SaveCommand}"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Method + URL + Send (Postman style) -->
+            <Grid Grid.Row="1" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" ItemsSource="{Binding HttpMethods}"
+                          SelectedItem="{Binding SelectedIntegration.HttpMethod}"
+                          Margin="0,0,6,0" VerticalContentAlignment="Center"/>
+                <TextBox Grid.Column="1"
+                         Text="{Binding SelectedIntegration.BaseUrl, UpdateSourceTrigger=PropertyChanged}"
+                         mah:TextBoxHelper.Watermark="https://client.example.com/endpoint/path"
+                         VerticalContentAlignment="Center" Padding="6,0" Margin="0,0,6,0"/>
+                <Button Grid.Column="2" Content="Send" Style="{StaticResource SendButton}"
+                        Command="{Binding SendTestCommand}"/>
+            </Grid>
+
+            <!-- Tabs: Params / Authorization / Headers / Body / Response Mapping -->
+            <TabControl Grid.Row="2">
+
+                <!-- ============ PARAMS ============ -->
+                <TabItem Header="Params">
+                    <DockPanel Margin="10">
+                        <Button DockPanel.Dock="Top"  Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}"  HorizontalAlignment="Left" Margin="0,0,0,8"
+                                Padding="10,4" Command="{Binding AddParamCommand}"  >
+                            <TextBlock>
+<Run Text="+ Add Param" FontWeight="Normal"/>
+
+                            </TextBlock>
+                        </Button>
+                        <DataGrid ItemsSource="{Binding SelectedIntegration.ApiParamRows}" Style="{StaticResource KvGrid}">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="On" Binding="{Binding IsEnabled}" Width="40"/>
+                                <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="*"/>
+                                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="2*"/>
+                                <DataGridComboBoxColumn Header="Location" Width="90"
+                                    ItemsSource="{x:Static local:ApiIntegrationMaster_Page.LocationOptions}"
+                                    SelectedItemBinding="{Binding Location}"/>
+                                <DataGridTemplateColumn Header="" Width="40">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="✕" Padding="4,0" BorderThickness="0" Background="Transparent"
+                                                    Command="{Binding DataContext.RemoveParamCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                    CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                </TabItem>
+
+                <!-- ============ AUTHORIZATION ============ -->
+                <TabItem Header="Authorization">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Type" Style="{StaticResource FieldLabel}"/>
+                        <ComboBox x:Name="cboAuthMode" Width="220" HorizontalAlignment="Left"
+                                  ItemsSource="{Binding AuthModes}"
+                                  SelectedItem="{Binding SelectedIntegration.AuthMode}"
+                                  SelectionChanged="cboAuthMode_SelectionChanged"/>
+
+                        <TextBlock Text="Credentials" Style="{StaticResource SectionHeader}"/>
+
+                        <!-- Dynamic auth fields: rendered from SelectedAuthFieldDefinitions,
+                             matched to the actual value rows in SelectedIntegration.ApiAuthFields -->
+                        <ItemsControl ItemsSource="{Binding SelectedIntegration.ApiAuthFields}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="350"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding FieldName}" Style="{StaticResource FieldLabel}"/>
+                                        <TextBox Grid.Column="1" Text="{Binding FieldValue, UpdateSourceTrigger=PropertyChanged}"
+                                                 mah:TextBoxHelper.Watermark="{Binding FieldName}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <TextBlock Text="Note: for 'ApiKey' mode, set the 'AddTo' field value to either Header or Query."
+                                   Foreground="Gray" FontStyle="Italic" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- ============ HEADERS ============ -->
+                <TabItem Header="Headers">
+                    <DockPanel Margin="10">
+                        <Button DockPanel.Dock="Top"  Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" HorizontalAlignment="Left" Margin="0,0,0,8"
+                                Padding="10,4" Command="{Binding AddHeaderCommand}">
+                            <TextBlock>
+<Run Text="+ Add Header" FontWeight="Normal"/>
+
+                            </TextBlock>
+                        </Button>
+                        <DataGrid ItemsSource="{Binding SelectedIntegration.ApiHeaderRows}" Style="{StaticResource KvGrid}">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="On" Binding="{Binding IsEnabled}" Width="40"/>
+                                <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="*"/>
+                                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="2*"/>
+                                <DataGridCheckBoxColumn Header="Secret" Binding="{Binding IsSecret}" Width="55"/>
+                                <DataGridTemplateColumn Header="" Width="40">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="✕" Padding="4,0" BorderThickness="0" Background="Transparent"
+                                                    Command="{Binding DataContext.RemoveHeaderCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                    CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                </TabItem>
+
+                <!-- ============ BODY ============ -->
+                <TabItem Header="Body">
+                    <DockPanel Margin="10" LastChildFill="True">
+
+                        <!-- Mode selector: pinned to top -->
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+                            <RadioButton Content="None" GroupName="BodyMode" Margin="0,0,15,0"
+                                         IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None}"/>
+                            <RadioButton Content="raw (JSON)" GroupName="BodyMode" Margin="0,0,15,0"
+                                         IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=RawJson}"/>
+                            <RadioButton Content="raw (XML)" GroupName="BodyMode" Margin="0,0,15,0"
+                                         IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=RawXml}"/>
+                            <RadioButton Content="raw (Text)" GroupName="BodyMode" Margin="0,0,15,0"
+                                         IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=RawText}"/>
+                            <RadioButton Content="form-data" GroupName="BodyMode" Margin="0,0,15,0"
+                                         IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=FormData}"/>
+                            <RadioButton Content="x-www-form-urlencoded" GroupName="BodyMode"
+                                         IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=UrlEncoded}"/>
+                            <RadioButton Content="WhatsApp" GroupName="BodyMode" Margin="15,0,0,0"
+             IsChecked="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=WhatsApp}"/>
+                            <!--<CheckBox Content="Attach receipt PDF" 
+IsChecked="{Binding SelectedIntegration.AttachReceiptPdf}" Margin="15,0,0,0" />-->
+                            
+                        </StackPanel>
+
+                        <!-- Hint text: pinned to bottom, ABOVE the fill area so it can never
+                             steal the fill slot again -->
+                        <!--<TextBlock DockPanel.Dock="Bottom" Margin="0,8,0,0" Foreground="Gray" FontStyle="Italic" TextWrapping="Wrap"
+                                   Text="Use {{transaction.field}}, {{detail.field}} for single values, and {{for line in lines}} ... {{end}} to loop line items (see Odoo sample)."/>-->
+
+                        <!-- Editor area: this Grid is now the LAST child with no Dock set,
+                             so LastChildFill correctly stretches it to all remaining space.
+                             Raw editor and form-data grid are stacked in the same cell and
+                             toggled purely by their Visibility bindings. -->
+                        
+                        <Grid AllowDrop="True" DragOver="BodyEditorArea_DragOver" Drop="BodyEditorArea_Drop">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="260"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Row="0" Background="#F0FAF4" BorderBrush="#2ECC71" BorderThickness="1" Padding="10" Margin="0,0,0,10"
+                        Visibility="{Binding SelectedIntegration.BodyMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WhatsApp}">
+                                <StackPanel>
+                                    <TextBlock Text="WhatsApp options" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                                    <CheckBox Content="Attach current receipt PDF (adds {{ transaction.receipt_pdf_base64 }})"
+                                  IsChecked="{Binding SelectedIntegration.AttachReceiptPdf}" Margin="0,0,0,6"/>
+                                    <CheckBox Content="Show as a manual send button on the Receipt screen"
+                                  IsChecked="{Binding SelectedIntegration.IsManualSendAvailable}" Margin="0,0,0,6"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                        <TextBlock Text="Button label:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <TextBox Text="{Binding SelectedIntegration.ManualSendLabel}" Width="220"
+                                     mah:TextBoxHelper.Watermark="e.g. Send via WhatsApp"/>
+                                    </StackPanel>
+                                    <CheckBox Content="Ask for a phone number when sending (adds {{ transaction.manual_to_number }})"
+                                  IsChecked="{Binding SelectedIntegration.RequiresManualNumber}"/>
+                                    <TextBlock Foreground="Gray" FontStyle="Italic" TextWrapping="Wrap" Margin="0,8,0,0"
+                                   Text="The JSON body below still decides the actual payload shape - drop {{ transaction.manual_to_number }} and {{ transaction.receipt_pdf_base64 }} into it wherever your provider expects them."/>
+                                </StackPanel>
+                            </Border>
+                            <TextBox x:Name="txtRawBodyTemplate" Grid.Column="0"
+             Text="{Binding SelectedIntegration.RawBodyTemplate, UpdateSourceTrigger=PropertyChanged}"
+             AcceptsReturn="True" AcceptsTab="True" TextWrapping="NoWrap"
+             FontFamily="Consolas" FontSize="13"
+             VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+             AllowDrop="True" DragOver="txtRawBodyTemplate_DragOver" Drop="txtRawBodyTemplate_PreviewDrop"
+             Visibility="{Binding SelectedIntegration.BodyMode, Converter={StaticResource RawBodyVisibilityConverter}}"/>
+
+                            <DockPanel Grid.Column="0" Visibility="{Binding SelectedIntegration.BodyMode, Converter={StaticResource FieldsBodyVisibilityConverter}}">
+                                <Button DockPanel.Dock="Top"   Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" HorizontalAlignment="Left" Margin="0,0,0,8"
+                Padding="10,4" Command="{Binding AddBodyFieldCommand}">
+                                    <TextBlock>
+<Run Text="+ Add Field" FontWeight="Normal"/>
+
+                                    </TextBlock>
+                                </Button>
+                                <DataGrid ItemsSource="{Binding SelectedIntegration.ApiBodyFieldRows}" Style="{StaticResource KvGrid}">
+                                    <DataGrid.Columns>
+                                        <DataGridCheckBoxColumn Header="On" Binding="{Binding IsEnabled}" Width="40"/>
+                                        <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="*"/>
+                                        <DataGridTextColumn Header="Value / File Path" Binding="{Binding Value}" Width="2*"/>
+                                        <DataGridCheckBoxColumn Header="Is File" Binding="{Binding IsFile}" Width="55"/>
+                                        <DataGridTemplateColumn Header="" Width="40">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="✕" Padding="4,0" BorderThickness="0" Background="Transparent"
+                                    Command="{Binding DataContext.RemoveBodyFieldCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    CommandParameter="{Binding}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DockPanel>
+
+                            <GridSplitter Grid.Column="1" Width="6" HorizontalAlignment="Stretch" Background="#E0E0E0" Cursor="SizeWE"/>
+
+                            
+                            <!-- ===================== FIELD PICKER PANEL ===================== -->
+                            <Border Grid.Column="2" BorderBrush="#DDDDDD" BorderThickness="1" Background="#FAFAFA" Padding="8">
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Top" Text="Available Fields" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                                    <TextBlock DockPanel.Dock="Top" Text="Double click onto the template →" Foreground="Gray" FontSize="11" FontStyle="Italic" Margin="0,0,0,10" TextWrapping="Wrap"/>
+                                    <!-- ===================== SEARCH BOX ===================== -->
+                                    <Grid DockPanel.Dock="Top" Margin="0,0,0,10">
+                                        <TextBox Text="{Binding FieldSearchText, UpdateSourceTrigger=PropertyChanged}"
+                     mah:TextBoxHelper.Watermark="Search fields..."
+                     mah:TextBoxHelper.ClearTextButton="True"
+                     Padding="6,4"/>
+                                    </Grid>
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                        <StackPanel>
+                                            <TextBlock Text="Transaction Data" FontWeight="Bold" Foreground="#2ECC71" Margin="0,0,0,4"/>
+                                            <ListBox ItemsSource="{Binding TransactionFields}" BorderThickness="0" Background="Transparent"
+       
+         MouseDoubleClick="FieldsList_MouseDoubleClick">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border Padding="6,4" Margin="0,1" Background="White" CornerRadius="3" Cursor="Hand">
+                                                            <StackPanel>
+                                                                <TextBlock Text="{Binding DisplayName}" FontSize="12" FontWeight="Medium" Background="AliceBlue" Foreground="Blue" Padding="2" />
+                                                                <TextBlock Text="{Binding Placeholder}" FontSize="10" Foreground="Gray" FontFamily="Consolas" TextWrapping="Wrap"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+
+                                            <TextBlock Text="Transaction Detail (current pass)" FontWeight="Bold" Foreground="#2ECC71" Margin="0,12,0,4"/>
+                                            <ListBox ItemsSource="{Binding DetailFields}" BorderThickness="0" Background="Transparent"
+                             MouseDoubleClick="FieldsList_MouseDoubleClick">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border Padding="6,4" Margin="0,1" Background="White" CornerRadius="3" Cursor="Hand">
+                                                            <StackPanel>
+                                                                <TextBlock Text="{Binding DisplayName}" FontSize="12" FontWeight="Medium" Background="AliceBlue" Foreground="Blue"/>
+                                                                <TextBlock Text="{Binding Placeholder}" FontSize="10" Foreground="Gray" FontFamily="Consolas" TextWrapping="Wrap"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <TextBlock Text="Special" FontWeight="Bold" Foreground="#2ECC71" Margin="0,12,0,4"/>
+                                            <ListBox ItemsSource="{Binding SpecialSnippets}" BorderThickness="0" Background="Transparent"
+                              MouseDoubleClick="FieldsList_MouseDoubleClick">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border Padding="6,4" Margin="0,1" Background="White" CornerRadius="3" Cursor="Hand">
+                                                            <StackPanel>
+                                                                <TextBlock Text="{Binding DisplayName}" FontSize="12" FontWeight="Medium" Background="AliceBlue" Foreground="Blue" />
+                                                                <TextBlock Text="{Binding Placeholder}" FontSize="10" Foreground="Gray" FontFamily="Consolas" TextWrapping="Wrap"/>
+                                                            </StackPanel>
+                                                        </Border>
+                                                            
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+                        <!--<Grid>
+                            <TextBox Text="{Binding SelectedIntegration.RawBodyTemplate, UpdateSourceTrigger=PropertyChanged}"
+                                     AcceptsReturn="True" AcceptsTab="True" TextWrapping="NoWrap"
+                                     FontFamily="Consolas" FontSize="13"
+                                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                     Visibility="{Binding SelectedIntegration.BodyMode, Converter={StaticResource RawBodyVisibilityConverter}}"/>
+
+                            <DockPanel Visibility="{Binding SelectedIntegration.BodyMode, Converter={StaticResource FieldsBodyVisibilityConverter}}">
+                                <Button DockPanel.Dock="Top" Content="+ Add Field" HorizontalAlignment="Left" Margin="0,0,0,8"
+                                        Padding="10,4" Command="{Binding AddBodyFieldCommand}"/>
+                                <DataGrid ItemsSource="{Binding SelectedIntegration.ApiBodyFieldRows}" Style="{StaticResource KvGrid}">
+                                    <DataGrid.Columns>
+                                        <DataGridCheckBoxColumn Header="On" Binding="{Binding IsEnabled}" Width="40"/>
+                                        <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="*"/>
+                                        <DataGridTextColumn Header="Value / File Path" Binding="{Binding Value}" Width="2*"/>
+                                        <DataGridCheckBoxColumn Header="Is File" Binding="{Binding IsFile}" Width="55"/>
+                                        <DataGridTemplateColumn Header="" Width="40">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="✕" Padding="4,0" BorderThickness="0" Background="Transparent"
+                                                            Command="{Binding DataContext.RemoveBodyFieldCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                            CommandParameter="{Binding}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DockPanel>
+                        </Grid>-->
+                    </DockPanel>
+                </TabItem>
+
+                <!-- ============ RESPONSE MAPPING ============ -->
+                <TabItem Header="Response Mapping">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Success Path (JSONPath)" Style="{StaticResource FieldLabel}"/>
+                        <TextBox Text="{Binding SelectedIntegration.ResponseSuccessPath, UpdateSourceTrigger=PropertyChanged}"
+                                 mah:TextBoxHelper.Watermark="e.g. status" Width="350" HorizontalAlignment="Left"/>
+
+                        <TextBlock Text="Expected Success Value" Style="{StaticResource FieldLabel}" Margin="0,10,0,4"/>
+                        <TextBox Text="{Binding SelectedIntegration.ResponseSuccessValue, UpdateSourceTrigger=PropertyChanged}"
+                                 mah:TextBoxHelper.Watermark="e.g. success" Width="350" HorizontalAlignment="Left"/>
+
+                        <TextBlock Text="External Reference ID Path (JSONPath)" Style="{StaticResource FieldLabel}" Margin="0,10,0,4"/>
+                        <TextBox Text="{Binding SelectedIntegration.ResponseExternalIdPath, UpdateSourceTrigger=PropertyChanged}"
+                                 mah:TextBoxHelper.Watermark="e.g. payload.swama_ticket_id" Width="350" HorizontalAlignment="Left"/>
+
+                        <TextBlock Text="Trigger On" Style="{StaticResource FieldLabel}" Margin="0,10,0,4"/>
+                        <ComboBox ItemsSource="{Binding TriggerEvents}" SelectedItem="{Binding SelectedIntegration.TriggerOn}"
+                                  Width="220" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </TabItem>
+
+            </TabControl>
+
+            <!-- Drag handle to resize the response panel, Postman-style -->
+            <GridSplitter Grid.Row="3" Height="6" HorizontalAlignment="Stretch"
+                          Background="#E0E0E0" ResizeBehavior="PreviousAndNext" ResizeDirection="Rows"
+                          Cursor="SizeNS"/>
+
+            <!-- ===================== RESPONSE PANEL (always visible, any tab) ===================== -->
+            <Expander Grid.Row="4" IsExpanded="True" BorderBrush="#DDDDDD" BorderThickness="1,1,1,0" Padding="0"
+                      Background="#FAFAFA">
+                <Expander.Header>
+                    <StackPanel Orientation="Horizontal" Margin="4,2">
+                        <TextBlock Text="Response" FontWeight="SemiBold" Margin="0,0,12,0"/>
+                        <TextBlock Text="Status:" FontWeight="SemiBold" Margin="0,0,6,0"/>
+                        <TextBlock Text="{Binding TestStatusCode}" Margin="0,0,10,0"/>
+                        <Ellipse Style="{StaticResource StatusDot}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Expander.Header>
+
+                <Grid Height="auto" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Grid.Column="0" Margin="0,0,6,0">
+                        <TextBlock DockPanel.Dock="Top" Text="Request Body Sent" Style="{StaticResource SectionHeader}"/>
+                        <TextBox Text="{Binding TestRequestPreview, Mode=OneWay}" IsReadOnly="True"
+                                 AcceptsReturn="True" TextWrapping="NoWrap" FontFamily="Consolas"
+                                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="White"/>
+                    </DockPanel>
+
+                    <DockPanel Grid.Column="1" Margin="6,0,0,0">
+                        <TextBlock DockPanel.Dock="Top" Text="Response" Style="{StaticResource SectionHeader}"/>
+                        <TextBox Text="{Binding TestResponseBody, Mode=OneWay}" IsReadOnly="True"
+                                 AcceptsReturn="True" TextWrapping="NoWrap" FontFamily="Consolas"
+                                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="White"/>
+                    </DockPanel>
+                </Grid>
+            </Expander>
+        </Grid>
+    </Grid>
+</Page>

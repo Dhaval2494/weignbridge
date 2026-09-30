@@ -1,0 +1,60 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.local
+.env.*.local
+dist/
+build/
+*.log
+*.pid
+# Prisma
+*.db
+*.sqlite
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+*.iml
+*.lock
+*.pem
+*.priv
+*.key
+*.crt
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+coverage/
+# Visual Studio / MSBuild output
+bin/
+obj/
+*.exe
+*.msi
+*.cab
+
+# NuGet packages (if using packages.config / local cache)
+packages/
+
+# Setup / Installer redistributables
+SetupBootstrapper/bin/
+SetupBootstrapper/sources/
+SetupMSI/bin/
+SetupMSI/cabs/

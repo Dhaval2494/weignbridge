@@ -1,0 +1,88 @@
+﻿<Page x:Class="WeighingSolution.View.ApplicationTheme_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="800" d:DesignWidth="800"
+	Title="ApplicationTheme_Page">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel  Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <!--<Image Source="/Images/setting.png" Width="25" Height="25" Margin="0,3,0,0" ></Image>-->
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource AppTheamIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Application " />
+                       Theme</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Margin="10,15,0,10">Theme Color</Label>
+                    <ComboBox Grid.Row="0" Grid.Column="1" Name="txtThemeColor" Margin="0,15,50,10" Padding="5,5,5,5" SelectedValue="{Binding Path=Color}"  SelectedValuePath="Tag">
+                        <ComboBoxItem Content="Blue" Tag="Blue"></ComboBoxItem>
+                        <ComboBoxItem Content="Red" Tag="Red"></ComboBoxItem>
+                        <ComboBoxItem Content="Green" Tag="Green"></ComboBoxItem>
+                        <ComboBoxItem Content="Purple" Tag="Purple"></ComboBoxItem>
+                        <ComboBoxItem Content="Orange" Tag="Orange"></ComboBoxItem>
+                        <ComboBoxItem Content="Lime" Tag="Lime"></ComboBoxItem>
+                        <ComboBoxItem Content="Emerald" Tag="Emerald"></ComboBoxItem>
+                        <ComboBoxItem Content="Teal" Tag="Teal"></ComboBoxItem>
+                        <ComboBoxItem Content="Cyan" Tag="Cyan"></ComboBoxItem>
+                        <ComboBoxItem Content="Cobalt" Tag="Cobalt"></ComboBoxItem>
+                        <ComboBoxItem Content="Indigo" Tag="Indigo"></ComboBoxItem>
+                        <ComboBoxItem Content="Violet" Tag="Violet"></ComboBoxItem>
+                        <ComboBoxItem Content="Pink" Tag="Pink"></ComboBoxItem>
+                        <ComboBoxItem Content="Magenta" Tag="Magenta"></ComboBoxItem>
+                        <ComboBoxItem Content="Crimson" Tag="Crimson"></ComboBoxItem>
+                        <ComboBoxItem Content="Amber" Tag="Amber"></ComboBoxItem>
+                        <ComboBoxItem Content="Brown" Tag="Brown"></ComboBoxItem>
+                        <ComboBoxItem Content="Olive" Tag="Olive"></ComboBoxItem>
+                        <ComboBoxItem Content="Steel" Tag="Steel"></ComboBoxItem>
+                        <ComboBoxItem Content="Mauve" Tag="Mauve"></ComboBoxItem>
+                        <ComboBoxItem Content="Taupe" Tag="Taupe"></ComboBoxItem>
+                        <ComboBoxItem Content="Sienna" Tag="Sienna"></ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Row="1" Grid.Column="0" Margin="10,15,0,10">Base Color</Label>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Name="txtBaseColor" Margin="0,15,50,10" Padding="5,5,5,5" SelectedValue="{Binding Path=BaseColor}"  SelectedValuePath="Tag">
+                        <ComboBoxItem Content="Light" Tag="BaseLight"></ComboBoxItem>
+                        <ComboBoxItem Content="Dark" Tag="BaseDark"></ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Controls:ButtonHelper.PreserveTextCase="True" IsDefault="True" Name="SaveAppTheme" Grid.Row="0" Grid.Column="0" Height="30"  Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="35,30,0,50" Command="{Binding SaveCommand}"></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="CanecelAppTheme" Grid.Row="0" Grid.Column="1" Height="30"  Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="20,30,10,50" Command="{Binding CloseDetailViewCommand}" CommandParameter="/View/SettingView/Setting_Page.Xaml"></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

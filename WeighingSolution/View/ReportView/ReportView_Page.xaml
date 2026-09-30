@@ -1,0 +1,89 @@
+﻿<Page x:Class="WeighingSolution.View.ReportView_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      mc:Ignorable="d"
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="300" d:DesignWidth="700"
+	Title="ReportView_Page">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel  Margin="0,0,0,0">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource MasterReportIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Master Reports" />
+                    </TextBlock>
+                    <StackPanel HorizontalAlignment="Right" Margin="5,0,10,0">
+                        <Button Name="btnBackToReport" IsCancel="True" Content="Back" HorizontalAlignment="Right" Height="30" VerticalAlignment="Center" Width="150" Margin="0,5,0,0" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Click="btnBackToReport_Click"></Button>
+                    </StackPanel>
+                </DockPanel>
+                <Border  BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <TabControl Name="tabcontorlreport" Margin="0,10,0,35" BorderThickness="1" SelectedIndex="0" SelectionChanged="TabControl_SelectionChanged">
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Grid Name="Panel">
+                                        <Border Name="Border"  Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Padding="10,3,10,3"   CornerRadius="0,0,0,0"  HorizontalAlignment="Stretch" >
+                                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="0,2,0,2"/>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#ddd" />
+                                            <Setter Property="BorderThickness" Value="0"  TargetName="Border"></Setter>
+                                            <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="ContentSite"></Setter>
+                                            <Setter Property="TextElement.FontSize" Value="13" TargetName="ContentSite"></Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentColorBrush}" />
+                                            <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+                                            <Setter Property="BorderThickness" Value="0"  TargetName="Border"></Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Name="tabUserRolereport" Visibility="Collapsed" Header="UserRole Report" Margin="4,0,0,0" >
+                    <Frame Name="frameusrole" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0" ></Frame>
+                </TabItem>
+                <TabItem Name="tabUserreport" Visibility="Collapsed" Header="User Report" Margin="4,0,0,0" >
+                    <Frame Name="frameusr" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0" ></Frame>
+                </TabItem>
+                <TabItem Name="tabUnitreport" Visibility="Collapsed" Header="Unit Report" Margin="4,0,0,0" >
+                    <Frame Name="frameur" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0"></Frame>
+                </TabItem>
+                <TabItem Name="tabAcntreport" Visibility="Collapsed" Header="Account Report" Margin="4,0,0,0"  >
+                    <Frame Name="frameAr"  Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden" BorderThickness="0,0,0,0" ></Frame>
+                </TabItem>
+                <TabItem Name="tabVehiclereport" Visibility="Collapsed" Header="Vehicle Report" Margin="4,0,0,0">
+                    <Frame Name="framevr" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0"></Frame>
+                </TabItem>
+                <TabItem Name="tabDriverreport" Visibility="Collapsed" Header="Driver Report" Margin="4,0,0,0">
+                    <Frame Name="framedr" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0" ></Frame>
+                </TabItem>
+                <TabItem Name="tabProductreport" Visibility="Collapsed" Header="Product Report" Margin="4,0,0,0" >
+                    <Frame Name="framepr" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0"></Frame>
+                </TabItem>
+                <TabItem Name="tabGatereport" Visibility="Collapsed" Header="Gate Report" Margin="4,0,0,0" >
+                    <Frame Name="framegr" Margin="-1,-5.5,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0" ></Frame>
+                </TabItem>
+                <!--<TabItem Header="CustomFields Report" Visibility="Collapsed" Margin="4,0,0,0">
+                    <Frame Name="framecfr" Margin="0,-4,0,0"  NavigationUIVisibility="Hidden"  BorderThickness="0,0,0,0" BorderBrush="Black"></Frame>
+                </TabItem>-->
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Page>

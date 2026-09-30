@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UserRoleDataSet" targetNamespace="http://tempuri.org/UserRoleDataSet.xsd" xmlns:mstns="http://tempuri.org/UserRoleDataSet.xsd" xmlns="http://tempuri.org/UserRoleDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Endel_weighbridgeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Endel_weighbridgeConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WeighingSolution.Properties.Settings.GlobalReference.Default.Endel_weighbridgeConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Endel_weighbridgeConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT T.TemplateName
+	,F.FeatureName
+	,TP.PermissionSet
+	,T.Active
+	,F.SortOrder
+	,F.ParentFeatureID
+	,F.Action
+FROM TemplatePermission TP
+LEFT JOIN Template T ON TP.TemplateID = T.TemplateID
+LEFT JOIN Feature F ON TP.FeatureID = F.FeatureID
+WHERE UPPER(T.TemplateName) &lt;&gt; 'ADMIN' ORDER BY F.SortOrder</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TemplateName" DataSetColumn="TemplateName" />
+              <Mapping SourceColumn="FeatureName" DataSetColumn="FeatureName" />
+              <Mapping SourceColumn="PermissionSet" DataSetColumn="PermissionSet" />
+              <Mapping SourceColumn="Active" DataSetColumn="Active" />
+              <Mapping SourceColumn="SortOrder" DataSetColumn="SortOrder" />
+              <Mapping SourceColumn="ParentFeatureID" DataSetColumn="ParentFeatureID" />
+              <Mapping SourceColumn="Action" DataSetColumn="Action" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UserRoleDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UserRoleDataSet" msprop:Generator_UserDSName="UserRoleDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TemplateName" msprop:Generator_ColumnVarNameInTable="columnTemplateName" msprop:Generator_ColumnPropNameInRow="TemplateName" msprop:Generator_ColumnPropNameInTable="TemplateNameColumn" msprop:Generator_UserColumnName="TemplateName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FeatureName" msprop:Generator_ColumnVarNameInTable="columnFeatureName" msprop:Generator_ColumnPropNameInRow="FeatureName" msprop:Generator_ColumnPropNameInTable="FeatureNameColumn" msprop:Generator_UserColumnName="FeatureName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PermissionSet" msprop:Generator_ColumnVarNameInTable="columnPermissionSet" msprop:Generator_ColumnPropNameInRow="PermissionSet" msprop:Generator_ColumnPropNameInTable="PermissionSetColumn" msprop:Generator_UserColumnName="PermissionSet" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Active" msprop:Generator_ColumnVarNameInTable="columnActive" msprop:Generator_ColumnPropNameInRow="Active" msprop:Generator_ColumnPropNameInTable="ActiveColumn" msprop:Generator_UserColumnName="Active" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SortOrder" msprop:Generator_ColumnVarNameInTable="columnSortOrder" msprop:Generator_ColumnPropNameInRow="SortOrder" msprop:Generator_ColumnPropNameInTable="SortOrderColumn" msprop:Generator_UserColumnName="SortOrder" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ParentFeatureID" msprop:Generator_ColumnVarNameInTable="columnParentFeatureID" msprop:Generator_ColumnPropNameInRow="ParentFeatureID" msprop:Generator_ColumnPropNameInTable="ParentFeatureIDColumn" msprop:Generator_UserColumnName="ParentFeatureID" type="xs:int" minOccurs="0" />
+              <xs:element name="Action" msprop:Generator_ColumnVarNameInTable="columnAction" msprop:Generator_ColumnPropNameInRow="Action" msprop:Generator_ColumnPropNameInTable="ActionColumn" msprop:Generator_UserColumnName="Action" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

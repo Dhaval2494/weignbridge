@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <!--Instance name is limited to 16 characters-->
+  <?define SqlInstanceName=ENDELSQLEXPRESS?>
+  <?define SqlInstallCommand=/ACTION=Install /Q /IACCEPTSQLSERVERLICENSETERMS /FEATURES=SQLEngine /INSTANCENAME=$(var.SqlInstanceName) /SQLSYSADMINACCOUNTS=BUILTIN\Administrators  /SkipRules=RebootRequiredCheck /ADDCURRENTUSERASSQLADMIN=TRUE /SECURITYMODE=SQL /SAPWD=S@user4wb /HIDECONSOLE?>
+  <?define SqlUninstallCommand=/Action=Uninstall /Q /INSTANCENAME=$(var.SqlInstanceName) /FEATURES=SQLEngine /HIDECONSOLE?>
+
+  <Fragment>
+    <!-- Read SQL Server keys to find current instance and version -->
+    <util:RegistrySearch Id="SqlInstanceKeyFound" Root="HKLM" Key="SOFTWARE\Microsoft\Microsoft Sql Server" Format="raw" Value="InstalledInstances" Variable="SqlInstanceFound" Result="exists"/>
+    <util:RegistrySearch Id="Sql64InstanceKeyFound" Root="HKLM" Key="SOFTWARE\Microsoft\Microsoft Sql Server" Format="raw" Value="InstalledInstances" Variable="Sql64InstanceFound" Win64="yes" Result="exists" />
+    
+    <WixVariable Id="SQLServerPackageDirectory" Value="redist\" Overridable="yes" />
+    
+    <PackageGroup Id="SqlServer2019x64">
+      <ExePackage Id="SqlServer2019x64" DisplayName="Microsoft SQL Server 2019  Express"
+                  Name="!(wix.SQLServerPackageDirectory)SQLEXPR_x64_ENU.exe" InstallCommand="$(var.SqlInstallCommand)" UninstallCommand="$(var.SqlUninstallCommand)"
+                  DetectCondition="VersionNT64 AND Sql64InstanceFound" InstallCondition="VersionNT64 AND (NOT Sql64InstanceFound) AND InstallSQLx64=&quot;ALL&quot;"
+                  Compressed="no" Vital="no" PerMachine="yes" Permanent="yes" Cache="no"
+                  
+                  SourceFile="./sources/SQLEXPR_x64_ENU.exe">
+      </ExePackage>
+    </PackageGroup>
+
+    <!--<PackageGroup Id="SqlServer2014x86">
+      <ExePackage Id="SqlServer2014x86" DisplayName="Microsoft SQL Server 2014  Express"
+                  Name="!(wix.SQLServerPackageDirectory)SQLEXPR_x86_ENU.exe" InstallCommand="$(var.SqlInstallCommand)" UninstallCommand="$(var.SqlUninstallCommand)"
+                  DetectCondition="VersionNT AND (NOT VersionNT64) AND SqlInstanceFound" InstallCondition="VersionNT AND (NOT VersionNT64) AND (NOT SqlInstanceFound) AND InstallSQLx86=&quot;ALL&quot;"
+                  Compressed="no" Vital="no" PerMachine="yes" Permanent="yes" Cache="no"
+                  DownloadUrl="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2032BIT/SQLEXPR_x86_ENU.exe"
+                  SourceFile="./sources/SQLEXPR_x86_ENU.exe">
+      </ExePackage>
+    </PackageGroup>-->
+   
+  </Fragment>
+</Wix>

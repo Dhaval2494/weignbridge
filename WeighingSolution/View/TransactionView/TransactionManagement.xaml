@@ -1,0 +1,2508 @@
+﻿<Page
+    x:Class="WeighingSolution.View.TransactionManagement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+    xmlns:converter1="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.SharedComponents"
+    xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mAppsControls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shared="clr-namespace:WeighingSolution.SharedComponents;assembly=WeighingSolution.SharedComponents"
+    xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer"
+    xmlns:weighingsolution="clr-namespace:WeighingSolution"
+    xmlns:xCeedDD="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+    xmlns:xCeedDD1="clr-namespace:WeighingSolution.UserControls"
+    Title="Transaction Management"
+    d:DesignHeight="700"
+    d:DesignWidth="1200"
+    FocusManager.IsFocusScope="True"
+    Style="{DynamicResource MetroPage}"
+    mc:Ignorable="d">
+
+
+    <Page.Resources>
+        <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <converter:ListToVisibilityConverter x:Key="ListToVisibilityConverter" />
+        <converter:WeightVisibilityConverter x:Key="WeightVisibilityConverter" />
+        <converter:EqualityVisibilityConverter x:Key="EqualityVisibilityConverter" />
+        <converter:InEqualityVisibilityConverter x:Key="InEqualityVisibilityConverter" />
+        <converter:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converter:EqualityConverter x:Key="EqualityConverter" />
+        <converter:InEqualityConverter x:Key="InEqualityConverter" />
+        <converter1:Base64ToImageConverter x:Key="Base64ToImageConverter" />
+        <converter1:CameraImagePathConverter x:Key="CameraImagePathConverter" />
+        <converter:BooleanAndConverter x:Key="BooleanAndConverter" />
+
+        <BitmapImage x:Key="DefaultImage" UriSource="/Images/no-img.png" />
+    </Page.Resources>
+    <Page.InputBindings>
+        <KeyBinding Command="{Binding CaptureWeightCommand}" Gesture="F8">
+            <KeyBinding.CommandParameter>
+                <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                    <Binding ElementName="txtWeightMeter" Path="Text" />
+                    <Binding ElementName="lblWeightMeter" Path="Text" />
+                </MultiBinding>
+            </KeyBinding.CommandParameter>
+        </KeyBinding>
+        <KeyBinding
+            Command="{Binding SaveCommand}"
+            CommandParameter="Continue"
+            Gesture="F7" />
+    </Page.InputBindings>
+    <DockPanel Background="{DynamicResource WhiteBrush}" KeyboardNavigation.TabNavigation="Cycle">
+        <!--  Multi Weighbridge Icons / Buttons  -->
+        <StackPanel
+            Name="stkMultiWeighBridge"
+            Width="100"
+            Background="{DynamicResource AccentColorBrush2}"
+            DockPanel.Dock="Left"
+            Orientation="Vertical"
+            Visibility="Collapsed">
+            <ListView
+                Name="lvActiveWeighbridges"
+                Margin="0"
+                Padding="0"
+                Background="Transparent"
+                BorderThickness="0"
+                ItemsSource="{Binding ActiveWeighBridges}"
+                KeyboardNavigation.DirectionalNavigation="Cycle"
+                SelectedItem="{Binding SelectedWeighBridge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TabIndex="1">
+                <ListView.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource MetroListViewItem}" TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Margin" Value="9,15,9,15" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Controls:ItemHelper.SelectedBackgroundBrush" Value="Transparent" />
+                        <Setter Property="Controls:ItemHelper.ActiveSelectionBackgroundBrush" Value="Transparent" />
+                        <Setter Property="Controls:ItemHelper.HoverSelectedBackgroundBrush" Value="Transparent" />
+                        <Setter Property="Controls:ItemHelper.HoverBackgroundBrush" Value="Transparent" />
+                        <Setter Property="Controls:ItemHelper.ActiveSelectionForegroundBrush" Value="{DynamicResource BlackBrush}" />
+                        <Setter Property="Controls:ItemHelper.SelectedForegroundBrush" Value="{DynamicResource BlackBrush}" />
+                        <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
+                        <Style.Triggers>
+                            <Trigger Property="ListViewItem.IsMouseOver" Value="True">
+                                <Setter Property="Controls:ItemHelper.ActiveSelectionForegroundBrush" Value="{DynamicResource WhiteBrush}" />
+                                <Setter Property="Controls:ItemHelper.SelectedForegroundBrush" Value="{DynamicResource WhiteBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource BlackBrush}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Margin="0"
+                            Padding="0,0,0,7"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <Border.Style>
+                                <Style>
+                                    <Setter Property="Border.BorderBrush" Value="{DynamicResource AccentColorBrush2}" />
+                                    <Setter Property="Border.Background" Value="{DynamicResource AccentColorBrush4}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}, Path=IsSelected}" Value="True">
+                                            <Setter Property="Border.Background" Value="{DynamicResource WhiteBrush}" />
+                                            <Setter Property="Border.BorderBrush" Value="{DynamicResource WhiteBrush}" />
+                                        </DataTrigger>
+                                        <Trigger Property="Border.IsMouseOver" Value="True">
+                                            <Setter Property="Border.Background" Value="{DynamicResource WhiteBrush}" />
+                                            <Setter Property="Border.BorderBrush" Value="{DynamicResource WhiteBrush}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <StackPanel Width="80" Margin="0">
+                                <Rectangle
+                                    Width="60"
+                                    Height="60"
+                                    Margin="0,5,0,0"
+                                    HorizontalAlignment="Center"
+                                    Fill="{DynamicResource BlackBrush}"
+                                    Visibility="{Binding FormatedData, Converter={StaticResource WeightVisibilityConverter}, ConverterParameter='Visible'}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{StaticResource EmptyWeighScaleIcon}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <Rectangle
+                                    Width="60"
+                                    Height="60"
+                                    Margin="0,5,0,0"
+                                    HorizontalAlignment="Center"
+                                    Fill="{DynamicResource BlackBrush}"
+                                    Visibility="{Binding FormatedData, Converter={StaticResource WeightVisibilityConverter}, ConverterParameter='Collapsed'}">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{StaticResource LoadedWeighSclaleIcon}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock
+                                    FontSize="12"
+                                    FontWeight="Bold"
+                                    Text="{Binding FormatedData, TargetNullValue=VACANT}"
+                                    TextAlignment="Center" />
+                                <TextBlock
+                                    Width="74"
+                                    FontSize="8"
+                                    Text="{Binding ScaleName}"
+                                    TextAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <DockPanel
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="{DynamicResource AccentColorBrush4}"
+            DockPanel.Dock="Right"
+            LastChildFill="True">
+            <!--  Bottom Panel containing Action buttons: Cancel, End Transaction, Continue and Capture Weight  -->
+            <StackPanel
+                Height="100"
+                Margin="0,0,0,0"
+                VerticalAlignment="Bottom"
+                Background="{DynamicResource AccentColorBrush4}"
+                DockPanel.Dock="Bottom"
+                KeyboardNavigation.TabIndex="5"
+                KeyboardNavigation.TabNavigation="Local"
+                Orientation="Horizontal">
+                <Button
+    Name="btnContinue"
+    Height="30"
+    Margin="10,10,10,10"
+    Padding="20,0,20,0"
+    VerticalAlignment="Top"
+    Controls:ButtonHelper.PreserveTextCase="True"
+    BorderBrush="{DynamicResource AccentColorBrush}"
+    Command="{Binding SaveCommand}"
+    CommandParameter="Continue"
+    IsEnabled="{Binding IsSaving, Converter={StaticResource InverseBooleanConverter}}"
+    Style="{DynamicResource mouseoverstyle}"
+    TabIndex="1"
+    Visibility="Collapsed">
+
+                    <Button.Content>
+                        <Grid>
+
+                            <!-- Normal Text -->
+                            <TextBlock
+                Text="Continue (F7)"
+                VerticalAlignment="Center">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsSaving}" Value="True" />
+                                                    <Condition Binding="{Binding SavingAction}" Value="Continue" />
+                                                </MultiDataTrigger.Conditions>
+
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </MultiDataTrigger>
+
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+
+                            </TextBlock>
+
+                            <!-- Loading -->
+                            <StackPanel Orientation="Horizontal">
+
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+
+                                        <!-- Default -->
+                                        <Setter Property="Visibility" Value="Collapsed" />
+
+                                        <Style.Triggers>
+
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsSaving}" Value="True" />
+                                                    <Condition Binding="{Binding SavingAction}" Value="Continue" />
+                                                </MultiDataTrigger.Conditions>
+
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </MultiDataTrigger>
+
+                                        </Style.Triggers>
+
+                                    </Style>
+                                </StackPanel.Style>
+
+                                <Controls:ProgressRing
+                    Width="16"
+                    Height="16"
+                    Margin="0,0,8,0"
+                    Foreground="White"
+                    IsActive="True" />
+
+                                <TextBlock
+                    Text="Saving..."
+                    VerticalAlignment="Center" />
+
+                            </StackPanel>
+
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!--<Button TabIndex="2" Content="Continue And Print" Name="btnContinueAndPrint" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Padding="20,0,20,0" Margin="10,30,10,30" Visibility="Collapsed" Command="{Binding SaveCommand}" CommandParameter="ContinueAndPrint"></Button>-->
+                <Button
+    Name="btnEndTransaction"
+    Height="30"
+    Margin="10,10,10,10"
+    Padding="20,0,20,0"
+    VerticalAlignment="Top"
+    Controls:ButtonHelper.PreserveTextCase="True"
+    BorderBrush="{DynamicResource AccentColorBrush}"
+    Command="{Binding SaveCommand}"
+    CommandParameter="EndTransaction"
+    IsDefault="True"
+    IsEnabled="{Binding IsSaving, Converter={StaticResource InverseBooleanConverter}}"
+    Style="{DynamicResource mouseoverstyle}"
+    TabIndex="3"
+    Visibility="Collapsed">
+                    <Button.Content>
+                        <Grid>
+                            <TextBlock Text="End Transaction (Enter)" VerticalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsSaving}" Value="True" />
+                                                    <Condition Binding="{Binding SavingAction}" Value="EndTransaction" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsSaving}" Value="True" />
+                                                    <Condition Binding="{Binding SavingAction}" Value="EndTransaction" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <Controls:ProgressRing
+                    Width="16" Height="16" Margin="0,0,8,0"
+                    Foreground="White" IsActive="True" />
+                                <TextBlock Text="Ending..." VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!--<Button TabIndex="4" Content="End Transaction And Print"  Controls:ButtonHelper.PreserveTextCase="True" Name="btnEndTransactionAndPrint" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}"  Height="30" Padding="20,0,20,0" Margin="10,30,10,30" Visibility="Collapsed" Command="{Binding SaveCommand}" CommandParameter="EndTransactionAndPrint"></Button>-->
+                <Button
+                    Name="btnBackToList"
+                    Height="30"
+                    Margin="10,10,10,10"
+                    Padding="20,0,20,0"
+                    VerticalAlignment="Top"
+                    Controls:ButtonHelper.PreserveTextCase="True"
+                    BorderBrush="{DynamicResource AccentColorBrush}"
+                    Command="{Binding CloseDetailViewCommand}"
+                    CommandParameter="/View/TransactionView/TransactionManagementList_Page.Xaml"
+                    Content="Cancel (Esc)"
+                    IsCancel="True"
+                    Style="{DynamicResource mouseoverstyle}"
+                    TabIndex="5" />
+            </StackPanel>
+
+            <!--  Left GroupBox containing input fields, Right Panel contaning receipt details, camera and weighmeter  -->
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--  Left GroupBox containing Master Input Fields  -->
+                <GroupBox
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0"
+                    VerticalAlignment="Stretch"
+                    BorderBrush="{DynamicResource AccentColorBrush}"
+                    DockPanel.Dock="Top"
+                    KeyboardNavigation.TabNavigation="Local"
+                    TabIndex="2">
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                Text="Transaction Details" />
+                            <TextBlock
+                                Margin="0,0,0,10"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                Text="{Binding PageLoadText}"
+                                TextAlignment="Right" />
+                        </StackPanel>
+                    </GroupBox.Header>
+                    <csc:ScrollViewerEx
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <Grid
+                                Name="gridTranDetail"
+                                Margin="15,10,0,0"
+                                KeyboardNavigation.TabIndex="1"
+                                KeyboardNavigation.TabNavigation="Local">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="260" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="-5,0,0,5"
+                                    VerticalAlignment="Top">
+                                    Transaction Mode:
+                                </Label>
+                                <RadioButton
+                                    Name="rdbSinglePass"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,5"
+                                    Checked="rdbTransactionMode_Checked"
+                                    GroupName="rdbTransactionMode"
+                                    IsChecked="{Binding Model.TransactionMode, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Single'}"
+                                    IsEnabled="{Binding EditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                    TabIndex="1">
+                                    Single
+                                </RadioButton>
+                                <RadioButton
+                                    Name="rdbDoublePass"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="100,0,0,5"
+                                    Checked="rdbTransactionMode_Checked"
+                                    GroupName="rdbTransactionMode"
+                                    IsChecked="{Binding Model.TransactionMode, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Double'}"
+                                    TabIndex="2">
+                                    Double
+                                </RadioButton>
+                                <RadioButton
+                                    Name="rdbMultiPass"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="200,0,0,5"
+                                    Checked="rdbTransactionMode_Checked"
+                                    GroupName="rdbTransactionMode"
+                                    IsChecked="{Binding Model.TransactionMode, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Multi'}"
+                                    TabIndex="3"
+                                    Visibility="{Binding Source={x:Static strFormat:Constant.IsBasicversion}, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter={StaticResource TrueValue}}">
+                                    Multi
+                                </RadioButton>
+
+                                <Label
+                                    Name="lblWeighmentType"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="-5,0,0,5"
+                                    VerticalAlignment="Top"
+                                    Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                                    Weighment Type:
+                                </Label>
+                                <RadioButton
+                                    Name="rdbTareWeight"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,5"
+                                    GroupName="rdbWeighmentType"
+                                    IsChecked="{Binding ActiveTransaction.WeighmentType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Tare'}"
+                                    IsEnabled="{Binding Model.TransactionMode, Converter={StaticResource InEqualityConverter}, ConverterParameter='Single'}"
+                                    TabIndex="4"
+                                    Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                                    Tare
+                                </RadioButton>
+                                <RadioButton
+                                    Name="rdbGrossWeight"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="100,0,0,5"
+                                    GroupName="rdbWeighmentType"
+                                    IsChecked="{Binding ActiveTransaction.WeighmentType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Gross'}"
+                                    IsEnabled="{Binding Model.TransactionMode, Converter={StaticResource InEqualityConverter}, ConverterParameter='Single'}"
+                                    TabIndex="5"
+                                    Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                                    Gross
+                                </RadioButton>
+
+                                <Label
+                                    Name="lblTxType"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Margin="-5,0,0,5"
+                                    VerticalAlignment="Top">
+                                    Transaction Type:
+                                </Label>
+                                <RadioButton
+                                    Name="rdbShipped"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,5"
+                                    GroupName="rdbTransactionType"
+                                    IsChecked="{Binding Model.TransactionType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Outgoing'}"
+                                    IsEnabled="{Binding EditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                    TabIndex="6">
+                                    Outgoing
+                                </RadioButton>
+                                <RadioButton
+                                    Name="rdbReceived"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="100,0,0,5"
+                                    GroupName="rdbTransactionType"
+                                    IsChecked="{Binding Model.TransactionType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Incoming'}"
+                                    IsEnabled="{Binding EditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                    TabIndex="7">
+                                    Incoming
+                                </RadioButton>
+                                <RadioButton
+                                    Name="rdbBoth"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="200,0,0,5"
+                                    GroupName="rdbTransactionType"
+                                    IsChecked="{Binding Model.TransactionType, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter='Both'}"
+                                    IsEnabled="{Binding EditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                    TabIndex="8">
+                                    Both
+                                </RadioButton>
+
+                                <Label
+                                    Name="lblTransactionDate"
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Margin="-5,0,0,0"
+                                    VerticalAlignment="Top"
+                                    Visibility="{Binding EntryDateEditable, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    Transaction Datetime:
+                                </Label>
+                                <mAppsControls:DateTimePicker
+                                    Name="txtTransactionDate"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Width="250"
+                                    Margin="0,0,5,5"
+                                    Padding="5,5,5,5"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Background="{DynamicResource WhiteBrush}"
+                                    Foreground="{DynamicResource BlackBrush}"
+                                    SelectedDate="{Binding ActiveTransaction.CaptureTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TabIndex="9"
+                                    Visibility="{Binding EntryDateEditable, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <Grid
+                                    Name="gridtoken"
+                                    Grid.Row="4"
+                                    Grid.ColumnSpan="2"
+                                    Visibility="Collapsed">
+                                    <StackPanel
+                                        Name="stktoken"
+                                        Margin="-5,5,10,5"
+                                        Orientation="Horizontal">
+                                        <StackPanel Width="70" Orientation="Horizontal">
+                                            <Label Content="Token:" />
+                                            <Label
+                                                x:Name="lblTokenRequired"
+                                                Content="*"
+                                                Foreground="Red" />
+                                        </StackPanel>
+                                        <ComboBox
+                                            x:Name="CmbToken"
+                                            Width="250px"
+                                            Height="30px"
+                                            Margin="55,0,5,5"
+                                            Padding="2"
+                                            DisplayMemberPath="TokenName"
+                                            IsEditable="True"
+                                            IsEnabled="{Binding ControlsEnabled}"
+                                            IsTextSearchEnabled="True"
+                                            ItemsSource="{Binding Tokens}"
+                                            SelectedItem="{Binding Model.Token, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectedValue="{Binding SelectedToken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectedValuePath="TokenID" />
+                                        <!--  SelectionChanged="CmbToken_SelectionChanged"  -->
+                                        <Button
+                                            Name="btnChangeToken"
+                                            Height="30"
+                                            Margin="20,0,0,5"
+                                            Padding="5"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Command="{Binding ChangeTokenCommand}"
+                                            Content="Change Token"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="{Binding IsChangeTokenVisible, Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                                    </StackPanel>
+                                </Grid>
+                                <Border
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Grid.Column="2"
+                                    Width="1"
+                                    Height="100"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Background="{DynamicResource AccentColorBrush}"
+                                    KeyboardNavigation.TabNavigation="None" />
+
+                                <Image
+                                    Name="AnprNumber"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Grid.Column="2"
+                                    Width="170"
+                                    Height="100"
+                                    HorizontalAlignment="Left"
+                                    Opacity="1"
+                                    Source="{Binding Base64ImageString, Converter={StaticResource Base64ToImageConverter}, FallbackValue={StaticResource DefaultImage}}" />
+
+
+                            </Grid>
+                            <Border
+                                Height="2"
+                                Margin="0,0,0,3"
+                                Background="{DynamicResource AccentColorBrush}" />
+                            <UniformGrid
+                                Margin="15,0,15,0"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Local"
+                                Rows="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+
+                                    <StackPanel
+                                        x:Name="splAnprLabel"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="Collapsed">
+                                        <Label
+                                            x:Name="lblAnprNo"
+                                            Padding="0,5"
+                                            Content="ANPR:" />
+                                    </StackPanel>
+
+                                    <Grid
+                                        x:Name="grdAnpr"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Visibility="Collapsed">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBox
+                                            Name="txtAnpr"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="0,5,5,5"
+                                            Text="{Binding AnprNumberText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}" />
+
+                                        <Button
+                                            x:Name="btnLeftAnpr"
+                                            Grid.Column="1"
+                                            Width="40"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="Left"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnLeftAnpr_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="Visible" />
+                                        <Button
+                                            x:Name="btnRightAnpr"
+                                            Grid.Column="2"
+                                            Width="40"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="Right"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnRightAnpr_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="Visible" />
+                                    </Grid>
+
+                                    <StackPanel
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            x:Name="lblVehicalNo"
+                                            Padding="0,5"
+                                            Content="Vehicle:" />
+                                        <Label
+                                            x:Name="lblVehicleRequired"
+                                            Padding="2,5,5,5"
+                                            Content="*"
+                                            Foreground="Red" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <xCeedDD1:AutoCompleteBoxEx
+                                            x:Name="cmbVehicalNo"
+                                            Margin="0,0,4.6,5.6"
+                                            Padding="4"
+                                            VerticalAlignment="Bottom"
+                                            Background="{DynamicResource WhiteBrush}"
+                                            FilterMode="ContainsOrdinal"
+                                            Focusable="True"
+                                            Foreground="{DynamicResource BlackBrush}"
+                                            IsEnabled="{Binding EditMode, Converter={StaticResource InverseBooleanConverter}}"
+                                            ItemsSource="{Binding Autofillvehicles}"
+                                            KeyDown="cmbVehicalNo_KeyDown"
+                                            LostFocus="cmbVehicalNo_LostFocus"
+                                            MinimumPrefixLength="1"
+                                            SelectionChanged="cmbVehicalNo_SelectionChanged"
+                                            TabIndex="2"
+                                            Text="{Binding VehicleNumberText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                            TextChanged="cmbVehicalNo_TextChanged" />
+
+                                        <Button
+                                            Name="btnAddVehical"
+                                            Grid.Column="1"
+                                            Width="30"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="+"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnAddVehical_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="Visible" />
+                                    </Grid>
+
+                                    <StackPanel
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding Model.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                        <Label
+                                            x:Name="iTransporterLabel"
+                                            Padding="0,5"
+                                            Content="Transporter:" />
+                                        <Label
+                                            x:Name="lblTransporterRequired"
+                                            Padding="2,5,5,5"
+                                            Content="*"
+                                            Foreground="Red"
+                                            Visibility="{Binding Model.TransporterMaster.IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="2" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="56*" />
+                                            <ColumnDefinition Width="27*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <xCeedDD1:AutoCompleteBoxEx
+                                            x:Name="cmbTransaporter"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,6,4.6,5.6"
+                                            Padding="4"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource WhiteBrush}"
+                                            Foreground="{DynamicResource BlackBrush}"
+                                            IsEnabled="{Binding ControlsEnabled}"
+                                            ItemsSource="{Binding AutofillTransporters}"
+                                            LostFocus="cmbTransaporter_LostFocus"
+                                            MinimumPrefixLength="1"
+                                            SelectionChanged="cmbTransaporter_SelectionChanged"
+                                            TabIndex="3"
+                                            Text="{Binding TransaporterNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                            TextChanged="cmbTransaporter_TextChanged"
+                                            Visibility="{Binding Model.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                        <Button
+                                            Name="btnAddTransporter"
+                                            Grid.Column="2"
+                                            Width="30"
+                                            Height="28"
+                                            Margin="0.4,5,4.8,4.6"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="+"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnAddTransporter_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="{Binding Model.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                        <!--  Visibility="{Binding Model.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}"  -->
+                                    </Grid>
+
+                                    <StackPanel
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding Model.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                        <Label
+                                            x:Name="iAccountLabel"
+                                            Padding="0,5"
+                                            Content="Account:" />
+                                        <Label
+                                            x:Name="lblAccountRequired"
+                                            Padding="2,5,5,5"
+                                            Content="*"
+                                            Foreground="Red"
+                                            Visibility="{Binding Model.AccountMaster.IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="3" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <xCeedDD1:AutoCompleteBoxEx
+                                            x:Name="cmbAccount"
+                                            Margin="0,5,5,5"
+                                            Padding="4"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource WhiteBrush}"
+                                            Foreground="{DynamicResource BlackBrush}"
+                                            IsEnabled="{Binding ControlsEnabled}"
+                                            ItemsSource="{Binding AutofillAccounts}"
+                                            LostFocus="cmbAccount_LostFocus"
+                                            MinimumPrefixLength="1"
+                                            SelectionChanged="cmbAccount_SelectionChanged"
+                                            TabIndex="4"
+                                            Text="{Binding AccountNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                            TextChanged="cmbAccount_TextChanged"
+                                            Visibility="{Binding Model.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                        <Button
+                                            Name="iAccountAdd"
+                                            Grid.Column="1"
+                                            Width="30"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="+"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="iAccountAdd_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="{Binding Model.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                        <!--  Visibility="{Binding Model.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}"  -->
+                                    </Grid>
+
+                                    <StackPanel
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                        <Label
+                                            x:Name="iProductLabel"
+                                            Padding="0,5"
+                                            Content="Product:" />
+                                        <Label
+                                            x:Name="lblProductRequired"
+                                            Padding="2,5,5,5"
+                                            Content="*"
+                                            Foreground="Red"
+                                            Visibility="{Binding Model.ProductMaster.IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="4" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <!--  IsEnabled="{Binding ControlsEnabled}"  -->
+
+                                        <xCeedDD1:AutoCompleteBoxEx
+                                            x:Name="cmbProduct"
+                                            Margin="0,5,5,5"
+                                            Padding="4"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource WhiteBrush}"
+                                            Foreground="{DynamicResource BlackBrush}"
+                                            ItemsSource="{Binding AutofillProducts}"
+                                            LostFocus="cmbProduct_LostFocus"
+                                            MinimumPrefixLength="1"
+                                            SelectionChanged="cmbProduct_SelectionChanged"
+                                            TabIndex="6"
+                                            Text="{Binding ProductNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                            TextChanged="cmbProduct_TextChanged"
+                                            Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                        <Button
+                                            Name="btnAddProduct"
+                                            Grid.Column="1"
+                                            Width="30"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="+"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnAddProduct_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                        <!--  Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}"  -->
+                                    </Grid>
+
+                                    <StackPanel
+                                        Grid.Row="5"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding Model.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                        <Label
+                                            x:Name="iDriverLabel"
+                                            Padding="0,5"
+                                            Content="Driver:" />
+                                        <Label
+                                            x:Name="lblDriverRequired"
+                                            Padding="2,5,5,5"
+                                            Content="*"
+                                            Foreground="Red"
+                                            Visibility="{Binding Model.DriverMaster.IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="5" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <xCeedDD1:AutoCompleteBoxEx
+                                            x:Name="cmbDriver"
+                                            Margin="0,5,5,5"
+                                            Padding="4"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource WhiteBrush}"
+                                            Foreground="{DynamicResource BlackBrush}"
+                                            IsEnabled="{Binding ControlsEnabled}"
+                                            ItemsSource="{Binding AutofillDrivers}"
+                                            LostFocus="cmbDriver_LostFocus"
+                                            MinimumPrefixLength="1"
+                                            SelectionChanged="cmbDriver_SelectionChanged"
+                                            TabIndex="5"
+                                            Text="{Binding DriverNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                            TextChanged="cmbDriver_TextChanged"
+                                            Visibility="{Binding Model.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                        <Button
+                                            Name="btnAddDriver"
+                                            Grid.Column="1"
+                                            Width="30"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="+"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnAddDriver_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="{Binding Model.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                        <!--  Visibility="{Binding Model.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}"  -->
+                                    </Grid>
+
+                                    <StackPanel
+                                        Grid.Row="6"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding Model.GateMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                        <Label
+                                            x:Name="iGateLabel"
+                                            Padding="0,5"
+                                            Content="Gate:" />
+                                        <Label
+                                            x:Name="lblGateREquired"
+                                            Padding="2,5,5,5"
+                                            Foreground="Red"
+                                            Visibility="{Binding Model.GateMaster.IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            *
+                                        </Label>
+                                    </StackPanel>
+                                    <Grid Grid.Row="6" Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <xCeedDD1:AutoCompleteBoxEx
+                                            x:Name="cmbGate"
+                                            Margin="0,0,5,0"
+                                            Padding="4"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource WhiteBrush}"
+                                            Foreground="{DynamicResource BlackBrush}"
+                                            ItemsSource="{Binding AutofillGates}"
+                                            LostFocus="cmbGate_LostFocus"
+                                            MinimumPrefixLength="1"
+                                            SelectionChanged="cmbGate_SelectionChanged"
+                                            TabIndex="7"
+                                            Text="{Binding GateNameText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                            TextChanged="cmbGate_TextChanged"
+                                            Visibility="{Binding Model.GateMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                        <Button
+                                            Name="btnAddGate"
+                                            Grid.Column="1"
+                                            Width="30"
+                                            Height="28"
+                                            Margin="0,5,5,5"
+                                            VerticalAlignment="Center"
+                                            Controls:ButtonHelper.PreserveTextCase="True"
+                                            BorderBrush="{DynamicResource AccentColorBrush}"
+                                            Content="+"
+                                            IsTabStop="False"
+                                            PreviewMouseDown="btnAddGate_PreviewMouseDown"
+                                            Style="{DynamicResource mouseoverstyle}"
+                                            Visibility="{Binding Model.GateMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                    </Grid>
+                                    <StackPanel
+                                        Grid.Row="7"
+                                        Grid.Column="0"
+                                        Margin="0,5,5,5"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding Model.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                        <Label
+                                            x:Name="iChargebel"
+                                            Padding="0,5"
+                                            Content="Charges:" />
+                                        <Label
+                                            x:Name="lblChargesRequired"
+                                            Padding="2,5,5,5"
+                                            Content="*"
+                                            Foreground="Red"
+                                            Visibility="{Binding Model.ChargesMaster.IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    </StackPanel>
+                                    <csc:FilteredTextbox
+                                        x:Name="txtCharges"
+                                        Grid.Row="7"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="3"
+                                        Margin="0,0,5,0"
+                                        Padding="4,4,4,4"
+                                        VerticalAlignment="Center"
+                                        FilterRegex="^[0-9]+$|^[0-9]*[.]{0,1}[0-9]*$"
+                                        TabIndex="8"
+                                        Text="{Binding Model.Charges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                        Visibility="{Binding Model.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                </Grid>
+                                <ItemsControl
+                                    IsTabStop="False"
+                                    ItemsSource="{Binding CustomFieldss}"
+                                    TabIndex="9"
+                                    Visibility="{Binding CustomFieldss, Converter={StaticResource ListToVisibilityConverter}}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Grid.IsSharedSizeScope="True" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition SharedSizeGroup="ColumnOne" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel
+                                                    Grid.Column="0"
+                                                    Margin="5"
+                                                    Orientation="Horizontal">
+                                                    <TextBlock
+                                                        Margin="3,3,3,3"
+                                                        Padding="4"
+                                                        VerticalAlignment="Top"
+                                                        Text="{Binding DisplayName, StringFormat='\{0\}: '}" />
+                                                    <Label
+                                                        Padding="2,6,6,6"
+                                                        Content="*"
+                                                        Foreground="Red"
+                                                        Visibility="{Binding IsRequired, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                </StackPanel>
+
+                                                <xCeedDD:AutoCompleteBox
+    Grid.Row="0"
+    Grid.Column="1"
+    Margin="3"
+    Padding="4"
+    VerticalAlignment="Center"
+    Background="{DynamicResource WhiteBrush}"
+    Foreground="{DynamicResource BlackBrush}"
+    ItemsSource="{Binding FieldValues}"
+    MinimumPrefixLength="2"
+    Text="{Binding CustomValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+    IsEnabled="{Binding Editable}" />
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </UniformGrid>
+                        </StackPanel>
+                    </csc:ScrollViewerEx>
+                </GroupBox>
+
+                <!--  Right Panel contaning receipt details, camera and weighmeter  -->
+                <DockPanel
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    LastChildFill="True">
+                    <DockPanel
+                        Name="dockMain"
+                        Background="{DynamicResource AccentColorBrush}"
+                        DockPanel.Dock="Top"
+                        LastChildFill="True">
+                        <!--  Transaction Summary  -->
+                        <DockPanel
+                            Name="dockDefault"
+                            Width="225"
+                            Height="230"
+                            DockPanel.Dock="left"
+                            KeyboardNavigation.TabNavigation="None"
+                            LastChildFill="True">
+                            <StackPanel Margin="10,0,0,5" DockPanel.Dock="Bottom">
+                                <TextBlock FontWeight="Bold" Foreground="White">Net Weight:</TextBlock>
+                                <TextBlock FontSize="45" Foreground="White">
+                                    <Run Text="{Binding Model.NetWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}, Mode=OneWay, TargetNullValue='00'}" />
+                                    <Run Text="{Binding Model.SummaryTransaction.WeightUnit}" />
+                                </TextBlock>
+                            </StackPanel>
+                            <Grid Margin="5,10,0,0" DockPanel.Dock="Bottom">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Orientation="Horizontal">
+                                    <Rectangle
+                                        Width="60"
+                                        Margin="0,3,5,0"
+                                        Fill="White">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource EmptyTruckIcon}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        Foreground="White">
+                                        Prev.<LineBreak />
+                                        Tare:</TextBlock>
+                                </StackPanel>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <Rectangle
+                                        Width="60"
+                                        Margin="0,3,5,0"
+                                        Fill="White">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource LoadedTruckIcon}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        Foreground="White">
+                                        Prev.<LineBreak />
+                                        Gross:</TextBlock>
+                                </StackPanel>
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="24"
+                                    Foreground="White">
+                                    <Run Text="{Binding Model.SummaryTransaction.TareWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}, TargetNullValue='00'}" />
+                                </TextBlock>
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Foreground="White">
+                                    <Run Text="{Binding Model.SummaryTransaction.TareTime, StringFormat={x:Static strFormat:Constant.SelectedDateFormat}}" /><LineBreak />
+                                    <Run Text="{Binding Model.SummaryTransaction.TareTime, StringFormat={x:Static strFormat:Constant.SelectedTimeFormat}}" /><LineBreak />
+                                    <!--<Run Text="{Binding Model.SummaryTransaction.TareTime, StringFormat='{}{0:hh:mm tt}'}" />-->
+                                </TextBlock>
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="24"
+                                    Foreground="White">
+                                    <Run Text="{Binding Model.SummaryTransaction.GrossWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}, TargetNullValue='00'}" />
+                                </TextBlock>
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Foreground="White">
+                                    <Run Text="{Binding Model.SummaryTransaction.GrossTime, StringFormat={x:Static strFormat:Constant.SelectedDateFormat}}" /><LineBreak />
+                                    <Run Text="{Binding Model.SummaryTransaction.GrossTime, StringFormat={x:Static strFormat:Constant.SelectedTimeFormat}}" /><LineBreak />
+                                    <!--<Run Text="{Binding Model.SummaryTransaction.GrossTime, StringFormat='{}{0:hh:mm tt}'}" />-->
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                        <Border
+                            Width="1"
+                            Height="230"
+                            Background="White"
+                            DockPanel.Dock="Left"
+                            KeyboardNavigation.TabNavigation="None" />
+                        <DockPanel
+                            Name="dckPanelWeightIndicator"
+                            Height="230"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            DockPanel.Dock="Right"
+                            KeyboardNavigation.TabIndex="3"
+                            KeyboardNavigation.TabNavigation="Local"
+                            LastChildFill="True">
+                            <Grid
+                                Name="gridAutomanualweight"
+                                Margin="0,0,10,5"
+                                HorizontalAlignment="Center"
+                                DockPanel.Dock="Bottom">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <RadioButton
+                                    Name="rdbAutomatic"
+                                    Margin="10,0"
+                                    Foreground="White"
+                                    GroupName="rdbAutoManual"
+                                    IsChecked="True"
+                                    TabIndex="2"
+                                    Visibility="Collapsed">
+                                    Automatic
+                                </RadioButton>
+                                <RadioButton
+                                    Name="rdbManual"
+                                    Grid.Column="1"
+                                    Margin="10,0,10,0"
+                                    Checked="rdbManual_Checked"
+                                    Foreground="White"
+                                    GroupName="rdbAutoManual"
+                                    IsChecked="{Binding ActiveTransaction.IsCapturedManual, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TabIndex="3"
+                                    Visibility="Collapsed">
+                                    Manual
+                                </RadioButton>
+                                <Button
+                                    Name="btnCaptureWeight"
+                                    Grid.Column="2"
+                                    Width="130"
+                                    Height="30"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Controls:ButtonHelper.PreserveTextCase="True"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    Command="{Binding CaptureWeightCommand}"
+                                    Content="Capture Weight (F8)"
+                                    Style="{DynamicResource HighlightedSquareButtonStyle}"
+                                    TabIndex="4">
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                            <Binding ElementName="txtWeightMeter" Path="Text" />
+                                            <Binding ElementName="lblWeightMeter" Path="Text" />
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
+                                </Button>
+                            </Grid>
+                            <StackPanel VerticalAlignment="Center">
+                                <!--  Automatic Weigh Capture  -->
+                                <Grid HorizontalAlignment="Center" Visibility="{Binding ActiveTransaction.IsCapturedManual, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Name="lblWeightMeter"
+                                        Grid.Column="0"
+                                        Margin="0,0,0,0"
+                                        VerticalAlignment="Bottom"
+                                        FontFamily="Digital-7"
+                                        FontSize="90"
+                                        Foreground="White"
+                                        Text="{Binding SelectedWeighBridge.FormatedData, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        TextAlignment="Center"
+                                        Visibility="{Binding ActiveTransaction.WeightBridge.IsCablePlugged, Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                                    <TextBlock
+                                        Name="lblUnit1"
+                                        Grid.Column="1"
+                                        Margin="0,0,0,10"
+                                        VerticalAlignment="Bottom"
+                                        FontSize="24"
+                                        Foreground="White"
+                                        Text="{Binding SelectedWeighBridge.Unit.UnitName}"
+                                        TextAlignment="Right"
+                                        Visibility="{Binding ActiveTransaction.WeightBridge.IsCablePlugged, Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                                    <Rectangle
+                                        Grid.Column="0"
+                                        Width="180"
+                                        Height="180"
+                                        Margin="0,0,10,5"
+                                        HorizontalAlignment="Center"
+                                        Fill="White"
+                                        Visibility="{Binding ActiveTransaction.WeightBridge.IsCablePlugged, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource UnpluggedIcon}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+
+                                <!--  Manual Weigh Capture  -->
+                                <Grid HorizontalAlignment="Center" Visibility="{Binding ActiveTransaction.IsCapturedManual, Converter={StaticResource NegativeBooleanToVisibilityConverter}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="225" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Name="lblSubWeightMeter"
+                                        Grid.Column="0"
+                                        Margin="0,0,5,0"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Digital-7"
+                                        FontSize="24"
+                                        Foreground="White"
+                                        TextAlignment="Center">
+                                        <Rectangle
+                                            Width="50"
+                                            Height="50"
+                                            Fill="White">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource WeightMeterIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <LineBreak />
+                                        <Run Text="{Binding ActiveTransaction.WeightBridge.FormatedData, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </TextBlock>
+                                    <csc:FilteredTextbox
+                                        x:Name="txtWeightMeter"
+                                        Grid.Column="1"
+                                        Margin="0,0,0,0"
+                                        Padding="10,0,10,0"
+                                        VerticalAlignment="Bottom"
+                                        Background="White"
+                                        FilterRegex="^[0-9]+$|^[0-9]*[.]{0,1}[0-9]*$"
+                                        FontFamily="Digital-7"
+                                        FontSize="75"
+                                        Foreground="Black"
+                                        TabIndex="1"
+                                        Text="0"
+                                        TextAlignment="Center" />
+                                    <TextBlock
+                                        Name="lblUnit2"
+                                        Grid.Column="2"
+                                        Margin="0,0,0,10"
+                                        VerticalAlignment="Bottom"
+                                        FontSize="24"
+                                        Foreground="White"
+                                        Text="{Binding SelectedWeighBridge.Unit.UnitName}"
+                                        TextAlignment="Right" />
+                                </Grid>
+                            </StackPanel>
+                        </DockPanel>
+                    </DockPanel>
+                    <!--  Show only if camera plugin present, otherwise hide this panel  -->
+                    <Border
+                        Name="borderWeightDetail"
+                        Margin="10,10,10,0"
+                        Background="{DynamicResource AccentColorBrush4}"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        DockPanel.Dock="Top"
+                        KeyboardNavigation.TabNavigation="None"
+                        Visibility="Collapsed">
+                        <StackPanel DockPanel.Dock="Top">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0,0,15,0"
+                                    Orientation="Horizontal">
+                                    <Rectangle Width="70" Fill="{DynamicResource BlackBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource EmptyTruckIcon}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock
+                                            Margin="0,8,0,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="Medium"
+                                            Foreground="{DynamicResource BlackBrush}">
+                                            Prev.Tare:
+                                        </TextBlock>
+                                        <TextBlock
+                                            FontSize="15"
+                                            FontWeight="Medium"
+                                            Foreground="{DynamicResource BlackBrush}">
+                                            <Run Text="{Binding Model.SummaryTransaction.TareWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}, TargetNullValue=0}" />
+                                            <Run Text="{Binding Model.SummaryTransaction.WeightUnit}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <Rectangle Width="70" Fill="{DynamicResource BlackBrush}">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource LoadedTruckIcon}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock
+                                            Margin="0,8,0,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="Medium"
+                                            Foreground="{DynamicResource BlackBrush}">
+                                            Prev.Gross:
+                                        </TextBlock>
+                                        <TextBlock
+                                            FontSize="15"
+                                            FontWeight="Medium"
+                                            Foreground="{DynamicResource BlackBrush}">
+                                            <Run Text="{Binding Model.SummaryTransaction.GrossWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}, TargetNullValue=0}" />
+                                            <Run Text="{Binding Model.SummaryTransaction.WeightUnit}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Orientation="Vertical">
+                                    <TextBlock
+                                        FontSize="16"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource BlackBrush}"
+                                        TextAlignment="Right">
+                                        Net Weight:
+                                    </TextBlock>
+                                    <TextBlock
+                                        FontSize="24"
+                                        FontWeight="Bold"
+                                        TextAlignment="Right">
+                                        <Run Text="{Binding Model.NetWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}, Mode=OneWay, TargetNullValue=0}" />
+                                        <Run Text="{Binding Model.SummaryTransaction.WeightUnit}" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="0,0,10,0"
+                                    FontSize="11"
+                                    Text="{Binding Model.SummaryTransaction.TareTime, StringFormat={x:Static strFormat:Constant.DateTimeFormat}}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="11"
+                                    Text="{Binding Model.SummaryTransaction.GrossTime, StringFormat={x:Static strFormat:Constant.DateTimeFormat}}" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <TabControl
+                        Name="TabcntrlReceiptDetail"
+                        Margin="0,10,0,0"
+                        Padding="0"
+                        BorderThickness="0"
+                        KeyboardNavigation.ControlTabNavigation="Cycle"
+                        KeyboardNavigation.TabNavigation="Local"
+                        TabIndex="4">
+                        <TabControl.Resources>
+                            <Style TargetType="TabItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TabItem">
+                                            <Grid Name="Panel">
+                                                <Border
+                                                    Name="Border"
+                                                    Margin="10,0,0,0"
+                                                    Padding="15,6"
+                                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                                    CornerRadius="3,3,0,0">
+                                                    <ContentPresenter
+                                                        x:Name="ContentSite"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        ContentSource="Header" />
+                                                </Border>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource AccentColorBrush2}" />
+                                                    <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{StaticResource BlackBrush}" />
+                                                    <Setter TargetName="Border" Property="BorderThickness" Value="1" />
+                                                    <Setter TargetName="ContentSite" Property="TextElement.FontWeight" Value="Normal" />
+                                                    <Setter TargetName="ContentSite" Property="TextElement.FontSize" Value="13" />
+                                                </Trigger>
+                                                <Trigger Property="IsSelected" Value="False">
+                                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentColorBrush4}" />
+                                                    <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{StaticResource BlackBrush}" />
+                                                    <Setter TargetName="Border" Property="BorderThickness" Value="0" />
+                                                    <Setter TargetName="ContentSite" Property="TextElement.FontWeight" Value="Normal" />
+                                                    <Setter TargetName="ContentSite" Property="TextElement.FontSize" Value="13" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.Resources>
+
+                        <TabItem Header="Live Stream" IsSelected="True">
+                            <Border
+                                Margin="0,-1,0,0"
+                                Padding="5"
+                                Background="{DynamicResource AccentColorBrush4}"
+                                BorderBrush="{DynamicResource AccentColorBrush}"
+                                BorderThickness="0,1,1,1">
+                                <csc:ScrollViewerEx HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <ItemsControl x:Name="icCameraList" ItemsSource="{Binding CameraList}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Border
+                                                        x:Name="CameraBorder"
+                                                        Margin="8"
+                                                        Background="White"
+                                                        BorderBrush="Gray"
+                                                        BorderThickness="1"
+                                                        Loaded="CameraBorder_Loaded"
+                                                        Tag="{Binding CameraID}">
+                                                        <!--<Border x:Name="CameraBorder"
+                                                    BorderBrush="Gray"
+                                                    BorderThickness="1"
+                                                    Background="White"
+                                                    Margin="8"
+                                                    Width="310"
+                                                    Height="190"
+                                                    Tag="{Binding CameraID}">-->
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+
+                                                            <weighingsolution:CamViewer
+                                                                x:Name="ipcam"
+                                                                Grid.Row="0"
+                                                                HorizontalAlignment="Stretch"
+                                                                VerticalAlignment="Stretch"
+                                                                AutoPlay="True"
+                                                                CameraId="{Binding CameraID}"
+                                                                IpAddress="{Binding IPAddress}"
+                                                                Password="{Binding CameraPassword}"
+                                                                Port="{Binding Port}"
+                                                                UserName="{Binding UserName}"
+                                                                VideoFormat="{Binding CameraType}"
+                                                                VideoSourceMainURL="{Binding VideosourceMainURL}"
+                                                                VideoSourceURL="{Binding VideosourceURL}" />
+
+                                                            <!--  StackPanel for Open button at bottom  -->
+                                                            <Button
+                                                                x:Name="btnOpen"
+                                                                Width="30"
+                                                                Height="30"
+                                                                HorizontalAlignment="Right"
+                                                                VerticalAlignment="Top"
+                                                                Background="{StaticResource AccentColorBrush}"
+                                                                BorderThickness="0"
+                                                                Click="OpenFullscreen_Click"
+                                                                Content="🗖"
+                                                                Cursor="Hand"
+                                                                FontWeight="Bold"
+                                                                Foreground="White"
+                                                                Style="{x:Null}"
+                                                                Tag="{Binding CameraID}"
+                                                                ToolTip="Open Fullscreen" />
+
+                                                            <!--  Close button floating top-right  -->
+                                                            <Button
+                                                                x:Name="btnClose"
+                                                                Width="30"
+                                                                Height="30"
+                                                                Margin="5"
+                                                                HorizontalAlignment="Right"
+                                                                VerticalAlignment="Top"
+                                                                Background="Red"
+                                                                BorderThickness="0"
+                                                                Click="CloseFullscreen_Click"
+                                                                Content="✕"
+                                                                Cursor="Hand"
+                                                                FontWeight="Bold"
+                                                                Foreground="White"
+                                                                Style="{x:Null}"
+                                                                Tag="{Binding CameraID}"
+                                                                ToolTip="Close Fullscreen"
+                                                                Visibility="Collapsed" />
+
+
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </csc:ScrollViewerEx>
+                            </Border>
+                        </TabItem>
+
+                        <TabItem Header="Previous Receipt Details" Visibility="{Binding DisplayLastVehicleTransactionDetails, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Border
+                                Margin="0,-1,0,0"
+                                Padding="5"
+                                Background="{DynamicResource AccentColorBrush4}"
+                                BorderBrush="{DynamicResource AccentColorBrush}"
+                                BorderThickness="0,1,1,1"
+                                KeyboardNavigation.TabNavigation="None">
+
+                                <csc:ScrollViewerEx Foreground="{DynamicResource BlackBrush}" VerticalScrollBarVisibility="Auto">
+
+                                    <StackPanel Name="stkPreviousReceiptDetail">
+
+                                        <csc:ScrollViewerEx Height="180" Foreground="{DynamicResource BlackBrush}">
+                                            <Grid Name="gridPreviousReceiptDetail" Margin="10,0,10,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Column="0" Grid.IsSharedSizeScope="True">
+                                                    <Grid Name="gridPreviousReceiptMasterdetail">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="MasterLabelColumn" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontSize="15"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding EditMode, Converter={StaticResource NegativeBooleanToVisibilityConverter}}">
+                                                            Ticket No:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            FontSize="15"
+                                                            Text="{Binding PreviousModel.TicketID}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding EditMode, Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                                                        <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" FontSize="15" FontWeight="Bold" Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">Last Ticket No:</TextBlock>
+                                                        <TextBlock Grid.Row="0" Grid.Column="1" Padding="0,0,5,0" FontSize="15" Text="{Binding LastTicketID}" Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>-->
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.ColumnSpan="2"
+                                                            Margin="0"
+                                                            Padding="0"
+                                                            Content=" " />
+                                                        <TextBlock
+                                                            Grid.Row="2"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.VehicleMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Vehicle No:
+                                                        </TextBlock>
+                                                        <StackPanel
+                                                            Grid.Row="2"
+                                                            Grid.Column="1"
+                                                            Orientation="Horizontal"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.VehicleMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            <TextBlock Padding="0,0,5,0">
+                                                                <Run Text="{Binding PreviousModel.Vehicle.VehicleNumber}" />
+                                                            </TextBlock>
+                                                            <TextBlock FontWeight="Medium" Visibility="{Binding PreviousModel.Vehicle.TareWeight, Converter={StaticResource NullToVisibilityConverter}}">
+                                                                <Run Text="{Binding PreviousModel.Vehicle.TareWeight, StringFormat='{x:Static strFormat:Constant.TareWeightDecimal}'}" />
+                                                                <!--  StringFormat='(Tare Wt: \{0:0.##}\)'  -->
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Account:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.Account.CompanyName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Transaporter:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="4"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.Transporter.CompanyName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Row="5"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Driver:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="5"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.Driver.DriverName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <!--<TextBlock Grid.Row="6" Grid.Column="0" Margin="0,0,10,0" FontWeight="Bold" Visibility="{Binding PreviousModel.RFIDTokenMaster, Converter={StaticResource NullToVisibilityConverter}}">RFID Token:</TextBlock>
+                                                    <TextBlock Grid.Row="6" Grid.Column="1" Padding="0,0,5,0" Text="{Binding PreviousModel.RFToken.TokenValue}" Visibility="{Binding PreviousModel.RFIDTokenMaster, Converter={StaticResource NullToVisibilityConverter}}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>-->
+
+
+
+                                                        <!--<TextBlock Grid.Row="7" Grid.Column="0" Margin="0,0,10,0" FontWeight="Bold" Visibility="{Binding PreviousModel.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}">Charges:</TextBlock>
+                                                        <TextBlock Grid.Row="7" Grid.Column="1" Padding="0,0,5,0" Text="{Binding PreviousModel.Charges}" Visibility="{Binding PreviousModel.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>
+
+                                                        <TextBlock Grid.Row="8" Grid.Column="0" Margin="0,0,10,0" FontWeight="Bold" >Tare Weight:</TextBlock>
+                                                        <TextBlock Grid.Row="8" Grid.Column="1" Padding="0,0,5,0" Text="{Binding PreviousModel.CompeletedTareWeight}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>
+
+                                                        <TextBlock Grid.Row="9" Grid.Column="0" Margin="0,0,10,0" FontWeight="Bold" >Gross Weight:</TextBlock>
+                                                        <TextBlock Grid.Row="9" Grid.Column="1" Padding="0,0,5,0" Text="{Binding PreviousModel.CompeletedGrossWeight}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>
+
+                                                        <TextBlock Grid.Row="10" Grid.Column="0" Margin="0,0,10,0" FontWeight="Bold" >Net Weight:</TextBlock>
+                                                        <TextBlock Grid.Row="10" Grid.Column="1" Padding="0,0,5,0" Text="{Binding PreviousModel.CompeletedNetWeight}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>-->
+                                                    </Grid>
+                                                    <!--  Show only if single/double pass transaction  -->
+                                                    <Grid Visibility="{Binding PreviousModel.TransactionMode, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter='Multi'}">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="MasterLabelColumn" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Product:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.SummaryTransaction.Product.ProductName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.GateMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Gate:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.SummaryTransaction.Gate.GateName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.GateMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                    </Grid>
+                                                    <Grid Name="gridPreviousReceiptMasterdetail1">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="MasterLabelColumn" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding PreviousModel.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Charges:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.Charges}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding PreviousModel.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold">
+                                                            Tare Weight:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.CompeletedTareWeightWithTime}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}" />
+
+                                                        <TextBlock
+                                                            Grid.Row="2"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold">
+                                                            Gross Weight:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="2"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.CompeletedGrossWeightWithTime}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}" />
+
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold">
+                                                            Net Weight:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding PreviousModel.CompeletedNetWeight}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}" />
+                                                    </Grid>
+                                                </StackPanel>
+                                                <StackPanel
+                                                    Grid.Column="1"
+                                                    Margin="0,27,0,0"
+                                                    HorizontalAlignment="Stretch">
+                                                    <ItemsControl ItemsSource="{Binding PreviousModel.CustomValues}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Grid.IsSharedSizeScope="True" />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition SharedSizeGroup="ColumnOne" />
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock
+                                                                        Margin="0,0,10,0"
+                                                                        FontWeight="Bold"
+                                                                        Text="{Binding CustomField.DisplayName, StringFormat='\{0\}: '}" />
+                                                                    <TextBlock
+                                                                        Grid.Column="1"
+                                                                        Margin="0,0,5,0"
+                                                                        Text="{Binding CustomValue1}"
+                                                                        Validation.ErrorTemplate="{StaticResource SuppressValidationError}" />
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Grid>
+                                        </csc:ScrollViewerEx>
+                                        <!--  show only if multi pass  -->
+                                        <StackPanel Margin="10,15,10,0" Visibility="{Binding PreviousModel.TransactionMode, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Multi'}">
+                                            <StackPanel Orientation="Vertical" Visibility="{Binding PreviousModel.ValidTransactionDetails, Converter={StaticResource ListToVisibilityConverter}}">
+                                                <DataGrid
+                                                    Name="dgPreviousPasses"
+                                                    Margin="0,0,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Stretch"
+                                                    AutoGenerateColumns="False"
+                                                    Background="Transparent"
+                                                    BorderBrush="{StaticResource AccentColorBrush}"
+                                                    BorderThickness="1,0,1,1"
+                                                    CanUserAddRows="False"
+                                                    CanUserDeleteRows="False"
+                                                    CanUserSortColumns="False"
+                                                    HorizontalScrollBarVisibility="Auto"
+                                                    ItemsSource="{Binding PreviousModel.ValidTransactionDetails}"
+                                                    VerticalScrollBarVisibility="Disabled">
+                                                    <DataGrid.ColumnHeaderStyle>
+                                                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="DataGridColumnHeader">
+                                                            <Setter Property="Background" Value="{StaticResource AccentColorBrush}" />
+                                                            <Setter Property="FontWeight" Value="Bold" />
+                                                            <Setter Property="Margin" Value="0,0,0,0" />
+                                                            <Setter Property="Padding" Value="2,3,2,3" />
+                                                        </Style>
+                                                    </DataGrid.ColumnHeaderStyle>
+                                                    <DataGrid.RowStyle>
+                                                        <Style BasedOn="{StaticResource MetroDataGridRow}" TargetType="{x:Type DataGridRow}">
+                                                            <Setter Property="Background" Value="Transparent" />
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="Transparent" />
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </DataGrid.RowStyle>
+                                                    <DataGrid.Columns>
+                                                        <DataGridTextColumn
+                                                            Width="20"
+                                                            Binding="{Binding SequenceNo}"
+                                                            Header="#"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTextColumn
+                                                            Width="80"
+                                                            Binding="{Binding WeightBridge.ScaleName}"
+                                                            Header="Scale Name"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTemplateColumn
+                                                            Width="70"
+                                                            Header="Gross Wt"
+                                                            IsReadOnly="True">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock>
+                                                                        <Run Text="{Binding GrossWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                        <Run Text="{Binding WeightUnit}" />
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTextColumn
+                                                            Width="130"
+                                                            Binding="{Binding GrossTime, StringFormat={x:Static strFormat:Constant.DateTimeFormat}}"
+                                                            Header="Gross Time"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTemplateColumn
+                                                            Width="70"
+                                                            Header="Tare Wt"
+                                                            IsReadOnly="True">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock>
+                                                                        <Run Text="{Binding TareWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                        <Run Text="{Binding WeightUnit}" />
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTextColumn
+                                                            Width="130"
+                                                            Binding="{Binding TareTime, StringFormat={x:Static strFormat:Constant.DateTimeFormat}}"
+                                                            Header="Tare Time"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTemplateColumn
+                                                            Width="70"
+                                                            Header="Net Wt"
+                                                            IsReadOnly="True">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock>
+                                                                        <Run Text="{Binding NetWeight, Mode=OneWay, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                        <Run Text="{Binding WeightUnit}" />
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <!--<DataGridTextColumn Header="Product"  Width="60" IsReadOnly="True" Binding="{Binding Product.ProductName}" />-->
+
+                                                        <DataGridTemplateColumn Width="100" Header="Product">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+
+                                                                    <ComboBox
+                                                                        Margin="0,5,5,5"
+                                                                        VerticalAlignment="Center"
+                                                                        DisplayMemberPath="ProductName"
+                                                                        IsEditable="True"
+                                                                        IsTextSearchEnabled="True"
+                                                                        ItemsSource="{Binding DataContext.Products, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                                                        LostFocus="cmbProduct_LostFocus"
+                                                                        SelectedValue="{Binding ProductID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                        SelectedValuePath="ProductID"
+                                                                        Visibility="{Binding PreviousModel.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTemplateColumn Width="100" Header="Gate">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <ComboBox
+                                                                        Margin="0,5,5,5"
+                                                                        VerticalAlignment="Center"
+                                                                        DisplayMemberPath="GateName"
+                                                                        IsEditable="True"
+                                                                        IsTextSearchEnabled="True"
+                                                                        ItemsSource="{Binding DataContext.Gates, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                                                        LostFocus="cmbGate_LostFocus"
+                                                                        SelectedValue="{Binding GateID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                        SelectedValuePath="GateID"
+                                                                        Visibility="{Binding PreviousModel.GateMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTextColumn
+                                                            Width="60"
+                                                            Binding="{Binding UserMaster.UserName}"
+                                                            Header="User"
+                                                            IsReadOnly="True" />
+                                                    </DataGrid.Columns>
+                                                </DataGrid>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </csc:ScrollViewerEx>
+                            </Border>
+                        </TabItem>
+                        <TabItem Header="Receipt Details" IsSelected="True">
+                            <Border
+                                Margin="0,-1,0,0"
+                                Padding="5"
+                                Background="{DynamicResource AccentColorBrush4}"
+                                BorderBrush="{DynamicResource AccentColorBrush}"
+                                BorderThickness="0,1,1,1"
+                                KeyboardNavigation.TabNavigation="None">
+                                <csc:ScrollViewerEx Foreground="{DynamicResource BlackBrush}" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel Name="stkReceiptDetail">
+                                        <csc:ScrollViewerEx Height="135" Foreground="{DynamicResource BlackBrush}">
+                                            <Grid Name="gridReceiptDetail" Margin="10,0,10,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Column="0" Grid.IsSharedSizeScope="True">
+                                                    <Grid Name="gridReceiptMasterdetail">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="MasterLabelColumn" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontSize="15"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding EditMode, Converter={StaticResource NegativeBooleanToVisibilityConverter}}">
+                                                            Ticket No:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            FontSize="15"
+                                                            Text="{Binding Model.TicketID}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding EditMode, Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                                                        <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" FontSize="15" FontWeight="Bold" Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}">Last Ticket No:</TextBlock>
+                                                        <TextBlock Grid.Row="0" Grid.Column="1" Padding="0,0,5,0" FontSize="15" Text="{Binding LastTicketID}" Visibility="{Binding EditMode, Converter={StaticResource PositiveBooleanToVisibilityConverter}}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>-->
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.ColumnSpan="2"
+                                                            Margin="0"
+                                                            Padding="0"
+                                                            Content=" " />
+                                                        <TextBlock
+                                                            Grid.Row="2"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.VehicleMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Vehicle No:
+                                                        </TextBlock>
+                                                        <StackPanel
+                                                            Grid.Row="2"
+                                                            Grid.Column="1"
+                                                            Orientation="Horizontal"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.VehicleMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            <TextBlock Padding="0,0,5,0">
+                                                                <Run Text="{Binding Model.Vehicle.VehicleNumber}" />
+                                                            </TextBlock>
+                                                            <TextBlock FontWeight="Medium" Visibility="{Binding Model.Vehicle.TareWeight, Converter={StaticResource NullToVisibilityConverter}}">
+                                                                <Run Text="{Binding Model.Vehicle.TareWeight, StringFormat='{x:Static strFormat:Constant.TareWeightDecimal}'}" />
+                                                                <!--  StringFormat='(Tare Wt: \{0:0.##}\)'  -->
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Account:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding Model.Account.CompanyName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.AccountMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Transaporter:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="4"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding Model.Transporter.CompanyName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.TransporterMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Row="5"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Driver:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="5"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding Model.Driver.DriverName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.DriverMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <!--<TextBlock Grid.Row="6" Grid.Column="0" Margin="0,0,10,0" FontWeight="Bold" Visibility="{Binding Model.RFIDTokenMaster, Converter={StaticResource NullToVisibilityConverter}}">RFID Token:</TextBlock>
+                                                    <TextBlock Grid.Row="6" Grid.Column="1" Padding="0,0,5,0" Text="{Binding Model.RFToken.TokenValue}" Visibility="{Binding Model.RFIDTokenMaster, Converter={StaticResource NullToVisibilityConverter}}" Validation.ErrorTemplate="{StaticResource SuppressValidationError}"></TextBlock>-->
+                                                        <TextBlock
+                                                            Grid.Row="6"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Charges:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="6"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding Model.Charges}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.ChargesMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                    </Grid>
+                                                    <!--  Show only if single/double pass transaction  -->
+                                                    <Grid Visibility="{Binding Model.TransactionMode, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter='Multi'}">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="MasterLabelColumn" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Product:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding Model.SummaryTransaction.Product.ProductName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,10,0"
+                                                            FontWeight="Bold"
+                                                            Visibility="{Binding Model.GateMaster, Converter={StaticResource NullToVisibilityConverter}}">
+                                                            Gate:
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            Padding="0,0,5,0"
+                                                            Text="{Binding Model.SummaryTransaction.Gate.GateName}"
+                                                            Validation.ErrorTemplate="{StaticResource SuppressValidationError}"
+                                                            Visibility="{Binding Model.GateMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                    </Grid>
+                                                </StackPanel>
+                                                <StackPanel
+                                                    Grid.Column="1"
+                                                    Margin="0,27,0,0"
+                                                    HorizontalAlignment="Stretch">
+                                                    <ItemsControl ItemsSource="{Binding Model.CustomValues}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <StackPanel Grid.IsSharedSizeScope="True" />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition SharedSizeGroup="ColumnOne" />
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock
+                                                                        Margin="0,0,10,0"
+                                                                        FontWeight="Bold"
+                                                                        Text="{Binding CustomField.DisplayName, StringFormat='\{0\}: '}" />
+                                                                    <TextBlock
+                                                                        Grid.Column="1"
+                                                                        Margin="0,0,5,0"
+                                                                        Text="{Binding CustomValue1}"
+                                                                        Validation.ErrorTemplate="{StaticResource SuppressValidationError}" />
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Grid>
+                                        </csc:ScrollViewerEx>
+                                        <!--  show only if multi pass  -->
+                                        <StackPanel Margin="10,15,10,0" Visibility="{Binding Model.TransactionMode, Converter={StaticResource EqualityVisibilityConverter}, ConverterParameter='Multi'}">
+                                            <StackPanel Orientation="Vertical" Visibility="{Binding Model.ValidTransactionDetails, Converter={StaticResource ListToVisibilityConverter}}">
+                                                <DataGrid
+                                                    Name="dgPasses"
+                                                    Margin="0,0,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Stretch"
+                                                    AutoGenerateColumns="False"
+                                                    Background="Transparent"
+                                                    BorderBrush="{StaticResource AccentColorBrush}"
+                                                    BorderThickness="1,0,1,1"
+                                                    CanUserAddRows="False"
+                                                    CanUserDeleteRows="False"
+                                                    CanUserSortColumns="False"
+                                                    HorizontalScrollBarVisibility="Auto"
+                                                    ItemsSource="{Binding Model.ValidTransactionDetails}"
+                                                    VerticalScrollBarVisibility="Disabled">
+                                                    <DataGrid.ColumnHeaderStyle>
+                                                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="DataGridColumnHeader">
+                                                            <Setter Property="Background" Value="{StaticResource AccentColorBrush}" />
+                                                            <Setter Property="FontWeight" Value="Bold" />
+                                                            <Setter Property="Margin" Value="0,0,0,0" />
+                                                            <Setter Property="Padding" Value="2,3,2,3" />
+                                                        </Style>
+                                                    </DataGrid.ColumnHeaderStyle>
+                                                    <DataGrid.RowStyle>
+                                                        <Style BasedOn="{StaticResource MetroDataGridRow}" TargetType="{x:Type DataGridRow}">
+                                                            <Setter Property="Background" Value="Transparent" />
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="Transparent" />
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </DataGrid.RowStyle>
+                                                    <DataGrid.Columns>
+                                                        <DataGridTextColumn
+                                                            Width="20"
+                                                            Binding="{Binding SequenceNo}"
+                                                            Header="#"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTextColumn
+                                                            Width="80"
+                                                            Binding="{Binding WeightBridge.ScaleName}"
+                                                            Header="Scale Name"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTemplateColumn
+                                                            Width="70"
+                                                            Header="Gross Wt"
+                                                            IsReadOnly="True">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock>
+                                                                        <Run Text="{Binding GrossWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                        <Run Text="{Binding WeightUnit}" />
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTextColumn
+                                                            Width="130"
+                                                            Binding="{Binding GrossTime, StringFormat={x:Static strFormat:Constant.DateTimeFormat}}"
+                                                            Header="Gross Time"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTemplateColumn
+                                                            Width="70"
+                                                            Header="Tare Wt"
+                                                            IsReadOnly="True">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock>
+                                                                        <Run Text="{Binding TareWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                        <Run Text="{Binding WeightUnit}" />
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTextColumn
+                                                            Width="130"
+                                                            Binding="{Binding TareTime, StringFormat={x:Static strFormat:Constant.DateTimeFormat}}"
+                                                            Header="Tare Time"
+                                                            IsReadOnly="True" />
+                                                        <DataGridTemplateColumn
+                                                            Width="70"
+                                                            Header="Net Wt"
+                                                            IsReadOnly="True">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock>
+                                                                        <Run Text="{Binding NetWeight, Mode=OneWay, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                        <Run Text="{Binding WeightUnit}" />
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <!--<DataGridTextColumn Header="Product"  Width="60" IsReadOnly="True" Binding="{Binding Product.ProductName}" />-->
+
+                                                        <DataGridTemplateColumn Width="100" Header="Product">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+
+                                                                    <ComboBox
+                                                                        Margin="0,5,5,5"
+                                                                        VerticalAlignment="Center"
+                                                                        DisplayMemberPath="ProductName"
+                                                                        IsEditable="True"
+                                                                        IsTextSearchEnabled="True"
+                                                                        ItemsSource="{Binding DataContext.Products, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                                                        LostFocus="cmbProduct_LostFocus"
+                                                                        SelectedValue="{Binding ProductID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                        SelectedValuePath="ProductID"
+                                                                        Visibility="{Binding Model.ProductMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTemplateColumn Width="100" Header="Gate">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <ComboBox
+                                                                        Margin="0,5,5,5"
+                                                                        VerticalAlignment="Center"
+                                                                        DisplayMemberPath="GateName"
+                                                                        IsEditable="True"
+                                                                        IsTextSearchEnabled="True"
+                                                                        ItemsSource="{Binding DataContext.Gates, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                                                        LostFocus="cmbGate_LostFocus"
+                                                                        SelectedValue="{Binding GateID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                        SelectedValuePath="GateID"
+                                                                        Visibility="{Binding Model.GateMaster, Converter={StaticResource NullToVisibilityConverter}}" />
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+                                                        <DataGridTextColumn
+                                                            Width="60"
+                                                            Binding="{Binding UserMaster.UserName}"
+                                                            Header="User"
+                                                            IsReadOnly="True" />
+                                                    </DataGrid.Columns>
+                                                </DataGrid>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </csc:ScrollViewerEx>
+                            </Border>
+                        </TabItem>
+
+                        <TabItem Header="Captured Images">
+                            <Border
+                                Margin="0,-1,0,0"
+                                Padding="5"
+                                Background="{DynamicResource AccentColorBrush4}"
+                                BorderBrush="{DynamicResource AccentColorBrush}"
+                                BorderThickness="0,1,1,1">
+                                <csc:ScrollViewerEx HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <ListBox
+                                        Name="lstboxCapturedImages"
+                                        Background="Transparent"
+                                        ItemsSource="{Binding lstCamImage}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListBoxItem}">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel
+                                                    Margin="0,0,0,0"
+                                                    Background="Transparent"
+                                                    Orientation="Horizontal" />
+                                                <!--  Width="480"  -->
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image
+                                                    Name="ListBoxCaptureImages"
+                                                    Width="130"
+                                                    Margin="10"
+                                                    HorizontalAlignment="Left"
+                                                    Opacity="1"
+                                                    Source="{Binding CameraImagePath, Converter={StaticResource CameraImagePathConverter}, FallbackValue={StaticResource DefaultImage}}" />
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </csc:ScrollViewerEx>
+                            </Border>
+                        </TabItem>
+
+                    </TabControl>
+                </DockPanel>
+
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Page>

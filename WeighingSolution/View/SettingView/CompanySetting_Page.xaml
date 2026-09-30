@@ -1,0 +1,105 @@
+﻿<Page x:Class="WeighingSolution.View.CompanySetting_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="800" d:DesignWidth="800"
+	Title="CompanySetting_Page" FocusManager.FocusedElement="{Binding ElementName=txtCompanyName}" >
+    <Page.Resources>
+        <converter:CompanysettingImageConverter x:Key="CompanysettingImageConverter" />
+        <BitmapImage x:Key="DefaultImage" UriSource="/Images/logo.png" />
+    </Page.Resources>
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel  Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource CompanyIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Company" />
+                         Settings</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <StackPanel VerticalAlignment="Top">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,15,0,10" Orientation="Horizontal">
+                                <Label>Company Name</Label>
+                                <Label Foreground="Red" >*</Label>
+                            </StackPanel>
+                            <TextBox Name="txtCompanyName"  Grid.Row="0" Grid.Column="1" Margin="0,15,10,10" Padding="5,5,5,5" MaxLength="50" Text="{Binding CompanyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <StackPanel Grid.Row="1"  Grid.Column="0" Margin="10,15,0,10" Orientation="Horizontal">
+                                <Label >Address</Label>
+                                <Label Foreground="Red">*</Label>
+                            </StackPanel>
+                            <TextBox  Name="txtAddress"  Grid.Row="1" Grid.Column="1" Margin="0,15,10,10" Padding="5,5,5,5" MaxLength="125" Text="{Binding Address,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <StackPanel Grid.Row="2" Grid.Column="0" Margin="10,15,0,10" Orientation="Horizontal">
+                                <Label >Phone No.</Label>
+                                <Label Foreground="Red">*</Label>
+                            </StackPanel>
+                            <csc:FilteredTextbox  FilterRegex="^([0-9\s\(\)\+\-]*)$" Name="txtPhone" MaxLength="20"  Grid.Row="2" Grid.Column="1" Margin="0,15,10,10" Padding="5,5,5,5" Text="{Binding Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="3" Grid.Column="0" Margin="10,15,0,10">Email</Label>
+                            <TextBox Name="txtEmail"    Grid.Row="3" Grid.Column="1"  Margin="0,15,10,10" Padding="5,5,5,5" MaxLength="40" Text="{Binding Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue=''}"/>
+
+                            
+                            <Label Grid.Row="7" Grid.Column="0" Margin="10,15,0,10">Support Email ID</Label>
+                            <TextBox Name="txtSupportID" Grid.Row="7" Grid.Column="1"  Margin="0,15,10,10" Padding="5,5,5,5" MaxLength="40" Text="{Binding SupportID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue=''}"/>
+
+                            <StackPanel Grid.Row="8" Grid.Column="0" Margin="10,15,10,10" Orientation="Horizontal">
+                                <Label >Logo</Label>
+                                <!--<Label Foreground="Red">*</Label>-->
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="1" Margin="0,15,10,10" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image  Name="imgLogo" HorizontalAlignment="Left" Width="70" Margin="0,0,3,0" Source="{Binding Logo,Converter={StaticResource CompanysettingImageConverter},FallbackValue={StaticResource DefaultImage}}" >
+                                </Image>
+                                <Button Name="btnUploadLogo" Grid.Row="3" Controls:ButtonHelper.PreserveTextCase="True"  Content="Upload Logo" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30"   Margin="20,0,0,0"  Command="{Binding SelectFile}"></Button>
+                                <Button Name="btnRemoveLogo" Grid.Row="3" Controls:ButtonHelper.PreserveTextCase="True"  Content="Set Default Logo" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30"   Margin="20,0,0,0" Command="{Binding setDefaultImage}"></Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Visibility="Collapsed" IsDefault="True" Controls:ButtonHelper.PreserveTextCase="True" Grid.Row="0"  Grid.Column="0" Name="CompanySettingSave" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="35,30,0,50" Command="{Binding SaveSettingCommand}"></Button>
+                <Button Content="Cancel (Esc)" IsCancel="True" Controls:ButtonHelper.PreserveTextCase="True" Name="CompanySettingCancel" Grid.Row="0" Grid.Column="1" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="20,30,10,50"  Command="{Binding CloseDetailViewCommand}" CommandParameter="/View/SettingView/Setting_Page.Xaml" ></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

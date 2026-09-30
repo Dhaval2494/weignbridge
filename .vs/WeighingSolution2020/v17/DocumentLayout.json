@@ -1,0 +1,975 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|c:\\raaj\\softwarever\\weighmast2.7_apimaster\\weighingsolutionv2.7\\weighingsolution\\viewmodel\\datasetupviewmodel\\vmtokenmanagementlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\viewmodel\\datasetupviewmodel\\vmtokenmanagementlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\datasetupview\\tokenmanagementlist.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\datasetupview\\tokenmanagementlist.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\usercontrols\\paginationelements.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\usercontrols\\paginationelements.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\schema.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\applicationsettingdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\applicationsettingdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\unmanned.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\unmanned.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\datasetupview\\tokenmanagementpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\datasetupview\\tokenmanagementpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\viewmodel\\settingviewmodel\\apiintegrationmasterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\viewmodel\\settingviewmodel\\apiintegrationmasterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\receiptpreview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\receiptpreview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\receiptpreview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\receiptpreview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\transactionmanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\transactionmanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\viewmodel\\transactionviewmodel\\transactionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\viewmodel\\transactionviewmodel\\transactionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Raaj\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\10ec9b8584278e01b8a5b8924d56d57cd1fcd501f89f5deb437cdd3bb3042e77\\Clock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\weighbridgemodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\weighbridgemodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\bindingmodel\\customfieldviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\bindingmodel\\customfieldviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\converters\\booleanandconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\converters\\booleanandconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\converters\\customimagepathconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\converters\\customimagepathconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\converters\\companysettingimageconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\converters\\companysettingimageconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\converters\\cameraimagepathconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\converters\\cameraimagepathconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\converters\\equalityconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\converters\\equalityconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\bindingmodel\\converters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\bindingmodel\\converters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\transactionmanagement.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\transactionmanagement.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\e58c9dc68e2e6e3c4cfe5bbaade86058d065887918411fd4fe0790d6316a0f8d\\UIElement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\viewmodel\\settingviewmodel\\vmcustomfieldlist .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\viewmodel\\settingviewmodel\\vmcustomfieldlist .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\customfieldslist_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\customfieldslist_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\customfieldslist_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\customfieldslist_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\datasetupview\\productcsv_upload_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\datasetupview\\productcsv_upload_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\apiintegrationmaster_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\apiintegrationmaster_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\bindingmodel\\synchelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\bindingmodel\\synchelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\licensehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\licensehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Hetul shah\\AppData\\Local\\SourceServer\\5b63a78be9ca48b1352393c2649ee32d4c901e46f72d8cca0ed1c45f03af8c9a\\src\\Prism.Core\\Commands\\DelegateCommand{T}.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\receiptprint.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\receiptprint.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\modelextender\\transactiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\modelextender\\transactiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\apiintegrationmaster_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\apiintegrationmaster_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\datasetupview\\weighbridgemanagement_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\datasetupview\\weighbridgemanagement_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\setting_page.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\setting_page.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\setting_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\setting_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.sharedcomponents\\enumeration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2CD118B-A56B-434A-B6EE-66C9047F5A88}|WeighingSolution.SharedComponents\\WeighingSolution.SharedComponents.csproj|solutionrelative:weighingsolution.sharedcomponents\\enumeration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\apilogmetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\apilogmetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\apilog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\apilog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\hardware\\datareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\hardware\\datareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\datasetupview\\weighbridgemanagement_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\datasetupview\\weighbridgemanagement_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\datasetupview\\datasetup_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\datasetupview\\datasetup_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38A656D-3C7E-4616-957D-EE865B295E52}|SyncService\\SyncService.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\syncservice\\syncscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38A656D-3C7E-4616-957D-EE865B295E52}|SyncService\\SyncService.csproj|solutionrelative:syncservice\\syncscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\usercontrols\\syncdbsetting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\usercontrols\\syncdbsetting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\pluginmanagement_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\pluginmanagement_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\databasesetting_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\databasesetting_page.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\settingview\\databasesetting_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\settingview\\databasesetting_page.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\camerasetup.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\camerasetup.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\barcodeimage.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\barcodeimage.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\emailsetup.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\emailsetup.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\dashbord.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\dashbord.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution\\view\\transactionview\\dashbord.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFEE2390-3037-4094-92A9-51EF5D8EC577}|WeighingSolution\\WeighingSolution.csproj|solutionrelative:weighingsolution\\view\\transactionview\\dashbord.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\weighingsolution.datalayer\\scripts\\data.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{68147A4B-1CB3-4DAB-B547-1A8A17F8B4F5}|WeighingSolution.DataLayer\\WeighingSolution.DataLayer.csproj|solutionrelative:weighingsolution.datalayer\\scripts\\data.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "vmTokenManagementList.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\DataSetupViewModel\\vmTokenManagementList.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\ViewModel\\DataSetupViewModel\\vmTokenManagementList.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\DataSetupViewModel\\vmTokenManagementList.cs",
+              "RelativeToolTip": "WeighingSolution\\ViewModel\\DataSetupViewModel\\vmTokenManagementList.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-12T12:44:25.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaginationElements.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\UserControls\\PaginationElements.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\UserControls\\PaginationElements.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\UserControls\\PaginationElements.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\UserControls\\PaginationElements.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-12T11:18:15.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TokenManagementList.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\TokenManagementList.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\DatasetupView\\TokenManagementList.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\TokenManagementList.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\DatasetupView\\TokenManagementList.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-09-12T11:12:14.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Unmanned.sql ",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\Unmanned.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\Unmanned.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\Unmanned.sql",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\Unmanned.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-09-12T09:18:58.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TokenManagementPage.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\TokenManagementPage.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\DatasetupView\\TokenManagementPage.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\TokenManagementPage.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\DatasetupView\\TokenManagementPage.xaml.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwFYAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-12T05:05:23.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReceiptPreview.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml.cs",
+              "ViewState": "AgIAAAsGAAAAAAAAAAAAABwGAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-03T06:21:35.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApiIntegrationMasterViewModel.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\SettingViewModel\\ApiIntegrationMasterViewModel.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\ViewModel\\SettingViewModel\\ApiIntegrationMasterViewModel.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\SettingViewModel\\ApiIntegrationMasterViewModel.cs",
+              "RelativeToolTip": "WeighingSolution\\ViewModel\\SettingViewModel\\ApiIntegrationMasterViewModel.cs",
+              "ViewState": "AgIAAHAEAAAAAAAAAAAQwIcEAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-03T06:16:48.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TransactionManagement.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-13T05:14:14.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "EqualityConverters.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\EqualityConverters.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Converters\\EqualityConverters.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\EqualityConverters.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Converters\\EqualityConverters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:34:57.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReceiptPreview.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\ReceiptPreview.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-03T06:38:51.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationSettingData.sql ",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\ApplicationSettingData.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\ApplicationSettingData.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\ApplicationSettingData.sql*",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\ApplicationSettingData.sql*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-19T08:29:26.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Schema.sql ",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\Schema.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\Schema.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\Schema.sql",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\Schema.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-08-18T09:54:41.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\App.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\App.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\App.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\App.xaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwCwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T08:36:01.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\MainWindow.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAQTAAAAAAAAAAAowBMTAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T12:16:07.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TransactionViewModel.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\TransactionViewModel\\TransactionViewModel.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\ViewModel\\TransactionViewModel\\TransactionViewModel.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\TransactionViewModel\\TransactionViewModel.cs",
+              "RelativeToolTip": "WeighingSolution\\ViewModel\\TransactionViewModel\\TransactionViewModel.cs",
+              "ViewState": "AgIAADgGAAAAAAAAAAAIwEoGAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T08:17:14.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TransactionData.cs",
+              "DocumentMoniker": "C:\\Raaj\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "ToolTip": "C:\\Raaj\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "RelativeToolTip": "..\\..\\..\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwD4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T09:06:20.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Clock.cs",
+              "DocumentMoniker": "C:\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\10ec9b8584278e01b8a5b8924d56d57cd1fcd501f89f5deb437cdd3bb3042e77\\Clock.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\10ec9b8584278e01b8a5b8924d56d57cd1fcd501f89f5deb437cdd3bb3042e77\\Clock.cs",
+              "ToolTip": "C:\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\10ec9b8584278e01b8a5b8924d56d57cd1fcd501f89f5deb437cdd3bb3042e77\\Clock.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\10ec9b8584278e01b8a5b8924d56d57cd1fcd501f89f5deb437cdd3bb3042e77\\Clock.cs [Read Only]",
+              "ViewState": "AgIAAOQDAAAAAAAAAAAwwPoDAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T10:17:48.284Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "BooleanAndConverter.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\BooleanAndConverter.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Converters\\BooleanAndConverter.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\BooleanAndConverter.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Converters\\BooleanAndConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:28:27.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\ViewModel\\MainWindowViewModel.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\MainWindowViewModel.cs",
+              "RelativeToolTip": "WeighingSolution\\ViewModel\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAIkAAACANTMzM3MowBUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-27T04:03:42.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "WeighBridgeModel.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\WeighBridgeModel.edmx",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\WeighBridgeModel.edmx",
+              "ToolTip": "C:\\Raaj\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\WeighBridgeModel.edmx [Diagram1]",
+              "RelativeToolTip": "..\\..\\..\\ClientCustome\\EverDuov2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\WeighBridgeModel.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2026-08-24T04:51:42.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CustomFieldViewModel.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\BindingModel\\CustomFieldViewModel.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\BindingModel\\CustomFieldViewModel.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\BindingModel\\CustomFieldViewModel.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\BindingModel\\CustomFieldViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T11:27:25.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CameraImagePathConverter.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\CameraImagePathConverter.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Converters\\CameraImagePathConverter.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\CameraImagePathConverter.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Converters\\CameraImagePathConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:34:28.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CompanysettingImageConverter.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\CompanysettingImageConverter.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Converters\\CompanysettingImageConverter.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\CompanysettingImageConverter.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Converters\\CompanysettingImageConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:34:32.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CustomImagePathConverter.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\CustomImagePathConverter.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Converters\\CustomImagePathConverter.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\CustomImagePathConverter.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Converters\\CustomImagePathConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:36:30.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "InverseBooleanConverter.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\InverseBooleanConverter.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Converters\\InverseBooleanConverter.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Converters\\InverseBooleanConverter.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Converters\\InverseBooleanConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:40:30.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\App.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\App.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\App.xaml",
+              "RelativeToolTip": "WeighingSolution\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-22T12:28:44.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ProductCSV_Upload_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\ProductCSV_Upload_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\DatasetupView\\ProductCSV_Upload_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\ProductCSV_Upload_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\DatasetupView\\ProductCSV_Upload_Page.xaml.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAIwK0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-21T09:21:01.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "TransactionManagement.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\TransactionManagement.xaml.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAnwLMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T12:57:26.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UIElement.cs",
+              "DocumentMoniker": "C:\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\e58c9dc68e2e6e3c4cfe5bbaade86058d065887918411fd4fe0790d6316a0f8d\\UIElement.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\e58c9dc68e2e6e3c4cfe5bbaade86058d065887918411fd4fe0790d6316a0f8d\\UIElement.cs",
+              "ToolTip": "C:\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\e58c9dc68e2e6e3c4cfe5bbaade86058d065887918411fd4fe0790d6316a0f8d\\UIElement.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\Hetul shah\\AppData\\Local\\Temp\\.vsdbgsrc\\e58c9dc68e2e6e3c4cfe5bbaade86058d065887918411fd4fe0790d6316a0f8d\\UIElement.cs [Read Only]",
+              "ViewState": "AgIAACIVAAAAAAAAAAAnwDkVAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T12:14:21.118Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "vmCustomFieldList .cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\SettingViewModel\\vmCustomFieldList .cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\ViewModel\\SettingViewModel\\vmCustomFieldList .cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\ViewModel\\SettingViewModel\\vmCustomFieldList .cs",
+              "RelativeToolTip": "WeighingSolution\\ViewModel\\SettingViewModel\\vmCustomFieldList .cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAqwGgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T10:28:36.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Converters.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\BindingModel\\Converters.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\BindingModel\\Converters.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\BindingModel\\Converters.cs",
+              "RelativeToolTip": "WeighingSolution\\BindingModel\\Converters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-12T12:54:40.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CustomFieldsList_Page.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-22T10:48:57.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CustomFieldsList_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\CustomFieldsList_Page.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T10:28:31.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ApiIntegrationMaster_Page.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-03T06:23:21.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Enumeration.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Enumeration.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\Enumeration.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\Enumeration.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\Enumeration.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGMAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-03T06:28:53.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "DelegateCommand{T}.cs",
+              "DocumentMoniker": "C:\\Users\\Hetul shah\\AppData\\Local\\SourceServer\\5b63a78be9ca48b1352393c2649ee32d4c901e46f72d8cca0ed1c45f03af8c9a\\src\\Prism.Core\\Commands\\DelegateCommand{T}.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\Hetul shah\\AppData\\Local\\SourceServer\\5b63a78be9ca48b1352393c2649ee32d4c901e46f72d8cca0ed1c45f03af8c9a\\src\\Prism.Core\\Commands\\DelegateCommand{T}.cs",
+              "ToolTip": "C:\\Users\\Hetul shah\\AppData\\Local\\SourceServer\\5b63a78be9ca48b1352393c2649ee32d4c901e46f72d8cca0ed1c45f03af8c9a\\src\\Prism.Core\\Commands\\DelegateCommand{T}.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\Hetul shah\\AppData\\Local\\SourceServer\\5b63a78be9ca48b1352393c2649ee32d4c901e46f72d8cca0ed1c45f03af8c9a\\src\\Prism.Core\\Commands\\DelegateCommand{T}.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAhwJ8AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-13T04:18:42.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "syncHelper.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\BindingModel\\syncHelper.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.SharedComponents\\BindingModel\\syncHelper.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.SharedComponents\\BindingModel\\syncHelper.cs",
+              "RelativeToolTip": "WeighingSolution.SharedComponents\\BindingModel\\syncHelper.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAD4v6cAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-13T11:14:30.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "LicenseHelper.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\LicenseHelper.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\LicenseHelper.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\LicenseHelper.cs",
+              "RelativeToolTip": "WeighingSolution\\LicenseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-13T08:33:46.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ReceiptPrint.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\ReceiptPrint.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\ReceiptPrint.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\ReceiptPrint.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\ReceiptPrint.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-11T08:50:00.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Setting_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\Setting_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\Setting_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\Setting_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\Setting_Page.xaml.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAADwv4cAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-03T06:32:16.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ApiIntegrationMaster_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\ApiIntegrationMaster_Page.xaml.cs",
+              "ViewState": "AgIAAIgAAAAApJmZmZkOwJkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T14:05:04.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "TransactionData.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\ModelExtender\\TransactionData.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAD4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T12:43:24.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "DataSetup_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\DataSetup_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\DatasetupView\\DataSetup_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\DataSetup_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\DatasetupView\\DataSetup_Page.xaml.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAgwFEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T09:50:12.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "WeighBridgeManagement_Page.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-04T06:51:00.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "APILogMetadata.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\APILogMetadata.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\APILogMetadata.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\APILogMetadata.cs",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\APILogMetadata.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-03T06:13:47.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "APILog.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\APILog.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\APILog.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\APILog.cs",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\APILog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-03T06:13:30.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Setting_Page.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\Setting_Page.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\Setting_Page.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\Setting_Page.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\Setting_Page.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-03T06:31:37.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "DataReader.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Hardware\\DataReader.cs",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Hardware\\DataReader.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Hardware\\DataReader.cs",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Hardware\\DataReader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T10:19:15.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "SyncScheduler.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\SyncService\\SyncScheduler.cs",
+              "RelativeDocumentMoniker": "SyncService\\SyncScheduler.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\SyncService\\SyncScheduler.cs",
+              "RelativeToolTip": "SyncService\\SyncScheduler.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwB8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T08:03:44.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "WeighBridgeManagement_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\DatasetupView\\WeighBridgeManagement_Page.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCEAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T09:50:32.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "SyncDBSetting.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\UserControls\\SyncDBSetting.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\UserControls\\SyncDBSetting.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\UserControls\\SyncDBSetting.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\UserControls\\SyncDBSetting.xaml.cs",
+              "ViewState": "AgIAALUAAAAAAAAAAADwv9YAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T07:41:17.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "PluginManagement_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\PluginManagement_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\PluginManagement_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\PluginManagement_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\PluginManagement_Page.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T06:18:33.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "DatabaseSetting_Page.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-01T06:06:26.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "DatabaseSetting_Page.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\SettingView\\DatabaseSetting_Page.xaml.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAtwEkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-01T05:59:43.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "BarcodeImage.sql",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\BarcodeImage.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\BarcodeImage.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\BarcodeImage.sql",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\BarcodeImage.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-20T07:14:02.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "EmailSetup.sql",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\EmailSetup.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\EmailSetup.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\EmailSetup.sql",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\EmailSetup.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-20T07:13:23.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "Data.sql",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\Data.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\Data.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\Data.sql",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\Data.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-19T08:40:33.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "CameraSetup.sql",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\CameraSetup.sql",
+              "RelativeDocumentMoniker": "WeighingSolution.DataLayer\\Scripts\\CameraSetup.sql",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution.DataLayer\\Scripts\\CameraSetup.sql",
+              "RelativeToolTip": "WeighingSolution.DataLayer\\Scripts\\CameraSetup.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-20T07:14:35.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\MainWindow.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\MainWindow.xaml",
+              "RelativeToolTip": "WeighingSolution\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-18T12:19:13.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "DashBord.xaml",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\DashBord.xaml",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\DashBord.xaml",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\DashBord.xaml",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\DashBord.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-20T05:19:50.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "DashBord.xaml.cs",
+              "DocumentMoniker": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\DashBord.xaml.cs",
+              "RelativeDocumentMoniker": "WeighingSolution\\View\\TransactionView\\DashBord.xaml.cs",
+              "ToolTip": "C:\\Raaj\\SoftwareVer\\Weighmast2.7_APIMASTER\\WeighingSolutionV2.7\\WeighingSolution\\View\\TransactionView\\DashBord.xaml.cs",
+              "RelativeToolTip": "WeighingSolution\\View\\TransactionView\\DashBord.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T05:20:01.19Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

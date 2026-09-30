@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TransactionDataSet" targetNamespace="http://tempuri.org/TransactionDataSet.xsd" xmlns:mstns="http://tempuri.org/TransactionDataSet.xsd" xmlns="http://tempuri.org/TransactionDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="weighbridgeConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="weighbridgeConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WeighingSolution.Properties.Settings.GlobalReference.Default.weighbridgeConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="weighbridgeConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+                      SELECT TData.ReceiptTicketID, TData.TicketID, Acc.CompanyName AS AccountName, P.ProductName, V.VehicleNumber, TDetail.GrossTime, TDetail.GrossWeight, TDetail.TareTime, TDetail.TareWeight, TDetail.NetWeight, IsGrossManual, IsTareManual,TData.Charges ,TData.TransactionType,TDetail.WeightUnit,WB.ScaleName
+                      FROM TransactionData AS TData
+                      INNER JOIN TransactionDetail AS TDetail ON TData.ReceiptTicketID = TDetail.ReceiptTicketID AND TDetail.GrossWeight IS NOT NULL AND TDetail.TareWeight IS NOT NULL
+                      INNER JOIN WeightBridge WB ON WB.WeightBridgeID = TDetail .WeightBridgeID
+                      LEFT OUTER JOIN Account AS Acc ON Acc.AccountID = TData.AccountID
+                      LEFT OUTER JOIN Account AS Tra ON Tra.AccountID = TData.TransporterID
+                      LEFT OUTER JOIN Product AS P ON P.ProductID = TDetail.ProductID
+                      LEFT OUTER JOIN Driver AS D ON D.DriverID = TData.DriverID
+                      LEFT OUTER JOIN Vehicle AS V ON V.VehicleID = TData.VehicleID
+                      ORDER BY TData.TicketID
+                    </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ReceiptTicketID" DataSetColumn="ReceiptTicketID" />
+              <Mapping SourceColumn="TicketID" DataSetColumn="TicketID" />
+              <Mapping SourceColumn="AccountName" DataSetColumn="AccountName" />
+              <Mapping SourceColumn="ProductName" DataSetColumn="ProductName" />
+              <Mapping SourceColumn="VehicleNumber" DataSetColumn="VehicleNumber" />
+              <Mapping SourceColumn="GrossTime" DataSetColumn="GrossTime" />
+              <Mapping SourceColumn="GrossWeight" DataSetColumn="GrossWeight" />
+              <Mapping SourceColumn="TareTime" DataSetColumn="TareTime" />
+              <Mapping SourceColumn="TareWeight" DataSetColumn="TareWeight" />
+              <Mapping SourceColumn="NetWeight" DataSetColumn="NetWeight" />
+              <Mapping SourceColumn="IsGrossManual" DataSetColumn="IsGrossManual" />
+              <Mapping SourceColumn="IsTareManual" DataSetColumn="IsTareManual" />
+              <Mapping SourceColumn="Charges" DataSetColumn="Charges" />
+              <Mapping SourceColumn="TransactionType" DataSetColumn="TransactionType" />
+              <Mapping SourceColumn="WeightUnit" DataSetColumn="WeightUnit" />
+              <Mapping SourceColumn="ScaleName" DataSetColumn="ScaleName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TransactionDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TransactionDataSet" msprop:Generator_UserDSName="TransactionDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReceiptTicketID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnReceiptTicketID" msprop:Generator_ColumnPropNameInRow="ReceiptTicketID" msprop:Generator_ColumnPropNameInTable="ReceiptTicketIDColumn" msprop:Generator_UserColumnName="ReceiptTicketID" type="xs:string" />
+              <xs:element name="TicketID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTicketID" msprop:Generator_ColumnPropNameInRow="TicketID" msprop:Generator_ColumnPropNameInTable="TicketIDColumn" msprop:Generator_UserColumnName="TicketID" type="xs:int" />
+              <xs:element name="AccountName" msprop:Generator_ColumnVarNameInTable="columnAccountName" msprop:Generator_ColumnPropNameInRow="AccountName" msprop:Generator_ColumnPropNameInTable="AccountNameColumn" msprop:Generator_UserColumnName="AccountName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VehicleNumber" msprop:Generator_ColumnVarNameInTable="columnVehicleNumber" msprop:Generator_ColumnPropNameInRow="VehicleNumber" msprop:Generator_ColumnPropNameInTable="VehicleNumberColumn" msprop:Generator_UserColumnName="VehicleNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GrossTime" msprop:Generator_ColumnVarNameInTable="columnGrossTime" msprop:Generator_ColumnPropNameInRow="GrossTime" msprop:Generator_ColumnPropNameInTable="GrossTimeColumn" msprop:Generator_UserColumnName="GrossTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GrossWeight" msprop:Generator_ColumnVarNameInTable="columnGrossWeight" msprop:Generator_ColumnPropNameInRow="GrossWeight" msprop:Generator_ColumnPropNameInTable="GrossWeightColumn" msprop:Generator_UserColumnName="GrossWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TareTime" msprop:Generator_ColumnVarNameInTable="columnTareTime" msprop:Generator_ColumnPropNameInRow="TareTime" msprop:Generator_ColumnPropNameInTable="TareTimeColumn" msprop:Generator_UserColumnName="TareTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TareWeight" msprop:Generator_ColumnVarNameInTable="columnTareWeight" msprop:Generator_ColumnPropNameInRow="TareWeight" msprop:Generator_ColumnPropNameInTable="TareWeightColumn" msprop:Generator_UserColumnName="TareWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NetWeight" msprop:Generator_ColumnVarNameInTable="columnNetWeight" msprop:Generator_ColumnPropNameInRow="NetWeight" msprop:Generator_ColumnPropNameInTable="NetWeightColumn" msprop:Generator_UserColumnName="NetWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IsGrossManual" msprop:Generator_ColumnVarNameInTable="columnIsGrossManual" msprop:Generator_ColumnPropNameInRow="IsGrossManual" msprop:Generator_ColumnPropNameInTable="IsGrossManualColumn" msprop:Generator_UserColumnName="IsGrossManual" type="xs:boolean" />
+              <xs:element name="IsTareManual" msprop:Generator_ColumnVarNameInTable="columnIsTareManual" msprop:Generator_ColumnPropNameInRow="IsTareManual" msprop:Generator_ColumnPropNameInTable="IsTareManualColumn" msprop:Generator_UserColumnName="IsTareManual" type="xs:boolean" />
+              <xs:element name="Charges" msprop:Generator_ColumnVarNameInTable="columnCharges" msprop:Generator_ColumnPropNameInRow="Charges" msprop:Generator_ColumnPropNameInTable="ChargesColumn" msprop:Generator_UserColumnName="Charges" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TransactionType" msprop:Generator_ColumnVarNameInTable="columnTransactionType" msprop:Generator_ColumnPropNameInRow="TransactionType" msprop:Generator_ColumnPropNameInTable="TransactionTypeColumn" msprop:Generator_UserColumnName="TransactionType" type="xs:decimal" minOccurs="0" />
+              <xs:element name="WeightUnit" msprop:Generator_ColumnVarNameInTable="columnWeightUnit" msprop:Generator_ColumnPropNameInRow="WeightUnit" msprop:Generator_ColumnPropNameInTable="WeightUnitColumn" msprop:Generator_UserColumnName="WeightUnit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ScaleName" msprop:Generator_ColumnVarNameInTable="columnScaleName" msprop:Generator_ColumnPropNameInRow="ScaleName" msprop:Generator_ColumnPropNameInTable="ScaleNameColumn" msprop:Generator_UserColumnName="ScaleName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:ReceiptTicketID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

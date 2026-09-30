@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Endel_weighbridgeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationSettings">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SettingName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SettingType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SettingValue" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomField">
+          <Key>
+            <PropertyRef Name="CustomFieldID" />
+          </Key>
+          <Property Name="CustomFieldID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+          <Property Name="MaxLength" Type="int" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailSetup">
+          <Key>
+            <PropertyRef Name="EmailSetupID" />
+          </Key>
+          <Property Name="EmailSetupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ScheduleDescription" Type="nvarchar(max)" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="EmailType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmailSubject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmailBody" Type="nvarchar(max)" />
+          <Property Name="ColumnSelection" Type="nvarchar(max)" />
+          <Property Name="ScheduleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScheduleTime" Type="nvarchar" MaxLength="200" />
+          <Property Name="NextRunTime" Type="datetime" />
+          <Property Name="FilterDetail" Type="nvarchar(max)" />
+          <Property Name="WhereClause" Type="nvarchar(max)" />
+          <Property Name="Filterstring" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MasterField">
+          <Key>
+            <PropertyRef Name="MasterFieldID" />
+          </Key>
+          <Property Name="MasterFieldID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Isvisible" Type="bit" Nullable="false" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Endel_weighbridgeModelStoreContainer">
+          <EntitySet Name="ApplicationSettings" EntityType="Self.ApplicationSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomField" EntityType="Self.CustomField" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailSetup" EntityType="Self.EmailSetup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterField" EntityType="Self.MasterField" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Endel_weighbridgeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Endel_weighbridgeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationSettings" EntityType="Endel_weighbridgeModel.ApplicationSetting" />
+          <EntitySet Name="CustomFields" EntityType="Endel_weighbridgeModel.CustomField" />
+          <EntitySet Name="EmailSetups" EntityType="Endel_weighbridgeModel.EmailSetup" />
+          <EntitySet Name="MasterFields" EntityType="Endel_weighbridgeModel.MasterField" />
+        </EntityContainer>
+        <EntityType Name="ApplicationSetting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SettingType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomField">
+          <Key>
+            <PropertyRef Name="CustomFieldID" />
+          </Key>
+          <Property Name="CustomFieldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+          <Property Name="MaxLength" Type="Int32" />
+          <Property Name="IsVisible" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailSetup">
+          <Key>
+            <PropertyRef Name="EmailSetupID" />
+          </Key>
+          <Property Name="EmailSetupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="EmailType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailTo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailSubject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnSelection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NextRunTime" Type="DateTime" Precision="3" />
+          <Property Name="FilterDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhereClause" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Filterstring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MasterField">
+          <Key>
+            <PropertyRef Name="MasterFieldID" />
+          </Key>
+          <Property Name="MasterFieldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Isvisible" Type="Boolean" Nullable="false" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Endel_weighbridgeModelStoreContainer" CdmEntityContainer="Endel_weighbridgeEntities">
+          <EntitySetMapping Name="ApplicationSettings">
+            <EntityTypeMapping TypeName="Endel_weighbridgeModel.ApplicationSetting">
+              <MappingFragment StoreEntitySet="ApplicationSettings">
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="SettingType" ColumnName="SettingType" />
+                <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomFields">
+            <EntityTypeMapping TypeName="Endel_weighbridgeModel.CustomField">
+              <MappingFragment StoreEntitySet="CustomField">
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="CustomFieldID" ColumnName="CustomFieldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailSetups">
+            <EntityTypeMapping TypeName="Endel_weighbridgeModel.EmailSetup">
+              <MappingFragment StoreEntitySet="EmailSetup">
+                <ScalarProperty Name="Filterstring" ColumnName="Filterstring" />
+                <ScalarProperty Name="WhereClause" ColumnName="WhereClause" />
+                <ScalarProperty Name="FilterDetail" ColumnName="FilterDetail" />
+                <ScalarProperty Name="NextRunTime" ColumnName="NextRunTime" />
+                <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+                <ScalarProperty Name="ScheduleType" ColumnName="ScheduleType" />
+                <ScalarProperty Name="ColumnSelection" ColumnName="ColumnSelection" />
+                <ScalarProperty Name="EmailBody" ColumnName="EmailBody" />
+                <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+                <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />
+                <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ScheduleDescription" ColumnName="ScheduleDescription" />
+                <ScalarProperty Name="ScheduleName" ColumnName="ScheduleName" />
+                <ScalarProperty Name="EmailSetupID" ColumnName="EmailSetupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterFields">
+            <EntityTypeMapping TypeName="Endel_weighbridgeModel.MasterField">
+              <MappingFragment StoreEntitySet="MasterField">
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="Isvisible" ColumnName="Isvisible" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="MasterFieldID" ColumnName="MasterFieldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

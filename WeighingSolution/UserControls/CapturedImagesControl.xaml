@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="WeighingSolution.UserControls.CapturedImagesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:shared="clr-namespace:WeighingSolution.SharedComponents;assembly=WeighingSolution.SharedComponents"
+             xmlns:datalayer="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.SharedComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="Dictionary1.xaml"/>-->
+                <shared:DesignTimeResourceDictionary DesignTimeSource="pack://application:,,,/WeighingSolution.SharedComponents;component/Styles/MetroStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <datalayer:CameraImagePathConverter x:Key="CameraImagePathConverter" />
+            <BitmapImage x:Key="DefaultImage" UriSource="/Images/no-img.png" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <Border BorderBrush="{DynamicResource AccentColorBrush}"  BorderThickness="1,1,1,1" Margin="0,-1,0,0" Padding="5">
+                <!--<csc:ScrollViewerEx VerticalScrollBarVisibility="Auto">-->
+                <ListBox Name="lvCapturedImages" HorizontalAlignment="Left" ItemsSource="{Binding lstCamImage,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" Width="700" Margin="0,0,0,0"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Image HorizontalAlignment="Left" Width="150" Margin="15,10,0,10" Opacity="1" Source="{Binding CameraImagePath,Converter={StaticResource CameraImagePathConverter},FallbackValue={StaticResource DefaultImage}}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!--</csc:ScrollViewerEx>-->
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Weighing Solutions" Language="1033" Version="2.7.0.0" Manufacturer="Endel Weighing Solution" UpgradeCode="220c6f69-0265-4fb7-83f8-6f953ea03c76">
+    <!-- Set the icon to be used in "Programs and Features" -->
+    <!--<Icon Id="AppIcon" SourceFile="$(var.SampleApp.ProjectDir)app.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="AppIcon" />-->
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <!--<UIRef Id="WixUI_Minimal" />-->
+
+    <!-- Allow to run as admin only. otherwise exit.-->
+    <Condition Message="You need to be an administrator to install this product.">
+      Privileged
+    </Condition>
+
+    <!-- only to updrage product by uninstalling previous versions. disallow downgrades-->
+		<MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="A newer version of Weighing Solutions is already installed." />
+		
+    <!--<MediaTemplate CompressionLevel="high" EmbedCab="yes" />-->
+    <!-- We create two cabinet files to make build process go faster, wixproj altered to include reusecabinite and cabinetcachepath props-->
+    <!-- http://wixtoolset.org/documentation/manual/v3/howtos/general/optimizing_builds.html-->
+    <Media Id="1" Cabinet="MainProgram.cab" EmbedCab="yes" CompressionLevel="high" />
+    <Media Id="2" Cabinet="Libraries.cab" EmbedCab="yes" CompressionLevel="high" />
+
+    <!-- additional check to ensure .NET Framework 4.5 is installed or not. This is handled by bootstrapper.-->
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_45_OR_LATER_INSTALLED" />
+    <Condition Message="This application requires .NET Framework 4.5 or later. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_45_OR_LATER_INSTALLED]]>
+    </Condition>
+    
+    <!-- Install Program files, fonts and shortcuts-->
+		<Feature Id="ProductFeature" Title="WeighBridge Application" Level="1" Description="Installs the WeighBridge Management Application" Absent="disallow">
+			<ComponentGroupRef Id="CoreComponents" />
+      <ComponentGroupRef Id="Fonts_files"/>
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+		</Feature>
+
+    <Property Id="MSIUSEREALADMINDETECTION" Value="1" />
+    
+    <!-- Provide information links to be displayed in "Programs and Features" / Add Remove Programs Panel -->
+    <!--Link for about resource. Ideally should be product page-->
+    <Property Id="ARPURLINFOABOUT" Value="https://www.endelweigh.com/" />
+    <!--Link for online help / support-->
+    <Property Id="ARPHELPLINK" Value="https://www.endelweigh.com/enquiry.html" />
+    <Property Id='ARPCOMMENTS'>Complete WeighBridge Management Solution</Property>
+    <!--app size in kilobytes-->
+    <Property Id='ARPSIZE'>25600</Property>
+    <!-- Icon in Programs and Features-->
+    <Property Id='ARPPRODUCTICON'>appicon.ico</Property>
+    <Icon Id="appicon.ico" SourceFile="icon.ico" />
+    <!--<Property Id='ARPCONTACT'>contact info</Property>
+    <Property Id='ARPURLINFOABOUT'>URL for general info about the product</Property>
+    <Property Id='ARPURLUPDATEINFO'>URL for product updates</Property>
+    <Property Id='ARPHELPTELEPHONE'>URL for technical support</Property>
+    <Property Id='ARPREADME'>path</Property>-->
+    <!--Link for downloading updates-->
+    <!--<Property Id="ARPURLUPDATEINFO" Value="http://www.somecompany.com/SampleApp/downloads" />-->
+    <!--To suppress the Modify button-->
+    <Property Id='ARPNOMODIFY'>1</Property>
+    <!--To suppress the Repair functionality-->
+    <Property Id='ARPNOREPAIR'>1</Property>
+    
+    <!--Avoid creating a system restore point, to enable fast installation.-->
+    <Property Id="MSIFASTINSTALL" Value="1" />
+	</Product>
+
+  <!-- Install in Program Files folder. Also reference to shortcuts folders and fonts folders -->
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="MANUFACTURERFOLDER" Name="!(bind.property.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)" />
+        </Directory>
+			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="!(bind.property.Manufacturer)" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="FontsFolder"/>
+		</Directory>
+	</Fragment>
+
+  <!-- install shortcuts and uninstall link-->
+  <Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="d06d4e25-ca99-4696-ba65-59806afc1435">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="!(bind.property.ProductName)" Description="Complete WeighBridge Management Solution" Target="[INSTALLFOLDER]WeighingSolution.exe" WorkingDirectory="INSTALLFOLDER" />
+        <!--<Shortcut Id="UninstallProduct" Name="Uninstall" Description="Uninstalls Weighing Solutions" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]"/>-->
+        <Shortcut Id="UninstallProduct" Name="Uninstall" Description="Uninstalls Weighing Solutions" Target="[UNINSTALLER_PATH]" Arguments="/uninstall" WorkingDirectory="ProgramMenuFolder"/>
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\!(bind.property.Manufacturer)\!(bind.property.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesktop" Guid="83ecc503-4e25-4342-ab21-48edda16f81a">
+        <Shortcut Id="ApplicationDesktopShortcut" Name="!(bind.property.ProductName)" Description="Complete WeighBridge Management Solution" Target="[INSTALLFOLDER]WeighingSolution.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\!(bind.property.Manufacturer)\!(bind.property.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

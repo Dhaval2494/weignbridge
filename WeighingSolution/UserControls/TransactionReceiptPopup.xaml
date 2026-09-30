@@ -1,0 +1,194 @@
+﻿<simpleChildWindow:ChildWindow 
+    x:Class="WeighingSolution.UserControls.TransactionReceiptPopup"
+                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                               xmlns:simpleChildWindow="clr-namespace:MahApps.Metro.SimpleChildWindow;assembly=MahApps.Metro.SimpleChildWindow"
+                                xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+                                xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                                xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer"
+                                x:Name="receiptPopup" Title="{Binding SelectedTransaction.TicketID, StringFormat='Ticket No. {0}'}" CloseByEscape="True" 
+                                AllowMove="True" BorderBrush="{DynamicResource AccentBaseColorBrush}" BorderThickness="1"
+                                GlowBrush="{DynamicResource AccentColorBrush}" ShowCloseButton="True" HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center" EnableDropShadow="False">
+    <simpleChildWindow:ChildWindow.TitleTemplate>
+        <DataTemplate>
+            <TextBlock Margin="4" TextTrimming="CharacterEllipsis" Text="{TemplateBinding Content}" FontFamily="Arial" FontWeight="Bold"/>
+        </DataTemplate>
+    </simpleChildWindow:ChildWindow.TitleTemplate>
+    <simpleChildWindow:ChildWindow.OverlayBrush>
+        <SolidColorBrush Opacity="0.7" Color="{StaticResource BlackColor}" />
+    </simpleChildWindow:ChildWindow.OverlayBrush>
+    <StackPanel Background="{DynamicResource WhiteBrush}">
+        <csc:ScrollViewerEx Height="300" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="5">
+                <csc:ScrollViewerEx Height="132" VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <Grid Name="gridReceiptpopup">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">Vehicle No:</TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Padding="0,0,5,0" Text="{Binding SelectedTransaction.Vehicle_Number}"></TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">Account:</TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Padding="0,0,5,0" Text="{Binding SelectedTransaction.Account_Name}"></TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">Transporter:</TextBlock>
+                                <TextBlock Grid.Row="2" Grid.Column="1" Padding="0,0,5,0" Text="{Binding SelectedTransaction.Transporter_Name}"></TextBlock>
+                                <TextBlock Grid.Row="3" Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">Driver:</TextBlock>
+                                <TextBlock Grid.Row="3" Grid.Column="1" Padding="0,0,5,0" Text="{Binding SelectedTransaction.Driver.DriverName}"></TextBlock>
+                                <TextBlock Grid.Row="4" Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">Charges:</TextBlock>
+                                <TextBlock Grid.Row="4" Grid.Column="1" Padding="0,0,5,0" Text="{Binding SelectedTransaction.Charges}"></TextBlock>
+                                <TextBlock Grid.Row="5" Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">Transaction Type:</TextBlock>
+                                <TextBlock Grid.Row="5" Grid.Column="1" Padding="0,0,5,0" Text="{Binding SelectedTransaction.TransactionType}"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <ItemsControl ItemsSource="{Binding SelectedTransaction.CustomFieldViewModels}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Grid.IsSharedSizeScope="True"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition SharedSizeGroup="ColumnOne" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock FontWeight="Bold" Text="{Binding DisplayName, StringFormat='{}{0}: '}" Margin="0,0,10,0"></TextBlock>
+                                            <TextBlock Grid.Column="1" Text="{Binding CustomValue}" Margin="0,0,5,0"></TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Grid>
+                </csc:ScrollViewerEx>
+                <TabControl Name="TabcntrlPopup" BorderThickness="0" Margin="0,10,0,0" Padding="0">
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Grid Name="Panel">
+                                            <Border Name="Border" CornerRadius="3,3,0,0" Padding="15,6" Margin="10,0,0,0" BorderBrush="{DynamicResource AccentColorBrush}">
+                                                <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" />
+                                            </Border>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource AccentColorBrush2}" />
+                                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="{StaticResource BlackBrush}" />
+                                                <Setter Property="BorderThickness" Value="1"  TargetName="Border"></Setter>
+                                                <Setter Property="TextElement.FontWeight" Value="Normal" TargetName="ContentSite"></Setter>
+                                                <Setter Property="TextElement.FontSize" Value="13" TargetName="ContentSite"></Setter>
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentColorBrush4}" />
+                                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="{StaticResource BlackBrush}" />
+                                                <Setter Property="BorderThickness" Value="0"  TargetName="Border"></Setter>
+                                                <Setter Property="TextElement.FontWeight" Value="Normal" TargetName="ContentSite"></Setter>
+                                                <Setter Property="TextElement.FontSize" Value="13" TargetName="ContentSite"></Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
+                    <TabItem Header="Passes">
+                        <Border BorderBrush="{DynamicResource AccentColorBrush}"  BorderThickness="1,1,1,1" Margin="0,-1,0,0" Padding="5">
+                            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" Foreground="{DynamicResource BlackBrush}">
+                                <DataGrid Name="datagridreceiptpopup" AutoGenerateColumns="False" Margin="0,0,0,0" HorizontalAlignment="Center" 
+                                                  CanUserAddRows="False" ItemsSource="{Binding SelectedTransaction.ValidTransactionDetails}" CanUserSortColumns="False" ScrollViewer.CanContentScroll="True" 
+                                                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Stretch" >
+                                    <DataGrid.ColumnHeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                            <Setter Property="Background" Value="{StaticResource AccentColorBrush}"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            <Setter Property="BorderThickness" Value="0,2,0,2"/>
+                                            <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                                            <Setter Property="Padding" Value="2,3,2,3"></Setter>
+                                        </Style>
+                                    </DataGrid.ColumnHeaderStyle>
+                                    <DataGrid.RowStyle>
+                                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGrid.RowStyle>
+                                    <DataGrid.Columns >
+                                        <DataGridTextColumn Header="#"  Width="20" IsReadOnly="True" Binding="{Binding SequenceNo}"  />
+                                        <DataGridTextColumn Header="Scale Name" Width="80" IsReadOnly="True" Binding="{Binding WeightBridgeName}" />
+                                        <DataGridTemplateColumn Header="Gross Wt"  Width="70" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                                <Run Text="{Binding GrossWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                <Run Text="{Binding WeightUnit}" />
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="Gross Time"  Width="130" IsReadOnly="True" Binding="{Binding GrossTime,StringFormat={x:Static strFormat:Constant.DateTimeFormat}}" />
+                                        <DataGridTemplateColumn Header="Tare Wt"  Width="70" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                                <Run Text="{Binding TareWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                 <Run Text="{Binding WeightUnit}" />
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="Tare Time"  Width="130" IsReadOnly="True" Binding="{Binding TareTime,StringFormat={x:Static strFormat:Constant.DateTimeFormat}}" />
+                                        <DataGridTemplateColumn Header="Net Wt"  Width="70" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                                <Run Text="{Binding NetWeight, StringFormat={x:Static strFormat:Constant.DecimalFormat}}" />
+                                                                 <Run Text="{Binding WeightUnit}" />
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="Product" Width="60" IsReadOnly="True" Binding="{Binding Product.ProductName}" />
+                                        <DataGridTextColumn Header="Gate" Width="60" IsReadOnly="True" Binding="{Binding Gate.GateName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="User"  Width="60" IsReadOnly="True" Binding="{Binding UserMaster.UserName}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </csc:ScrollViewerEx>
+                        </Border>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </csc:ScrollViewerEx>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>           
+            <Button HorizontalAlignment="Right" Content="Print Preview" Name="btnPrintTransaction" Visibility="Collapsed" Controls:ButtonHelper.PreserveTextCase="True" Click="btnPrintTransaction_Click" Grid.Row="0" Grid.Column="1" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="30"   Margin="0,10,10,10" ></Button>
+        </Grid>
+    </StackPanel>
+</simpleChildWindow:ChildWindow>

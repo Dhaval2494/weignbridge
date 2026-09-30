@@ -1,0 +1,298 @@
+﻿<simpleChildWindow:ChildWindow
+    x:Class="WeighingSolution.UserControls.SyncDBSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:simpleChildWindow="clr-namespace:MahApps.Metro.SimpleChildWindow;assembly=MahApps.Metro.SimpleChildWindow"
+    Title="SyncDBSetting"
+    HorizontalContentAlignment="Center"
+    VerticalContentAlignment="Center"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    AllowMove="True"
+    BorderBrush="{DynamicResource AccentBaseColorBrush}"
+    BorderThickness="1"
+    CloseByEscape="True"
+    EnableDropShadow="False"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    IsModal="True"
+    ShowCloseButton="True"
+    mc:Ignorable="d">
+
+    <simpleChildWindow:ChildWindow.TitleTemplate>
+        <DataTemplate>
+            <TextBlock
+                Margin="4"
+                FontFamily="Arial"
+                FontWeight="Bold"
+                Text=" SyncDB Setting"
+                TextTrimming="CharacterEllipsis" />
+        </DataTemplate>
+    </simpleChildWindow:ChildWindow.TitleTemplate>
+    <simpleChildWindow:ChildWindow.OverlayBrush>
+        <SolidColorBrush Opacity="0.7" Color="{StaticResource BlackColor}" />
+    </simpleChildWindow:ChildWindow.OverlayBrush>
+    <StackPanel
+        MinWidth="500px"
+        HorizontalAlignment="Stretch"
+        Background="{DynamicResource WhiteBrush}"
+        Orientation="Horizontal">
+        <StackPanel Name="stkSetting" Margin="5">
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblDestinationDBIP" HorizontalAlignment="Left">Destination DB IP:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <TextBox
+                        Name="txtDestinationDBIP"
+                        Width="150px"
+                        Padding="2"
+                        HorizontalAlignment="Left" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblDBName" HorizontalAlignment="Left">Database Name:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <TextBox
+                        Name="txtDBName"
+                        Width="150px"
+                        Padding="2"
+                        HorizontalAlignment="Left" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblUserName" HorizontalAlignment="Left">Username:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <TextBox
+                        Name="txtUsername"
+                        Width="150px"
+                        Padding="2"
+                        HorizontalAlignment="Left" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblPassword" HorizontalAlignment="Left">Password:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <PasswordBox
+                        Name="txtPassword"
+                        Width="150px"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        PasswordChar="*" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblDestinationImagePath" HorizontalAlignment="Left">Destination Image FTP Path:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <TextBox
+                        Name="txtImagePath"
+                        Width="500px"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        Text="" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblFTPUserID" HorizontalAlignment="Left">FTP UserID:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <TextBox
+                        Name="txtFTPUserID"
+                        Width="150px"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        Text="" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Margin="0,10,0,10"
+                    Orientation="Horizontal">
+                    <Label Name="lblFTPUserPWD" HorizontalAlignment="Left">FTP User PWD:</Label>
+                    <Label Foreground="red">*</Label>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Margin="0,10,10,10"
+                    Orientation="Horizontal">
+                    <PasswordBox
+                        Name="txtFTPUserPWD"
+                        Width="150px"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        PasswordChar="*" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="4"
+                    Grid.ColumnSpan="4"
+                    Margin="0,10,10,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Name="btnSave"
+                        Height="30"
+                        Margin="0,10,10,10"
+                        Padding="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Controls:ButtonHelper.PreserveTextCase="True"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        Click="btnSave_Click"
+                        Content="Save"
+                        Style="{DynamicResource mouseoverstyle}" />
+                    <Button
+                        Name="btnDeProvision"
+                        Height="30"
+                        Margin="0,10,10,10"
+                        Padding="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Controls:ButtonHelper.PreserveTextCase="True"
+                        Background="Red"
+                        Click="btnDeProvision_Click"
+                        Content="De Provision DB"
+                        Style="{DynamicResource mouseoverstyle}" />
+                </StackPanel>
+
+                <Border
+                    Grid.Row="5"
+                    Grid.ColumnSpan="4"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    Background="{StaticResource AccentColorBrush}" />
+
+                <StackPanel
+                    Grid.Row="6"
+                    Grid.ColumnSpan="4"
+                    Margin="0,10,10,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Name="btnServerProvision"
+                        Height="30"
+                        Margin="0,10,10,10"
+                        Padding="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Controls:ButtonHelper.PreserveTextCase="True"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        Click="btnServerProvision_Click"
+                        Content="server Provision DB"
+                        Style="{DynamicResource mouseoverstyle}" />
+                    <Button
+                        Name="btnServerDeProvision"
+                        Height="30"
+                        Margin="0,10,10,10"
+                        Padding="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Controls:ButtonHelper.PreserveTextCase="True"
+                        Background="Red"
+                        Click="btnServerDeProvision_Click"
+                        Content="server De Provision DB"
+                        Style="{DynamicResource mouseoverstyle}" />
+                </StackPanel>
+                <Border
+                    Grid.Row="7"
+                    Grid.ColumnSpan="4"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    Background="{StaticResource AccentColorBrush}" />
+                <StackPanel
+                    Grid.Row="8"
+                    Grid.ColumnSpan="4"
+                    Margin="0,20,10,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock Name="txtToInstall" Visibility="Collapsed"><Hyperlink Name="lnkSVCInstall" Click="lnkSVCInstall_Click">
+                            Click here
+                        </Hyperlink>
+                        to install SyncDB service</TextBlock>
+                    <TextBlock Name="txtInstalled" Visibility="Collapsed">
+                        SyncDB service is installed. For Stop<Hyperlink Name="lnkSVCStop" Click="lnkSVCStop_Click">
+                            Click here
+                        </Hyperlink> </TextBlock>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+    </StackPanel>
+</simpleChildWindow:ChildWindow>

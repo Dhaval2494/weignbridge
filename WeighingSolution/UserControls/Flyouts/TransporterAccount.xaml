@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="WeighingSolution.UserControls.Flyouts.TransporterAccount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <DockPanel Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Stretch" LastChildFill="True">
+        <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,10,0,10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+            </Grid.RowDefinitions>
+            <Button Content="Add" Grid.Column="0" IsDefault="True" Grid.Row="0" Height="33" Style="{StaticResource AccentedSquareButtonStyle}" BorderBrush="{DynamicResource AccentColorBrush}" VerticalAlignment="Bottom" Margin="0,0,0,0" Width="100" Command="{Binding SaveCommand}"/>
+            <Button Content="Cancel" IsCancel="True" Grid.Row="0" Grid.Column="1" Height="33" Style="{StaticResource AccentedSquareButtonStyle}" BorderBrush="{DynamicResource AccentColorBrush}" VerticalAlignment="Bottom" Margin="0,0,0,0" Width="100" Command="{Binding CloseDetailViewCommand}"/>
+        </Grid>
+        <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" DockPanel.Dock="Bottom">
+            <StackPanel Margin="20" VerticalAlignment="Top">
+                <Label Content="Add Account/Transporter" FontWeight="Light" FontSize="30"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,5" Grid.Row="0" Grid.Column="0">
+                        <Label >Company Name</Label>
+                        <Label Foreground="red">*</Label>
+                    </StackPanel>
+                    <TextBox Name="txtCompanyName" MaxLength="250" Grid.Column="1" Grid.Row="0" Margin="0,10,10,5" Text="{Binding Model.CompanyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,10,0,5" Orientation="Horizontal">
+                        <Label Name="lblRole" >Role</Label>
+                        <Label Foreground="red">*</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1"  Margin="10,10,0,5">
+                        <CheckBox Name="cbaccount"  Margin="0,0,15,0" IsChecked="{Binding Model.IsAccount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">Account</CheckBox>
+                        <CheckBox Name="cbTransporter" Grid.Column="1" Margin="0,0,5,0" IsChecked="{Binding Model.IsTransporter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >Transporter
+                        </CheckBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="10,10,0,5" Orientation="Horizontal">
+                        <Label Name="lblfnm">First Name</Label>
+                        <Label Foreground="Red">*</Label>
+                    </StackPanel>
+                    <TextBox Name="txtFirstName" MaxLength="250" Grid.Row="2" Grid.Column="1" Margin="0,10,10,5" Text="{Binding Model.FirstName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Margin="10,10,0,5">Last Name</Label>
+                    <TextBox  MaxLength="250" Name="txtLastName" Grid.Row="3" Grid.Column="1"   Margin="0,10,10,5" Text="{Binding Model.LastName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Margin="10,10,0,5">Account Code</Label>
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="txtAccountCode" MaxLength="50" Margin="0,10,10,5"  Text="{Binding Model.AccountCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    <Label Grid.Row="5" Grid.Column="0" Margin="10,10,0,5">Contact No</Label>
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="txtContactNo" MaxLength="20" Margin="0,10,10,5"  Text="{Binding Model.ContactNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="6" Grid.Column="0" Margin="10,10,0,5">Email</Label>
+                    <TextBox  Name="txtEmail" MaxLength="250" Grid.Row="6" Grid.Column="1" Margin="0,10,10,5"  Text="{Binding Model.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue=''}"/>
+                    <Label Grid.Row="7" Grid.Column="0" Margin="10,10,0,5">Address</Label>
+                    <TextBox Grid.Row="7"  Grid.Column="1" Name="txtAddress" MaxLength="500" Margin="0,10,10,5" Text="{Binding Model.Address,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="8" Grid.Column="0" Margin="10,10,0,5">City</Label>
+                    <TextBox Name="txtCity" MaxLength="100" Grid.Row="8" Grid.Column="1"   Margin="0,10,10,5" Text="{Binding Model.City,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="9" Grid.Column="0" Margin="10,10,0,5">Pincode</Label>
+                    <TextBox Name="txtPincode" MaxLength="20" Grid.Row="9" Grid.Column="1" Margin="0,10,10,5"  Text="{Binding Model.Pincode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Grid.Row="10" Grid.Column="0" Margin="10,10,0,5">Notes</Label>
+                    <TextBox AcceptsReturn="True" Name="txtNotes" Grid.Row="10" Margin="0,10,10,5" Height="45" Grid.Column="1" Text="{Binding Model.Notes,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+            </StackPanel>
+        </csc:ScrollViewerEx>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,30 @@
+﻿<Application x:Class="WeighingSolution.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             Exit="Application_Exit">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WeighingSolution.SharedComponents;component/Styles/MetroStyles.xaml" />
+
+                <!-- ToastNotifications (Get Help from https://github.com/raflop/ToastNotifications)-->
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+
+                <!-- Custom Styles-->
+                <ResourceDictionary Source="pack://application:,,,/WeighingSolution.SharedComponents;component/Styles/ValidationErrorTemplate.xaml" />
+                <ResourceDictionary Source="Styles/Icons.xaml"/>
+                <ResourceDictionary Source="Styles/AutoCompleteBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converter:BoolVisibilityConverter x:Key="PositiveBooleanToVisibilityConverter" True="Collapsed" False="Visible" />
+            <converter:BoolVisibilityConverter x:Key="NegativeBooleanToVisibilityConverter" True="Visible" False="Collapsed" />
+            <converter:MultiBindingConverter x:Key="MultiBindingConverter" />
+            <converter:NullReplaceConverter x:Key="NullReplaceConverter" />
+  
+            
+            <System:Boolean x:Key="FalseValue">False</System:Boolean>
+            <System:Boolean x:Key="TrueValue">True</System:Boolean>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,139 @@
+﻿<Page x:Class="WeighingSolution.View.VehicleCSV_Upload_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="CSV_Upload_Page">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text=" Vehicle CSV Import" />
+                        </TextBlock>
+
+                    </StackPanel>
+
+                    <Button Content="Select CSV File" Controls:ButtonHelper.PreserveTextCase="True"
+                                x:Name="btnChooseCSVFile" Style="{DynamicResource  mouseoverstyle}"  
+                                BorderBrush="{DynamicResource AccentColorBrush}" Height="30"  
+                                Margin="15,5" Click="btnChooseCSVFile_Click" HorizontalAlignment="Right"
+                                Width="100" />
+
+
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+
+
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--<StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                        <Button Content="Select CSV File" Controls:ButtonHelper.PreserveTextCase="True"
+                                x:Name="btnChooseCSVFile" Style="{DynamicResource  mouseoverstyle}"  
+                                BorderBrush="{DynamicResource AccentColorBrush}" Height="30"  
+                                Margin="15,5" Click="btnChooseCSVFile_Click" 
+                                Width="100"/>
+                    </StackPanel>-->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+
+                        <ListView x:Name="MappingListView" ItemsSource="{Binding MappingList}"
+                                      Height="550" Width="800" BorderThickness="0"                         
+                                      HorizontalAlignment="Center" VerticalAlignment="Top"
+                                      Margin="0"  >
+
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn  Width="200" >
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                    <Label Content="{Binding Display_Field}"/>
+                                                    <Label Content="*" Foreground="Red" Visibility="{Binding IsMandatory, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn  Width="200">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Margin="5">
+                                                    <ComboBox HorizontalAlignment="Stretch" Foreground="{Binding ErrorColor}"
+                                                                  ItemsSource="{Binding Source_FieldList}" 
+                                                                  Text="{Binding Source_Field}"
+                                                                  DropDownOpened="ComboBox_DropDownOpened" 
+                                                                  DropDownClosed="ComboBox_DropDownClosed" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn   Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <StackPanel Margin="5" Visibility="{Binding ISCombo, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                        <ComboBox HorizontalAlignment="Stretch"  Foreground="{Binding ErrorColor}"                                                               
+                                                                  ItemsSource="{Binding DefaultValueList}"
+                                                                  DropDownClosed="ComboBox_DropDownClosed_1"
+                                                                  Text="{Binding DefaultValue}" />
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn  Width="Auto" DisplayMemberBinding="{Binding Discription}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <DataGrid Visibility="Hidden" Height="0" x:Name="CsvDataGridView" />
+                    </StackPanel>
+                </Grid>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--<Button Content="Select CSV File" Controls:ButtonHelper.PreserveTextCase="True" x:Name="btnChooseCSVFile" Grid.Row="0" Grid.Column="0" Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30"  Margin="45,30,0,30" Click="btnChooseCSVFile_Click" />-->
+                <Button Content="Import (Enter)" Controls:ButtonHelper.PreserveTextCase="True" Name="btnCSVImport" IsDefault="True" Grid.Row="0" Grid.Column="0"    Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="45,30,0,30" Click="btnCSVImport_Click" IsEnabled="False" ></Button>
+                <Button Content="Cancel (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="ServiceEntryManagementCancel"  Grid.Row="0" Grid.Column="1" Height="30"     Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,30" Click="ServiceEntryManagementCancel_Click" ></Button>
+
+                <Label Name="lblRows"  Content="Total Rows = " Grid.Row="1" Grid.Column="0" />
+                <Label Name="lblwaiting"  Content="" Grid.Row="1" Grid.Column="1" />
+                <Label Name="lblmsg"  Content="" Grid.Row="1" Grid.Column="2" />
+
+            </Grid>
+
+
+        </DockPanel>
+    </Grid>
+</Page>

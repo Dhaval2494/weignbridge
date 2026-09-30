@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description>Transaction passes</Description>
+  <Author>
+  </Author>
+  <PageHeight>10in</PageHeight>
+  <PageWidth>8in</PageWidth>
+  <DataSources>
+    <DataSource Name="DS1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Server=localhost;DataBase=Endel_weighbridge;Integrated Security=SSPI;Connect Timeout=5</ConnectString>
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <Width>7.5in</Width>
+  <TopMargin>.25in</TopMargin>
+  <LeftMargin>.25in</LeftMargin>
+  <RightMargin>.25in</RightMargin>
+  <BottomMargin>.25in</BottomMargin>
+  <DataSets>
+    <DataSet Name="Data">
+      <Query>
+        <DataSourceName>DS1</DataSourceName>
+        <CommandText>SELECT TData.SequenceNo
+, WB.ScaleName, ISNULL(TData.TareWeight, 0) AS TareWeight
+	,TData.TareTime
+	,ISNULL(TData.GrossWeight, 0) AS GrossWeight
+	,TData.GrossTime
+	,ISNULL(TData.NetWeight, 0) AS NetWeight
+	,TData.IsTareManual
+	,TData.IsGrossManual
+	,TData.WeighmentType
+	,TData.WeightUnit
+	,P.ProductName
+	,G.GateName
+	,UM.UserName
+	,CAST(0 AS NUMERIC(18, 2)) AS TotalNetWeight
+FROM TransactionDetail TData
+INNER JOIN TransactionData T ON T.ReceiptTicketID = TData.ReceiptTicketID
+INNER JOIN WeightBridge WB ON WB.WeightBridgeID = TData.WeightBridgeID
+INNER JOIN UserMaster UM ON UM.UserID = TData.UserID
+LEFT JOIN Product P ON P.ProductID = TData.ProductID
+LEFT JOIN Gate G ON G.GateID = TData.GateID
+WHERE (
+		(
+			(
+				TData.GrossWeight IS NOT NULL
+				AND TData.GrossWeight &lt;&gt; 0
+				)
+			AND (
+				TData.TareWeight IS NOT NULL
+				AND TData.TareWeight &lt;&gt; 0
+				)
+			)
+		OR (
+			T.STATUS = 'Active'
+			AND (
+				T.TransactionMode = 'Double'
+				OR (
+					T.TransactionMode = 'Multi'
+					AND (
+						SELECT SUM(SequenceNo)
+						FROM TransactionDetail TXD
+						WHERE TXD.ReceiptTicketID = TData.ReceiptTicketID
+						) = 0
+					)
+				)
+			)
+		)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SequenceNo">
+          <DataField>SequenceNo</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="ScaleName">
+          <DataField>ScaleName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TareWeight">
+          <DataField>TareWeight</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TareTime">
+          <DataField>TareTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="GrossWeight">
+          <DataField>GrossWeight</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GrossTime">
+          <DataField>GrossTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NetWeight">
+          <DataField>NetWeight</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="IsTareManual">
+          <DataField>IsTareManual</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsGrossManual">
+          <DataField>IsGrossManual</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="WeighmentType">
+          <DataField>WeighmentType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeightUnit">
+          <DataField>WeightUnit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductName">
+          <DataField>ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GateName">
+          <DataField>GateName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UserName">
+          <DataField>UserName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalNetWeight">
+          <DataField>TotalNetWeight</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <PageHeader>
+    <Height>.5in</Height>
+    <ReportItems>
+      <Textbox Name="Textbox1">
+        <Top>.1in</Top>
+        <Left>.1in</Left>
+        <Width>6in</Width>
+        <Height>.25in</Height>
+        <Value>Passes Details</Value>
+        <Style>
+          <FontSize>15pt</FontSize>
+          <FontWeight>Bold</FontWeight>
+          <BorderStyle />
+          <BorderColor />
+          <BorderWidth />
+          <FontFamily>Dotum</FontFamily>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageHeader>
+  <Body>
+    <Height>67.0pt</Height>
+    <ReportItems>
+      <Table Name="Table1">
+        <DataSetName>Data</DataSetName>
+        <NoRows>Query returned no rows!</NoRows>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+          <BorderColor />
+          <BorderWidth />
+        </Style>
+        <TableColumns>
+          <TableColumn>
+            <Width>67.6pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>83.2pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>66.9pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>86.3pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>59.8pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>67.5pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>54.7pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>55.4pt</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>53.0pt</Width>
+          </TableColumn>
+        </TableColumns>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <Height>16.0pt</Height>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox5">
+                      <Value>Gross Wt</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox6">
+                      <Value>GrossTime</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox3">
+                      <Value>Tare Wt</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox4">
+                      <Value>TareTime</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox7">
+                      <Value>Net Wt</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox11">
+                      <Value>Scale</Value>
+                      <Style xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition">
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox9">
+                      <Value>Product</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox2">
+                      <Value>Gate</Value>
+                      <Style xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition">
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox10">
+                      <Value>User</Value>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>Normal</FontWeight>
+                        <BorderColor />
+                        <BorderWidth />
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+        </Header>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <Height>17.6pt</Height>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox14">
+                      <Value>=Fields!GrossWeight.Value &amp; " " &amp; Fields!WeightUnit.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox15">
+                      <Value>=Fields!GrossTime.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox12">
+                      <Value>=Fields!TareWeight.Value &amp; " " &amp; Fields!WeightUnit.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <BorderColor />
+                        <BorderWidth />
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox13">
+                      <Value>=Fields!TareTime.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox16">
+                      <Value>=Fields!NetWeight.Value &amp; " " &amp; Fields!WeightUnit.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox17">
+                      <Value>=Fields!ScaleName.Value</Value>
+                      <Style xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition">
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>Normal</FontWeight>
+                        <FontSize>12pt</FontSize>
+                        <FontFamily>Courier New</FontFamily>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox18">
+                      <Value>=Fields!ProductName.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox8">
+                      <Value>=Fields!GateName.Value</Value>
+                      <Style xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition">
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Left</TextAlign>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Textbox19">
+                      <Value>=Fields!UserName.Value</Value>
+                      <CanGrow>true</CanGrow>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <BorderColor />
+                        <BorderWidth />
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontFamily>Courier New</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+            </TableRow>
+          </TableRows>
+        </Details>
+        <Left>0.8pt</Left>
+        <Top>3.9pt</Top>
+      </Table>
+      <Textbox Name="Textbox26">
+        <Height>15.00pt</Height>
+        <Width>101.52pt</Width>
+        <Value>Total Net Weight :</Value>
+        <Left>1.20pt</Left>
+        <Top>45.10pt</Top>
+        <Style>
+          <BorderStyle />
+          <BorderColor />
+          <BorderWidth />
+          <FontFamily>Courier New</FontFamily>
+          <FontWeight>Bold</FontWeight>
+          <FontSize>12pt</FontSize>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox27">
+        <Height>14.25pt</Height>
+        <Width>137.54pt</Width>
+        <Value>=Fields!TotalNetWeight.Value &amp; " " &amp; Fields!WeightUnit.Value</Value>
+        <Left>107.4pt</Left>
+        <Top>44.3pt</Top>
+        <Style>
+          <BorderStyle />
+          <BorderColor />
+          <BorderWidth />
+          <FontFamily>Courier New</FontFamily>
+          <FontWeight>Normal</FontWeight>
+          <FontSize>12pt</FontSize>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Columns>1</Columns>
+  </Body>
+  <PageFooter>
+    <Height>14pt</Height>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageFooter>
+  <DataElementName>Report</DataElementName>
+  <DataElementStyle>AttributeNormal</DataElementStyle>
+</Report>

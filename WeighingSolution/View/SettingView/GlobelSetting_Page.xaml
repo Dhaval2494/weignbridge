@@ -1,0 +1,221 @@
+﻿<Page x:Class="WeighingSolution.View.GlobelSetting_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      xmlns:converter="clr-namespace:WeighingSolution.Converters;assembly=WeighingSolution.SharedComponents"
+      xmlns:strFormat="clr-namespace:WeighingSolution.DataLayer;assembly=WeighingSolution.DataLayer" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="GlobelSetting_Page" FocusManager.FocusedElement="{Binding ElementName=cbSlipEntry}">
+    <Page.Resources>
+        <converter:InEqualityVisibilityConverter x:Key="InEqualityVisibilityConverter" />
+    </Page.Resources>
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel  Margin="0,0,0,100">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource GlobalSetting}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Global" />
+                         Settings</TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <StackPanel VerticalAlignment="Top">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="36*"/>
+                                <ColumnDefinition Width="152*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="187*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Margin="10,15,0.2,10.4">Enable Transaction Date Time</Label>
+                            <CheckBox Name="cbSlipEntry" Grid.Row="0" Margin="243,15,0.2,10.4" Padding="5,5,5,5" IsChecked="{Binding EntryDateEditable,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3"/>
+                            <Label Grid.Row="1" Grid.Column="0" Margin="10,14.6,0.2,9.8">Disable All Fields From 2nd Pass Onwards</Label>
+                            <CheckBox  Name="cbDisbleallField" Grid.Row="1" Margin="243,14.6,0.2,9.8" Padding="5,5,5,5" IsChecked="{Binding DisbleFrom2ndPass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="2" Grid.Column="0" Margin="10,15.2,0.2,10.6">Tare Weight Update Difference Percentage</Label>
+                            <csc:FilteredTextbox FilterRegex="^[0-9]+$|^[0-9]*[.]{0,1}[0-9]*$" Name="txtTareWeightDiff"  Grid.Row="2" Grid.Column="1" Margin="29.8,15.2,15.2,9.6" Padding="5,5,5,5" MaxLength="5" Text="{Binding TareWeightDiff,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" />
+                            <CheckBox  Name="cbAllowWithoutTareWeightChange" Grid.Row="2" Margin="243,15.2,0.2,9.6" Padding="5,5,5,5" IsChecked="{Binding AllowWithoutTareWeightChange,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" />
+                            <Label Grid.Row="3" Grid.Column="0" Margin="10,15.4,0.2,9.6">Date Format</Label>
+                            <ComboBox  Name="cmbDateFormat"   Grid.Row="3" Margin="243,15.4,15.2,9.6" Padding="5,5,5,5" SelectedValue="{Binding DateFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Tag" Grid.ColumnSpan="3">
+                                <ComboBoxItem Content="dd-MM-yyyy" Tag="dd-MM-yyyy"></ComboBoxItem>
+                                <ComboBoxItem Content="dd-MMM-yyyy" Tag="dd-MMM-yyyy"></ComboBoxItem>
+                                <ComboBoxItem Content="dd/MM/yyyy" Tag="dd/MM/yyyy"></ComboBoxItem>
+                            </ComboBox>
+                            <Label Grid.Row="4" Grid.Column="0" Margin="10,15.4,0.2,9.6">Time Format</Label>
+                            <ComboBox  Name="cmbTimeFormat" IsSynchronizedWithCurrentItem="True"  Grid.Row="4" Margin="243,15.4,15.2,9.6" Padding="5,5,5,5" SelectedValuePath="Tag"   SelectedValue="{Binding TimeFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3">
+                                <ComboBoxItem Content="hh:mm tt" Tag="hh:mm tt"></ComboBoxItem>
+                                <ComboBoxItem Content="hh:mm:ss tt" Tag="hh:mm:ss tt"></ComboBoxItem>
+                                <ComboBoxItem Content="HH:mm" Tag="HH:mm"></ComboBoxItem>
+                                <ComboBoxItem Content="HH:mm:ss" Tag="HH:mm:ss"></ComboBoxItem>
+                            </ComboBox>
+                            <Label Grid.Row="5" Grid.Column="0" Margin="10,15.4,0.2,9.6">Decimal Format</Label>
+                            <ComboBox  Name="cmbDecimaleFormat" IsSynchronizedWithCurrentItem="True"  Grid.Row="5" Margin="243,15.4,15.2,9.6" Padding="5,5,5,5" SelectedValuePath="Tag"   SelectedValue="{Binding DecimalFormat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3">
+                                <ComboBoxItem Content="0.####" Tag="0.####"></ComboBoxItem>
+                                <ComboBoxItem Content="0.0" Tag="0.0"></ComboBoxItem>
+                                <ComboBoxItem Content="0.00" Tag="0.00"></ComboBoxItem>
+                                <ComboBoxItem Content="0.000" Tag="0.000"></ComboBoxItem>
+                                <ComboBoxItem Content="0.0000" Tag="0.0000"></ComboBoxItem>
+                            </ComboBox>
+                            <!--<Label Grid.Row="6" Grid.Column="0" Margin="10,15,0,10" Visibility="{Binding Source={x:Static strFormat:Constant.IsBasicversion}, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter={StaticResource TrueValue}}" >Next Ticket No.</Label>
+                            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" Visibility="{Binding Source={x:Static strFormat:Constant.IsBasicversion}, Converter={StaticResource InEqualityVisibilityConverter}, ConverterParameter={StaticResource TrueValue}}">
+                                <Label Name="lblLastTicketNo"  Margin="0,15,0,10" Padding="5,5,5,5" Width="100"></Label>
+                                <Button Content="Reset Ticket No." Name="btnResetTicketNo" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="0,15,15,10" Click="btnResetTicketNo_Click"></Button>
+                            </StackPanel>-->
+
+                            <Label Grid.Row="6" Grid.Column="0" Margin="10,15.4,0.2,10">Display Receipt After 1 pass</Label>
+                            <CheckBox  Name="cbDisplayReceiptAfter1pass" Grid.Row="6" Margin="243,15.4,0.2,10" Padding="5,5,5,5" IsChecked="{Binding DisplayReceiptAfter1pass,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" />
+
+                            <Label Grid.Row="7" Grid.Column="0" Margin="10,15,0.2,10.4">Connected Weighbridge</Label>
+                            <ComboBox Name="cmbWeightBridge" Grid.Row="7" Margin="243,15,0.2,10.4" Padding="5,8,5,8"
+                                      ItemsSource="{Binding WeightBridges}" DisplayMemberPath="ScaleName" SelectedValuePath="WeightBridgeID" Grid.ColumnSpan="3">
+                                <ComboBox.SelectedValue>
+                                    <Binding Path="WeightBridge" Converter="{StaticResource NullReplaceConverter}">
+                                        <Binding.ConverterParameter>
+                                            <sys:Int32>0</sys:Int32>
+                                        </Binding.ConverterParameter>
+                                    </Binding>
+                                </ComboBox.SelectedValue>
+                            </ComboBox>
+
+                            <Label Grid.Row="8" Grid.Column="0" Margin="10,14.6,0.2,9.8">Disable special characters in Vehicle</Label>
+                            <CheckBox Name="cbDisspecial" Grid.Row="8" Margin="243,14.6,0.2,9.8" Padding="5,5,5,5" IsChecked="{Binding DisableSpecialCharactersInVehicle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3"/>
+
+                            <Label Grid.Row="9" Grid.Column="0" Margin="10,15.2,0.2,10.2">Display last vehicle Transaction Details</Label>
+                            <CheckBox Name="cbDislsttransv" Grid.Row="9" Margin="243,15.2,0.2,10.2" Padding="5,5,5,5" IsChecked="{Binding DisplayLastVehicleTransactionDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3"/>
+
+                            <!--<Label Grid.Row="11" Grid.Column="0" Margin="10,15,0,10">Select Receipt Format</Label>
+                            <ComboBox Name="cmbReceipt" Grid.Row="11" Grid.Column="1" Margin="0,15,10,10" ItemsSource="{Binding Receipts}" DisplayMemberPath="Label" SelectedValuePath="Label" SelectedValue="{Binding SelectedReceipt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <Label Grid.Row="12" Grid.Column="0" Margin="10,15,0,10">Select Multi Receipt Format</Label>
+                            <ComboBox Name="cmbMultReceipt" Grid.Row="12" Grid.Column="1" Margin="0,15,10,10" ItemsSource="{Binding MultiReceipts}" DisplayMemberPath="Label" SelectedValuePath="Label" SelectedValue="{Binding MultiSelectedReceipt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
+
+                            <Label Grid.Row="0" Grid.Column="4" Margin="9.8,15,0.4,10.4">Open Vehicle Flyout</Label>
+                            <CheckBox Name="cbVehicleFO" Grid.Row="0" Grid.Column="4" Margin="146.8,15,-0.4,10.4" Padding="5,5,5,5" IsChecked="{Binding IsOpenVehicleFO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></CheckBox>
+
+                            <Label Grid.Row="1" Grid.Column="4" Margin="9.8,14.6,0.4,9.8">Open Transporter Flyout</Label>
+                            <CheckBox Name="cbTransporterFO" Grid.Row="1" Grid.Column="4" Margin="146.8,14.6,-0.4,9.8" Padding="5,5,5,5" IsChecked="{Binding IsOpenTransporterFO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></CheckBox>
+
+                            <Label Grid.Row="2" Grid.Column="4" Margin="9.8,15.2,0.4,9.6">Open Account Flyout</Label>
+                            <CheckBox Name="cbAccountFO" Grid.Row="2" Grid.Column="4" Margin="146.8,15.2,-0.4,9.6" Padding="5,5,5,5" IsChecked="{Binding IsOpenAccountFO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></CheckBox>
+
+                            <Label Grid.Row="3" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">Open Product Flyout</Label>
+                            <CheckBox Name="cbProductFO" Grid.Row="3" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" IsChecked="{Binding IsOpenProductFO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></CheckBox>
+
+                            <Label Grid.Row="4" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">Open Driver Flyout</Label>
+                            <CheckBox Name="cbDriverFO" Grid.Row="4" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" IsChecked="{Binding IsOpenDriverFO,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></CheckBox>
+
+                            <Label Grid.Row="5" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">Api Url</Label>
+                            <TextBox Name="cbPAiurl" Grid.Row="5" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding ApiUrl,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                            <Label Grid.Row="6" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">WB ID</Label>
+                            <TextBox Name="cbWBID" Grid.Row="6" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding WBID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                            <Label Grid.Row="7" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">PassKey</Label>
+                            <TextBox Name="cbPassKey" Grid.Row="7" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding PassKey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                            <Label Grid.Row="8" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">PreFix Ticket</Label>
+                            <TextBox Name="cbPreFix" Grid.Row="8" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding PreFixTicket,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                            <Label Grid.Row="9" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">PostFix Ticket</Label>
+                            <TextBox Name="cbPostFix" Grid.Row="9" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding PostFixTicket,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                            <Label Grid.Row="10" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">Anpr API Url</Label>
+                            <TextBox Name="cbAnprApiurl" Grid.Row="10" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding AnprApiUrl,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+                            <Label Grid.Row="11" Grid.Column="4" Margin="9.8,15.4,0.4,9.6">Anpr PassKey</Label>
+                            <TextBox Name="cbAnprPassKey" Grid.Row="11" Grid.Column="4" Margin="146.8,15.4,-0.4,9.6" Padding="5,5,5,5" Text="{Binding AnprPassKey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"></TextBox>
+
+
+                            <Label
+                                Grid.Row="12"
+                                Grid.Column="4"
+                                Margin="10,15,0,10">
+                                Unmanned Receipt
+                            </Label>
+                            <CheckBox
+                                Name="cbUnmannedReceipt"
+                                Grid.Row="12"
+                                Grid.Column="4"
+                                Margin="146.8,15.4,-0.4,9.6" 
+                                Padding="5,5,5,5"
+                                IsChecked="{Binding AutoMaticReceipt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <Label
+                                Grid.Row="13"
+                                Grid.Column="4"
+                                Margin="10,15,0,10">
+                                Unmanned Temporary Collect Token
+                            </Label>
+                            <CheckBox
+                                Name="cbCollectToken"
+                                Grid.Row="13"
+                                Grid.Column="4"
+                                Margin="246.8,15.4,-0.4,9.6" 
+                                Padding="5,5,5,5"
+                                IsChecked="{Binding CollectToken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Label
+                                Grid.Row="14"
+                                Grid.Column="4"
+                                Margin="10,15,0,10">
+                               SAP Api Url
+                            </Label>
+                            <TextBox
+                                x:Name="txtnetsute_Url"
+                                Grid.Row="14"
+                                Grid.Column="4"
+                               Margin="146.8,15.4,-0.4,9.6" 
+                                Padding="5,5,5,5"
+                                Text="{Binding SAPApiBaseUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            
+
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Save (Enter)" Visibility="Collapsed" Controls:ButtonHelper.PreserveTextCase="True" IsDefault="True" Grid.Row="0"  Grid.Column="0" Name="SlipSettingSave" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Height="30" Margin="45,30,0,50" Command="{Binding SaveSettingCommand}"></Button>
+                <Button Content="Cancel (Esc)"  Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="SlipSettingCancel" Grid.Row="0" Grid.Column="1" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Margin="25,30,10,50"  Command="{Binding CloseDetailViewCommand}" CommandParameter="/View/SettingView/Setting_Page.Xaml" ></Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

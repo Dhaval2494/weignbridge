@@ -1,0 +1,131 @@
+﻿<Page x:Class="WeighingSolution.View.UnitManagementList_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:userControls="clr-namespace:WeighingSolution.UserControls"
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="UnitManagementList_Page">
+
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100" >
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource UnitIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25" VerticalAlignment="Center">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Unit" />
+                         Management</TextBlock>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Margin="0,8,20,5">
+                        <TextBox Name="txtsearch" Width="300" Margin="0,0,0,0"  BorderBrush="{DynamicResource AccentColorBrush}" Padding="5,5,5,5" ToolTip="Search"  Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}" >
+                                    <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="True"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="Controls:TextBoxHelper.HasText" Value="false" >
+                                            <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="False" />
+                                            <Setter Property="Controls:TextBoxHelper.Watermark"  Value="Search Record" />
+                                        </Trigger>
+                                        <Trigger Property="Controls:TextBoxHelper.HasText"   Value="True">
+                                            <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="True" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <Button Name="btnSearch" IsDefault="True" HorizontalAlignment="Left"    Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Height="34" Width="34"  Margin="0,0,20,0" Command="{Binding FilterData}">
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconFontAwesome Kind="search" Margin="0,2,0,0"  Height="14" Width="14" />
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Name="txtbAddUnit" Visibility="Collapsed" Margin="0,0,20,0" FontWeight="Bold" HorizontalAlignment="Right">
+                            <Button Name="btnAddMaster" Click="btnAddMaster_Click" Controls:ButtonHelper.PreserveTextCase="True" Height="30" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}" Padding="20,0,20,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconFontAwesome Kind="PlusCircle"  Margin="0,1,2,0"  Height="14" Width="14" />
+                                    <TextBlock>ADD UNIT</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <!--<Hyperlink TextDecorations="none" Foreground="{DynamicResource AccentColorBrush}" NavigateUri="/View/DatasetupView/UnitManagement_Page.xaml">+Add Unit</Hyperlink>-->
+                        </TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Stretch" Margin="0,0,0,0" Orientation="Vertical">
+                    <DataGrid Name="DatagridUnitManagement" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding ViewList.View}" Margin="0,4,0,0" HorizontalAlignment="Center" CanUserAddRows="False" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}"/>
+                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
+                                <Setter Property="BorderThickness" Value="0,2,0,2"/>
+                                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns >
+                            <DataGridTextColumn>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Padding" Value="6,6,6,6"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Unit Name"  Width="*"   IsReadOnly="True" Binding="{Binding Path=UnitName}"  />
+                            <DataGridTemplateColumn Header="Action" Width="*" Visibility="Collapsed">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock   VerticalAlignment="Center" ToolTip="Edit"  >
+                                            <Hyperlink Name="HyperLinkEditUnitManagement" TextDecorations="none" FontWeight="Bold"
+                                                        Command="{Binding DataContext.EditObject, RelativeSource={RelativeSource AncestorType={x:Type Page}}}">
+                                                  <Rectangle Width="20" Height="20" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource EditLinkIcon}" />
+                                                        </Rectangle.OpacityMask>
+                                                  </Rectangle>
+                                                <Hyperlink.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                                         <Binding Path="UnitID" />
+                                                         <Binding Source="UnitManagement_Page" />
+                                                    </MultiBinding>
+                                                </Hyperlink.CommandParameter>
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel HorizontalAlignment="Center" Visibility="{Binding HasData,Converter={StaticResource PositiveBooleanToVisibilityConverter}}">
+                        <TextBlock Name="txtmsg" FontSize="20" Opacity="0.5" Margin="5,5,5,5" >No Record Exist</TextBlock>
+                    </StackPanel>
+                    <userControls:PaginationElements x:Name="ucPager" Visibility="{Binding HasData,Converter={StaticResource NegativeBooleanToVisibilityConverter}}" />
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+        <DockPanel>
+
+            <Grid VerticalAlignment="Bottom"  DockPanel.Dock="Bottom" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="Go To Data Setup (Esc)" Controls:ButtonHelper.PreserveTextCase="True" IsCancel="True" Name="UnitManagementListCancel" Grid.Row="0" Grid.Column="0" Height="30"     Style="{DynamicResource  mouseoverstyle}"  BorderBrush="{DynamicResource AccentColorBrush}" Margin="45,30,10,50" Command="{Binding BackToDataSetup}"></Button>
+            </Grid>
+        </DockPanel>
+
+       
+    </Grid>
+</Page>

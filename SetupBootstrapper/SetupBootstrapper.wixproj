@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.8</ProductVersion>
+    <ProjectGuid>4453c06a-778d-43d2-8237-9cf183e8be2e</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>WeighingSolutionSetup</OutputName>
+    <OutputType>Bundle</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Name>SetupBootstrapper</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+    <CompilerAdditionalOptions>
+    </CompilerAdditionalOptions>
+    <LinkerAdditionalOptions>
+    </LinkerAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Bundle.wxs" />
+    <Compile Include="NetFX45.wxs" />
+    <Compile Include="SqlServer.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixBalExtension">
+      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
+      <Name>WixBalExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="sources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InstallerUI\InstallerUI.csproj">
+      <Name>InstallerUI</Name>
+      <Project>{4eca129e-4f36-4748-ba9f-f7d1e258afe2}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\SetupMSI\SetupMSI.wixproj">
+      <Name>SetupMSI</Name>
+      <Project>{a087b715-f74b-475d-a7ba-f4c45ecffcd5}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="loading.bmp" />
+    <Content Include="sources\dotnetfx45_full_x86_x64.exe" />
+    <Content Include="sources\SQLEXPR_x64_ENU.exe" />
+    <Content Include="sources\SQLEXPR_x86_ENU.exe" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <SignOutput>true</SignOutput>
+  </PropertyGroup>
+  <!--<Target Name="SignBundleEngine">
+		<Message Importance="high"
+		         Text="SignBundleEngine: @(SignBundleEngine)"/>
+		<Exec Command='&quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe&quot; sign /n &quot;ENDEL DIGITAL SOLUTIONS PRIVATE LIMITED&quot; /tr http://timestamp.globalsign.com/tsa/advanced /td sha512 /fd sha512 %(SignBundleEngine.FullPath)'/>
+	</Target>
+	<Target Name="SignBundle">
+		<Message Importance="high"
+		         Text="SignBundle: @(SignBundle)"/>
+		<Exec Command='&quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe&quot; sign /n &quot;ENDEL DIGITAL SOLUTIONS PRIVATE LIMITED&quot; /tr http://timestamp.globalsign.com/tsa/advanced /td sha512 /fd sha512 %(SignBundle.FullPath)'/>
+	</Target>-->
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

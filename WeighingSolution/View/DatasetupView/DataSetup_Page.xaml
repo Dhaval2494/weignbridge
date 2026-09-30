@@ -1,0 +1,248 @@
+﻿<Page x:Class="WeighingSolution.View.DataSetup_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" 
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="700"   d:DesignWidth="800" Title="MainHeader">
+    <Grid Background="{DynamicResource WhiteBrush}">
+        <DockPanel Margin="0,0,0,100" >
+              <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <DockPanel Margin="10,0,0,0">
+                    <Rectangle Width="25" Height="25" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Uniform" Visual="{StaticResource DataSetupIcon}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock FontSize="25">
+                          <Run FontWeight="Bold"  FontSize="25" Text="Data Setup" />
+                         </TextBlock>
+                </DockPanel>
+                <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+            </StackPanel>
+            <csc:ScrollViewerEx VerticalScrollBarVisibility="Auto"  VerticalAlignment="Top">
+                <StackPanel VerticalAlignment="Top" >
+                    <Grid Name="gridDatasetup">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <GroupBox Name="gbUser" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120"  VerticalAlignment="Top" >
+                            <GroupBox.Header>
+                                <TextBlock Text="User Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="btnGoToUserManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0"  Click="btnGoToUserManagementList_Click"  Background="{DynamicResource AccentColorBrush2}">
+                                    <StackPanel HorizontalAlignment="Stretch">
+                                        <!--<Image  Width="60" Height="60" Source="/Images/usericon.png"  />-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource UserIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="User Management" VerticalAlignment="Center"  />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbAccount" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Account Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToAccountManagementList"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToAccountManagementList_Click">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/account.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource UserGroupIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="Account Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbProduct" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}"  Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Product Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToProductManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Click="BtnGoToProductManagement_Click" Background="{DynamicResource AccentColorBrush2}">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/product.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource ProductIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="Product Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbGate" Visibility="Collapsed"  Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Gate Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToGateManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Click="BtnGoToGateManagement_Click"  Background="{DynamicResource AccentColorBrush2}">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/gate.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource GateIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="Gate Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbUnit"  Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Unit Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToUnit"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToUnit_Click">
+                                    <StackPanel>
+                                        <!--<Image  Width="50" Margin="0,5,0,0" Height="50" Source="/Images/unit.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource UnitIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,5,0,0" Text="Unit Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbWeighBridge" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="WeighBridge Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToWeighBridgeManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToWeighBridgeManagement_Click">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/weighBridge.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource WeighBridgeIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="WeighBridge Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbVehicle" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Vehicle Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToVehicleManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0"  Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToVehicleManagement_Click">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/Vehicle.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource VehicleIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="Vehicle Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbDriver" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Driver Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToDriverManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Click="BtnGoToDriverManagement_Click" Background="{DynamicResource AccentColorBrush2}">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/driver.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource DriverIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="Driver Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbTemplate" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="User Role Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToTemplateManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToTemplateManagement_Click">
+                                    <StackPanel>
+                                        <!--<Image  Width="60" Height="60" Source="/Images/templates.png"/>-->
+                                        <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Uniform" Visual="{StaticResource TemplateIcon}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock Margin="5,0,0,0" Text="User Role Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Name="gbCameraTile" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120"  VerticalAlignment="Top" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Camera Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Button Style="{DynamicResource btnnew}" x:Name="BtnGoToCameraManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Click="BtnGoToCameraManagement_Click" Background="{DynamicResource AccentColorBrush2}">
+                                <StackPanel>
+                                    <Rectangle Width="50" Height="50" Fill="{DynamicResource BlackBrush}" Margin="0,0,0,0">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{StaticResource CustomIcon}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Margin="5,0,0,0" Text="Camera Management" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                        </GroupBox>
+                        <GroupBox Name="gbTokenTile" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="Token Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToTokenManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToTokenManagement_Click">
+                                    <StackPanel>
+                                        <Image  Width="60" Height="60" Source="/Images/UHFReader.png"/>
+                                        <TextBlock Margin="5,0,0,0" Text="Token Mapping" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                       
+
+                        <GroupBox Name="gbUhf" Visibility="Collapsed" Background="{DynamicResource AccentColorBrush}" Margin="10"  Height="120" VerticalAlignment="Center" >
+                            <GroupBox.Header>
+                                <TextBlock Text="UHF Management" FontWeight="Bold"/>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Button Style="{StaticResource btnnew}" x:Name="BtnGoToUHFManagement"  HorizontalAlignment="Stretch"  Height="120"  VerticalAlignment="Center"   Margin="0,0,0,0" Background="{DynamicResource AccentColorBrush2}" Click="BtnGoToUHFManagement_Click">
+                                    <StackPanel>
+                                        <Image  Width="60" Height="60" Source="/Images/UHFReader.png"/>
+                                       
+                                        <TextBlock Margin="5,0,0,0" Text="UHF Management" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </StackPanel>
+            </csc:ScrollViewerEx>
+        </DockPanel>
+    </Grid>
+</Page>

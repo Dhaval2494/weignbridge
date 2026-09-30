@@ -1,0 +1,104 @@
+﻿<Page x:Class="WeighingSolution.View.ReceiptPreview"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:csc="clr-namespace:WeighingSolution.CustomControls;assembly=WeighingSolution.SharedComponents"
+      mc:Ignorable="d" Visibility="Collapsed"
+      Style="{DynamicResource MetroPage}"
+      d:DesignHeight="700" d:DesignWidth="850"
+	Title="Receipt Preview">
+
+
+    <Grid Background="{DynamicResource WhiteBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,0,0" >
+        <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <DockPanel Margin="10,0,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Width="25" Height="25" Grid.Row="0" Grid.Column="0" Fill="{DynamicResource BlackBrush}" Margin="0,3,5,0">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Uniform" Visual="{StaticResource SlipIcon}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock FontSize="25" Grid.Row="0" Grid.Column="1">
+                                <Run FontWeight="Bold" FontSize="25" Text="Print Preview" />
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Name="stkPrint"  Grid.Row="0" Grid.Column="1">
+                        <Grid>
+                           
+                            <StackPanel Orientation="Horizontal" Name="stkPrintType" Grid.Row="0" Grid.Column="0" Margin="0,5,0,5">
+                                <Label>Print Type:</Label>
+                                <!--<ComboBox Name="cmbPrintType" Grid.Row="0" Grid.Column="1"  SelectionChanged="cmbPrintType_SelectionChanged" SelectedValuePath="Tag">
+                                    <ComboBoxItem x:Name="DotMatrix" Content="DotMatrix" Tag="DotMatrix"></ComboBoxItem>
+                                    <ComboBoxItem x:Name="Laser" IsSelected="True" Content="Laser" Tag="Laser" ></ComboBoxItem>
+                                </ComboBox>-->
+                                <ComboBox Name="cmbPrintType" Grid.Row="0" Grid.Column="1" SelectionChanged="cmbPrintType_SelectionChanged" IsEditable="True" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right"  Grid.Row="0" Grid.Column="3">
+                        <Button Content="Back (Esc)" IsCancel="True" Name="btnBack" Controls:ButtonHelper.PreserveTextCase="True" Click="btnBack_Click" Width="100" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}"  Margin="0,5,10,5" ></Button>
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+            <Border BorderThickness="0" HorizontalAlignment="Stretch" Height="4" Margin="0,4,1,0" VerticalAlignment="Top" Background="{DynamicResource AccentColorBrush}"   />
+        </StackPanel>
+        <StackPanel Margin="100,40" HorizontalAlignment="Stretch" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Name="stkSendMail" Visibility="Collapsed" HorizontalAlignment="Right" Margin="10"  Grid.Row="0" Grid.Column="0">
+                        <Grid>                           
+                            <StackPanel Orientation="Horizontal" Name="stkEmail" Grid.Row="0" Grid.Column="0" Margin="0,5,0,5">
+                                <Label>Email To</Label>
+                            <TextBox MaxLength="250" Name="txtEmailTo" Width="250" Controls:TextBoxHelper.Watermark="Email Id" Text=""></TextBox>
+                                <Button Name="btnSendMail" Margin="15,0,0,0" Click="BtnSendMail_Click" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}">Send Email</Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                <StackPanel Visibility="Collapsed">
+                    <StackPanel Name="stkSendSMS" Visibility="Collapsed" Margin="10"  Grid.Row="0" Grid.Column="1">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" Name="stkSMS" Grid.Row="0" Grid.Column="0" Margin="0,5,0,5">
+                                <Label>SMS To:</Label>
+                                <TextBox MaxLength="250" Name="txtSMSTo" Width="250" Controls:TextBoxHelper.Watermark="Mobile No" Text=""/>
+                                <Button Name="btnSendSMS" Margin="15,0,0,0" Click="BtnSendSMS_Click" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}">Send SMS</Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                  
+            
+                <StackPanel Name="stkSendWhatsApp" Visibility="Visible" Margin="10"  Grid.Row="0" Grid.Column="1">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" Name="stkWhatsApp" Grid.Row="0" Grid.Column="0" Margin="0,5,0,5">
+                            <Label>WhatsApp To:</Label>
+                            <TextBox MaxLength="250" Name="txtWhatsAppTo" Width="250" Controls:TextBoxHelper.Watermark="Mobile No" Text=""/>
+                            <Button Name="btnSendWhatsApp" Margin="15,0,0,0" Click="BtnSendWhatsApp_Click" Controls:ButtonHelper.PreserveTextCase="True" Style="{DynamicResource  mouseoverstyle}" BorderBrush="{DynamicResource AccentColorBrush}">Send</Button>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <WindowsFormsHost Margin="200,50,200,40" VerticalAlignment="Stretch" Height="Auto" Name="winform" >
+            <rv:ReportViewer x:Name="reportViewer"  Margin="10,20,10,10"  />
+        </WindowsFormsHost>
+    </Grid>
+</Page>
